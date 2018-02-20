@@ -1,6 +1,4 @@
 package com.bridgeit.Functional;
-
-import java.util.Calendar;
 import java.util.Scanner;
 
 import com.bridegit.Utility.Utility;
@@ -8,10 +6,7 @@ import com.bridegit.Utility.Utility;
 public class StopWatch {
 	public static void main(String args[]) throws InterruptedException
 	{
-		//int starttime;
-		//int stoptime;
-
-		Scanner scanner=new Scanner(System.in);
+			Scanner scanner=new Scanner(System.in);
 
 		System.out.println("Enter 1 for startTime");
 		int ch=scanner.nextInt();

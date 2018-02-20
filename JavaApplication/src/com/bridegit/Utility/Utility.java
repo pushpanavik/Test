@@ -100,4 +100,21 @@ public class Utility {
 	public void lapsedTime() throws InterruptedException {
 
 	}
+	public void quadratic(double a,double b,double c)
+	{
+		double delta,r1x,r2x;
+		double square=Math.pow(b, 2);
+		System.out.println("square" + square);
+		double q=(4*(a*c));
+		System.out.println("fourAC" + q);
+		delta=square- q;
+		double sqrtdelta=Math.sqrt(delta);
+		System.out.println(sqrtdelta);
+		double amp=(sqrtdelta/(2*a));
+		System.out.println("amp=" +amp);
+		r1x=-b + amp;
+		r2x=-b - amp;
+		System.out.println("The value of r1x is="+r1x);
+		System.out.println("The value of r2x is="+r2x);
+	}
 }
