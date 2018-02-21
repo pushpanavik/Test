@@ -1,20 +1,15 @@
 package com.bridegit.Utility;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.HashSet;
+import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class Utility {
 
-	public static void regex() {
-		// TODO Auto-generated method stub
-
-		/*
-		 * String REGEX="<<username>>"; String Input=""; Pattern
-		 * pattern=Pattern.compile(scanner.next(Input)); Matcher
-		 * matcher=pattern.Matcher.compile(scanner.next(REGEX)); boolean
-		 */
-
+	public static void regex(int name) {
+		Pattern p=Pattern.compile(name);
+		Matcher m=p.matcher(input)atcher
 	}
 
 	public boolean leap(int year) {
@@ -81,40 +76,105 @@ public class Utility {
 		return n;
 	}
 
-	public int euclidean(int x, int x1, int y, int y1) {
-		int dist1 = x1 - x;
-		System.out.println("distance between x and x1:=" + dist1);
-		int dist2 = y1 - y;
-		System.out.println("distance between y and y1:=" + dist2);
-		int n = (int) Math.pow(dist1, 2);
-		System.out.println("Math power of dist1 is:=" + n);
-		int m = (int) Math.pow(dist2, 2);
-		System.out.println("Math power of dist2 is:=" + m);
-		int mul = n - m;
-		System.out.println("Distance between dist1 and dist2:=" + mul);
-		int d = (int) Math.sqrt(mul);
+	public void distance(int x, int y) {
+		double m = Math.pow(x, 2);
+		double n = Math.pow(y, 2);
+		double distance = Math.sqrt(m + n);
+		System.out.println("\nDistance is:=" + distance);
 
-		return d;
 	}
 
 	public void lapsedTime() throws InterruptedException {
 
 	}
-	public void quadratic(double a,double b,double c)
-	{
-		double delta,r1x,r2x;
-		double square=Math.pow(b, 2);
+
+	public void quadratic(double a, double b, double c) {
+		double delta, r1x, r2x;
+		double square = Math.pow(b, 2);
 		System.out.println("square" + square);
-		double q=(4*(a*c));
+		double q = (4 * (a * c));
 		System.out.println("fourAC" + q);
-		delta=square- q;
-		double sqrtdelta=Math.sqrt(delta);
+		delta = square - q;
+		double sqrtdelta = Math.sqrt(delta);
 		System.out.println(sqrtdelta);
-		double amp=(sqrtdelta/(2*a));
-		System.out.println("amp=" +amp);
-		r1x=-b + amp;
-		r2x=-b - amp;
-		System.out.println("The value of r1x is="+r1x);
-		System.out.println("The value of r2x is="+r2x);
+		double amp = (sqrtdelta / (2 * a));
+		System.out.println("amp=" + amp);
+		r1x = -b + amp;
+		r2x = -b - amp;
+		System.out.println("The value of r1x is=" + r1x);
+		System.out.println("The value of r2x is=" + r2x);
 	}
+
+	public static void findTriplet(int number, int[] array) {
+		// System.out.println("hi..");
+		boolean found = false;
+
+		for (int i = 0; i < number - 2; i++) {
+			for (int j = i + 1; j < number - 1; j++) {
+				for (int k = j + 1; k < number; k++) {
+					if (array[i] + array[j] + array[k] == 0) {
+						System.out.println("Triplets are :" + array[i] + " " + array[j] + " " + array[k]);
+						found = true;
+					}
+				}
+			}
+		}
+		if (found == false)
+			System.out.println("Triplets not Exist...");
+	}
+
+	public int gambler(int stake,int goal,int trials)
+	{
+		
+		int win=0;
+		int bets=0;
+		int cash=stake;
+		while(cash>0 && cash<goal)
+		{
+			bets++;
+			if(Math.random()<0.5)
+			cash++; //wins by $1
+			else
+				cash--;	 //lose by $1
+		}
+		if(cash==goal)
+			win++;
+		System.out.println("Number of wins:="+trials);
+		System.out.println("Percentage of wins:="+100*win/trials);
+		System.out.println("Average of bets:="+1.0*bets/trials);
+		return cash;
+	}
+	/*
+	public static int distinctcoupon(int coupon[])
+	{
+		
+		if(Math.random()<coupon.length)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		HashSet<Integer> al=new HashSet<Integer>();
+		for(int i:coupon)
+		{
+			al=coupon[i];
+		}
+	}
+	*/
+	public int weathercast(double t, double v)
+	{
+		double q=Math.pow(v, 0.16);
+		System.out.println("q " +q);
+		double add=0.4275*t;
+		System.out.println("add "+ add);
+		
+		double w=(((35.74+0.6215)*t)+((add-35.75)*q));
+		System.out.println(w);
+		return 0;
+	}
+	
+	
+	
 }
