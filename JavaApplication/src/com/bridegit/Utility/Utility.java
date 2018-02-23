@@ -1,17 +1,18 @@
 package com.bridegit.Utility;
 
 import java.util.regex.Pattern;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class Utility {
-
-	public static void regex(int name) {
-		Pattern p=Pattern.compile(name);
-		Matcher m=p.matcher(input)atcher
-	}
-
+public String regex(String msg,String regex)
+{
+	String replace=	msg.replaceAll(msg,regex);
+		System.out.println("Hello\t" +replace +" "+",How are you?");
+		return replace;
+}
 	public boolean leap(int year) {
 		if (year % 400 == 0 && year % 4 == 0) {
 
@@ -19,7 +20,7 @@ public class Utility {
 		} else {
 			return false;
 		}
-	}
+	
 
 	public static void flipcoin(int flipcoin) {
 		int count1 = 0;
@@ -144,25 +145,7 @@ public class Utility {
 		System.out.println("Average of bets:="+1.0*bets/trials);
 		return cash;
 	}
-	/*
-	public static int distinctcoupon(int coupon[])
-	{
-		
-		if(Math.random()<coupon.length)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-		HashSet<Integer> al=new HashSet<Integer>();
-		for(int i:coupon)
-		{
-			al=coupon[i];
-		}
-	}
-	*/
+	
 	public int weathercast(double t, double v)
 	{
 		double q=Math.pow(v, 0.16);
@@ -174,7 +157,87 @@ public class Utility {
 		System.out.println(w);
 		return 0;
 	}
+	/*public static int getCoupon(int n)
+	{
+		
+		return (int) (Math.random() * n);		
+	}
+	public static int collect(int n) {
+	boolean [] collected=new boolean[n];
+	int c=0;
+	int distinct=0;
+	while(distinct<n)
+	{
+		int value=getCoupon(n);
+		c++;
+		if (!collected[value]) {           // discovered a new card type
+            distinct++;
+            collected[value] = true;
+        }
+	}
+	return c;
+	}*/
+	
+	public static int isAnagram(String firstString,String secondString)
+	{
+	String copyfirstString=firstString.replaceAll("\\s","");
+	String copysecondString=secondString.replaceAll("\\s","");
 	
 	
+		
+		boolean status=true;
+				if(copyfirstString.length()!=copysecondString.length())
+				{
+					 status=false;
+				}
+						else
+						{
+							
+							char[] firstchar=copyfirstString.toLowerCase().toCharArray();
+							char[] secondchar=copysecondString.toLowerCase().toCharArray();
+						
+							Arrays.sort(firstchar);
+							Arrays.sort(secondchar);
+							
+							status=Arrays.equals(firstchar,secondchar);
+						
+						}
+						
+						if(status)
+						{
+							System.out.println(firstString +" "+secondString+" is anagram");
+						}
+						else
+						{
+							System.out.println(firstString +" "+secondString+" is  not an anagram");
+						}
+						return 0;
+				}
+	public int primenumber(int lowestlimit,int highestlimit)
+	{
+		boolean flag=false;
 	
+		for(int i=lowestlimit;i<highestlimit;i++)
+		{
+			for(int j=2;j<=i/2;j++)
+			{
+			if(i%j==0)
+			{
+				flag=true;
+				break;
+			}
+			else 
+			{
+				flag=false;
+			}
+		}
+		if(flag==false)
+		{
+			System.out.print( i+" ");
+		}
+	}
+		return 0;
+		
+	}		
+			
 }
