@@ -11,20 +11,43 @@ public class BinarySearch {
 		int number;
 		int found=0;
 		Scanner scanner=new Scanner(System.in);
-		System.out.println("Enter the number");
+		System.out.println("Enter the number ");
 		number=scanner.nextInt();
-		int powerof=(int)Math.pow(2, number);
-		System.out.println(powerof);
-		int a[]=new int[powerof];
-		for(int i=0;i<a.length;i++)
+		int powerof=(int)Math.sqrt(number);
+		System.out.println("root of a number is:" +powerof);
+		
+		
+		for(int i=0;i<number;i++)
 		{
-			System.out.print(i+" ");
+			System.out.print(i+ " ");
+		}
+		System.out.println("Enter your choice");
+		System.out.println("1.Enter the  number is between 1-30");
+		return true;
+		switch(ch)
+		{
+		case1 :
 		}
 		
-		System.out.println("Enter the number you want to search");
-		int searchkey=scanner.nextInt();
+		int last=number-1;
+		
 		Utility utility=new Utility();
-		utility.binarysearch(searchkey, found, a, number);
+		utility.binarysearch(searchkey, found, a, number,last);
 	}
-	
+	public int insertionsort(String string[])
+	{
+		int i,j;
+		String key=string[i];
+	j=i+1;;
+		for(i=0;i<string.length;i++)
+		{
+			if(string[i].compareTo(string[j]))
+			{
+				
+				
+			}
+		}
+		return j;
+	}
+
 }

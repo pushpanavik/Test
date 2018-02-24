@@ -175,7 +175,7 @@ public String regex(String msg,String regex)
             collected[value] = true;
         }
 	}
-	return c;
+	return 0;
 	}*/
 	
 	public static int isAnagram(String firstString,String secondString)
@@ -239,35 +239,56 @@ public String regex(String msg,String regex)
 		return 0;
 		
 	}		
-	
-	public int binarysearch(int searchkey,int found,int a[],int number)
-	{
-		int beg=0;
-		int end=a.length-1;
-		int mid=(beg+end)/2;
-		while(beg<=end)
-		{
-			if(a[mid]==searchkey)
-			{
-				found=1;
-				System.out.println(+searchkey+ "\t found at location" +mid);
-			}
-			else if(a[mid]>searchkey)
-			{
-				end=mid-1;
-			}
-			else
-			{
-				beg=mid+1;
-			}
-			mid=(beg+end)/2;
-		}
-		if(beg>end)
-		{
-			System.out.println(+searchkey+ "\t not found");
-		}
+	public int binarysearch(int searchkey, int found,int a[], int number,int last){
+		int first=0;
 		
-		return -1;
-	}
+	  int mid = (first + last)/2;  
+	   while( first <= last ){  
+	      if ( a[mid] < searchkey ){  
+	        first = mid + 1;     
+	      }else if ( a[mid] == searchkey ){  
+	        System.out.println("Element is found at index: " + mid);  
+	        break;  
+	      }else{  
+	         last = mid - 1;  
+	      }  
+	      mid = (first + last)/2;  
+	   }  
+	   if ( first > last ){  
+	      System.out.println("Element is not found!");  
+	   }
+	return mid;  
+	 } 
+public static void temperatureConversion(double temperature) {
+	double  temptofahrenheit=(temperature * 1.8) + 32; 
+	System.out.println(" Temperature to fahrenheit conversion\t" +temptofahrenheit+" ");
+	
+	double fahrenheittotemp  = (temptofahrenheit-32)*5/9 ; 
+	System.out.println("  fahrenheit to temperature conversion\t" +fahrenheittotemp+" ");
+	
+}
+public static void monthlyPayment(double rateofinterest, double years,double principalamount)
+{
+	double  r=rateofinterest/(12*100);
+	System.out.println("r is:="+r);
+	
+	double multiplybyyears=12*years;
+	System.out.print("multiplybyyears:="+multiplybyyears);
+			
+	System.out.println();
+	//principal amount
+	double pr=principalamount*r;
+	System.out.println("pr:"+pr);
+	// value=1+r^n value calculation
+	double value=1+r;
+	System.out.print(value);
+	double divideby=Math.pow(value,(multiplybyyears));
+	double minus=(1-divideby);
+	System.out.println("divideby value is:" +minus);
+	double payment=pr/minus;
+	
+	
+	System.out.println("payment is:" + payment);
 
+}
 }
