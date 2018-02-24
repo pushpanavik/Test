@@ -21,7 +21,7 @@ public String regex(String msg,String regex)
 			return false;
 		}
 	
-
+	}
 	public static void flipcoin(int flipcoin) {
 		int count1 = 0;
 		int count2 = 0;
@@ -239,5 +239,35 @@ public String regex(String msg,String regex)
 		return 0;
 		
 	}		
-			
+	
+	public int binarysearch(int searchkey,int found,int a[],int number)
+	{
+		int beg=0;
+		int end=a.length-1;
+		int mid=(beg+end)/2;
+		while(beg<=end)
+		{
+			if(a[mid]==searchkey)
+			{
+				found=1;
+				System.out.println(+searchkey+ "\t found at location" +mid);
+			}
+			else if(a[mid]>searchkey)
+			{
+				end=mid-1;
+			}
+			else
+			{
+				beg=mid+1;
+			}
+			mid=(beg+end)/2;
+		}
+		if(beg>end)
+		{
+			System.out.println(+searchkey+ "\t not found");
+		}
+		
+		return -1;
+	}
+
 }
