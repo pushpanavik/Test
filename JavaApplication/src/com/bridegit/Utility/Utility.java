@@ -1,6 +1,8 @@
 package com.bridegit.Utility;
 
 import java.util.regex.Pattern;
+import java.lang.reflect.Array;
+import java.time.YearMonth;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Scanner;
@@ -290,5 +292,73 @@ public static void monthlyPayment(double rateofinterest, double years,double pri
 	
 	System.out.println("payment is:" + payment);
 
+}
+public static void covertDecimalToBinary(int number)
+{
+    StringBuilder result = new StringBuilder();
+    int i =0;
+	while(number>0)
+	{
+		 result.append(number%10);
+		i++;
+		 number=number/2;
+	}
+	System.out.println(result.reverse());
+	
+}
+
+public static void dayOfWeek(String year,String month,String date)
+{
+	
+	String y0 = year-((14−month)/12);
+	System.out.println(y0);
+	String x = y0+y0/4−y0/100+ y0/400;
+	String m0 = (month+ 12)*(14−((month/12)−2));
+	String d0 = (date+x+31)*((m0/12)%7);
+}
+
+public int BubbleSort(int a[],int n) {
+	Scanner scanner =new Scanner(System.in);
+		System.out.println("Enter value for "+n+ " numbers:");
+
+		for(int i=0;i<a.length;i++)       
+		{
+		    a[i]=scanner.nextInt();		//taking input from user
+		}
+
+		for(int i=0;i<a.length;i++)         //sorting the array
+		{
+			for(int j=i+1;j<a.length;j++)
+			{
+				if(a[i]>a[j])
+				{
+					int temp=a[i];
+					a[i]=a[j];
+					a[j]=temp;
+				}
+			}
+		}
+		System.out.println();
+		System.out.println("The sorted order is:");
+
+		for(int i=0;i<a.length;i++)      
+		{
+		     System.out.println(a[i]);		//printing the sorted array
+		}
+		return 0;
+	}
+
+public int Insertionsort(String str[])
+{
+	
+	for(int i=0;i<str.length;i++)
+		{
+			Arrays.sort(str);
+			System.out.print(i+ " ");
+		}
+	
+	
+	return 0;
+	
 }
 }

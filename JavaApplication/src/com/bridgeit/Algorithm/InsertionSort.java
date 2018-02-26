@@ -2,20 +2,22 @@ package com.bridgeit.Algorithm;
 
 import java.util.Scanner;
 
+import com.bridegit.Utility.Utility;
+
 public class InsertionSort {
 
 	public static void main(String[] args) {
 		Scanner scanner=new Scanner(System.in);
-		String string[]= new String[5];
-		System.out.println("Enter the Sring in the array");
 	
-		for(int i=0;i<string.length;i++)
+		System.out.println("Enter the number of String in the array");
+		int number=scanner.nextInt();
+		String[] str=new String[number];
+		System.out.println("Enter the String");
+		for(int i=0;i<str.length;i++)
 		{	
-			string[i]=scanner.nextLine();
-			System.out.println();
+			str[i]=scanner.next();
 		}
-		
-	
-	
+		Utility utility=new Utility();
+		utility.Insertionsort(str);
 	}
 }
