@@ -7,16 +7,19 @@ import com.bridegit.Utility.Utility;
 public class DistinctCoupon {
 	public static void main(String[] args) 
 	{
+		char[] chars="abcdEFGH123".toCharArray();
+		int max=10000;
+		int random=(int) (Math.random()*max);
+		System.out.println(random);
+StringBuffer sb=new StringBuffer();
 		
-       Scanner scanner=new Scanner(System.in);
-        int n=scanner.nextInt();
-	 /*Utility utility=new Utility();
-	 utility.getCoupon(n);
-	 int c= Utility.collect(n);
-	 System.out.println(c);
-*/		
-        Random random=new Random();
-       int rand=random.nextInt(n);
-       System.out.println("Random Integers:=\t"+  rand);
+		while (random>0)
+		{
+			sb.append(chars[random % chars.length]);
+			random /= chars.length;
+		}
+
+		String couponCode=sb.toString();
+		System.out.println("Coupon Code: "+couponCode);
 }
 }

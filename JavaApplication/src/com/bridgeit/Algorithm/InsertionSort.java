@@ -16,8 +16,10 @@ public class InsertionSort {
 		for(int i=0;i<str.length;i++)
 		{	
 			str[i]=scanner.next();
+			
 		}
-		Utility utility=new Utility();
+		
+		Utility utility=new Utility();		
 		utility.Insertionsort(str);
 	}
 }

@@ -6,6 +6,8 @@ import java.io.FileInputStream;
 //import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Iterator;
+import java.util.LinkedList;
 //import java.util.List;
 import java.util.Scanner;
 
@@ -18,6 +20,8 @@ public class UnorderedList {
 	String stringline;
 	int word=1;
 	
+	LinkedList list=new LinkedList();
+	Iterator<String> itr=list.iterator();
 	Scanner scanner= new Scanner(System.in);
 	//boolean found=false;*/
 	while((stringline=bufferedReader.readLine())!=null)
@@ -29,23 +33,34 @@ public class UnorderedList {
 			{	
 				word++;
 			}
-		}System.out.println("total words present=" +word);
+		}
+		//System.out.println("total words present=" +word);
 				String []splitted=stringline.split(" ",word);
-				for( String str:splitted) 
-		{
-			System.out.println(str);
-		}
-				
-	System.out.println("enter the text you want to search:\t");
-	String searchString=scanner.next();
-	for( String str:splitted) 
-	{
-		if(searchString==str)
-		{
-			
-		}
-	}
+				for(String str:splitted) 
+				{
+					list.add(str);
+					while(itr.hasNext()) 
+					{
+						System.out.print(itr.next());
+					}
+					System.out.println("\t");
 		
+				}
+				System.out.println("enter the text you want to add :\t");
+				String toadd=scanner.next(); 
+				
+				{
+					if(toadd.equals(itr.next()))
+					{
+						list.remove();
+						System.out.println("element removed at index is");
+					}
+				}
+			
+				
+				
+	
 	}
 	}
+	
 }

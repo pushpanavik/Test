@@ -1,12 +1,6 @@
 package com.bridegit.Utility;
-
-import java.util.regex.Pattern;
-import java.lang.reflect.Array;
-import java.time.YearMonth;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 public class Utility {
 public String regex(String msg,String regex)
@@ -295,26 +289,16 @@ public static void monthlyPayment(double rateofinterest, double years,double pri
 }
 public static void covertDecimalToBinary(int number)
 {
-    StringBuilder result = new StringBuilder();
-    int i =0;
-	while(number>0)
+	int copynumber=number;
+	int result=0;
+	while (copynumber>0)
 	{
-		 result.append(number%10);
-		i++;
-		 number=number/2;
+	int remainder=copynumber%2;
+	 result=result+remainder;
 	}
-	System.out.println(result.reverse());
+	int quotient=copynumber/2;
+	System.out.println(result);
 	
-}
-
-public static void dayOfWeek(String year,String month,String date)
-{
-	
-	String y0 = year-((14−month)/12);
-	System.out.println(y0);
-	String x = y0+y0/4−y0/100+ y0/400;
-	String m0 = (month+ 12)*(14−((month/12)−2));
-	String d0 = (date+x+31)*((m0/12)%7);
 }
 
 public int BubbleSort(int a[],int n) {
@@ -347,18 +331,44 @@ public int BubbleSort(int a[],int n) {
 		}
 		return 0;
 	}
+public class node{
+	public String node;
+	public int data;
+	public String data1;
+	public int next;
 
-public int Insertionsort(String str[])
-{
-	
-	for(int i=0;i<str.length;i++)
-		{
-			Arrays.sort(str);
-			System.out.print(i+ " ");
-		}
-	
-	
-	return 0;
+	public void setNode(String node) {
+		this.node = node;
+	}
+	public void setData(int data) {
+		this.data = data;
+	}
+	public void setData1(String data1) {
+		this.data1 = data1;
+	}
+	public void setNext(int next) {
+		this.next = next;
+	}
 	
 }
+
+public static String  permutationofstring(String input,String Permutation)
+{
+	if(input.length()==0)
+	{
+     System.out.println(Permutation);
+	}
+	else
+	{
+		for(int i=0;i<input.length();i++)
+		{
+
+			System.out.println(Permutation + input.charAt(i) + input.substring(0, i)+ input.substring(i+1,input.length()));
+		}
+	}
+	return Permutation;
+		
+	}
+
+
 }

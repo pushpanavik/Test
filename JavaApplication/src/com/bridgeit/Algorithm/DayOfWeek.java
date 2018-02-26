@@ -1,19 +1,25 @@
 package com.bridgeit.Algorithm;
-
+import java.util.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Scanner;
+
+import javax.swing.text.Utilities;
+
+import com.bridegit.Utility.Utility;
 
 public class DayOfWeek {
 
 	public static void main(String[] args) throws IOException {
-		BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(System.in)); 
+		Scanner scanner=new Scanner(System.in);
 		System.out.println("Enter the month between 1 to 12");
-		String month=bufferedReader.readLine();
+		int month=scanner.nextInt();
+		System.out.println("Enter the date");
+		int  date=scanner.nextInt();
 		System.out.println("Enter the year ");
-		String year=bufferedReader.readLine();
-		System.out.println("Enter the date ");
-		String date=bufferedReader.readLine();
+		int year=scanner.nextInt();
+		
 		
 	}
 	

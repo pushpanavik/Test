@@ -1,5 +1,5 @@
 package com.bridgeit.Algorithm;
-
+import com.bridegit.Utility.*;
 import java.util.Scanner;
 
 import com.bridegit.Utility.Utility;
