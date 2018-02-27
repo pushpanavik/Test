@@ -1,9 +1,0 @@
-package Utility;
-
-public class callUsername {
-
-	public String a(String s) {
-		String s3 = "username" + "s";
-		return s3;
-	}
-}

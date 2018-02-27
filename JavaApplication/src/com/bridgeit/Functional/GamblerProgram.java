@@ -7,6 +7,7 @@ import com.bridegit.Utility.Utility;
 public class GamblerProgram {
 
 	public static void main(String[] args) {
+		
 		int stake,goal,trials;
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter the stake you want to invest:=");

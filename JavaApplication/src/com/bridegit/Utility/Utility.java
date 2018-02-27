@@ -1,4 +1,6 @@
 package com.bridegit.Utility;
+
+//Username 
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -18,6 +20,7 @@ public String regex(String msg,String regex)
 		}
 	
 	}
+	//flipcoin
 	public static void flipcoin(int flipcoin) {
 		int count1 = 0;
 		int count2 = 0;
@@ -41,7 +44,7 @@ public String regex(String msg,String regex)
 			System.out.println("Percentage of Tails:)" + tails);
 		}
 	}
-
+//power
 	public int power(int n) {
 		for (int i = 0; i < n; i++) {
 			System.out.println("Math.pow(" + n + "," + i + ")=" + Math.pow(n, i));
@@ -59,20 +62,28 @@ public String regex(String msg,String regex)
 		System.out.println("The Nth harmonic value is:" + result);
 		return n;
 	}
-
-	public int primefactors(int n) {
+	
+//Prime factors using brute force
+	public int primefactors(int n) 
+	{
 		int i = 1;
-		for (i = 2; i <= n; i++) {
-			while (n % i == 0) {
-				System.out.println(i + "");
+		for (i = 2; i*i<= n; i++) 
+		{
+			while (n%i == 0)
+			{
+				System.out.println(i + " ");
 				n = n / i;
 			}
-			if (n < 1)
-				System.out.println(n);
+			if (n>i)
+			{
+				
+				System.out.print(n+ " ");
+			}
 		}
 		return n;
 	}
-
+	
+	//Euclidean Distance
 	public void distance(int x, int y) {
 		double m = Math.pow(x, 2);
 		double n = Math.pow(y, 2);
@@ -84,7 +95,7 @@ public String regex(String msg,String regex)
 	public void lapsedTime() throws InterruptedException {
 
 	}
-
+// Quadratic Equation
 	public void quadratic(double a, double b, double c) {
 		double delta, r1x, r2x;
 		double square = Math.pow(b, 2);
@@ -102,6 +113,7 @@ public String regex(String msg,String regex)
 		System.out.println("The value of r2x is=" + r2x);
 	}
 
+	//Triplet
 	public static void findTriplet(int number, int[] array) {
 		// System.out.println("hi..");
 		boolean found = false;
@@ -120,6 +132,7 @@ public String regex(String msg,String regex)
 			System.out.println("Triplets not Exist...");
 	}
 
+	//Gambler
 	public int gambler(int stake,int goal,int trials)
 	{
 		
@@ -141,7 +154,8 @@ public String regex(String msg,String regex)
 		System.out.println("Average of bets:="+1.0*bets/trials);
 		return cash;
 	}
-	
+
+	//WeatherCast
 	public int weathercast(double t, double v)
 	{
 		double q=Math.pow(v, 0.16);
@@ -153,27 +167,8 @@ public String regex(String msg,String regex)
 		System.out.println(w);
 		return 0;
 	}
-	/*public static int getCoupon(int n)
-	{
-		
-		return (int) (Math.random() * n);		
-	}
-	public static int collect(int n) {
-	boolean [] collected=new boolean[n];
-	int c=0;
-	int distinct=0;
-	while(distinct<n)
-	{
-		int value=getCoupon(n);
-		c++;
-		if (!collected[value]) {           // discovered a new card type
-            distinct++;
-            collected[value] = true;
-        }
-	}
-	return 0;
-	}*/
 	
+	//Anagram
 	public static int isAnagram(String firstString,String secondString)
 	{
 	String copyfirstString=firstString.replaceAll("\\s","");
@@ -209,6 +204,7 @@ public String regex(String msg,String regex)
 						}
 						return 0;
 				}
+	//Prime Number Between 0-1000
 	public int primenumber(int lowestlimit,int highestlimit)
 	{
 		boolean flag=false;
@@ -234,7 +230,9 @@ public String regex(String msg,String regex)
 	}
 		return 0;
 		
-	}		
+	}	
+	
+	//BinarySearch
 	public int binarysearch(int searchkey, int found,int a[], int number,int last){
 		int first=0;
 		
@@ -255,6 +253,8 @@ public String regex(String msg,String regex)
 	   }
 	return mid;  
 	 } 
+	
+	//Temperature Converion
 public static void temperatureConversion(double temperature) {
 	double  temptofahrenheit=(temperature * 1.8) + 32; 
 	System.out.println(" Temperature to fahrenheit conversion\t" +temptofahrenheit+" ");
@@ -263,6 +263,8 @@ public static void temperatureConversion(double temperature) {
 	System.out.println("  fahrenheit to temperature conversion\t" +fahrenheittotemp+" ");
 	
 }
+
+//Simple Interest
 public static void monthlyPayment(double rateofinterest, double years,double principalamount)
 {
 	double  r=rateofinterest/(12*100);
@@ -287,6 +289,8 @@ public static void monthlyPayment(double rateofinterest, double years,double pri
 	System.out.println("payment is:" + payment);
 
 }
+
+//Convert Decimal To Binary
 public static void covertDecimalToBinary(int number)
 {
 	int copynumber=number;
@@ -301,6 +305,7 @@ public static void covertDecimalToBinary(int number)
 	
 }
 
+//BubbleSort
 public int BubbleSort(int a[],int n) {
 	Scanner scanner =new Scanner(System.in);
 		System.out.println("Enter value for "+n+ " numbers:");
@@ -331,6 +336,7 @@ public int BubbleSort(int a[],int n) {
 		}
 		return 0;
 	}
+//creating a node
 public class node{
 	public String node;
 	public int data;
@@ -352,23 +358,56 @@ public class node{
 	
 }
 
+//Permutation of String
 public static String  permutationofstring(String input,String Permutation)
 {
-	if(input.length()==0)
-	{
-     System.out.println(Permutation);
-	}
-	else
-	{
+	
 		for(int i=0;i<input.length();i++)
 		{
 
 			System.out.println(Permutation + input.charAt(i) + input.substring(0, i)+ input.substring(i+1,input.length()));
 		}
-	}
+	
 	return Permutation;
 		
 	}
+//2D-Array
+	public  static <T> void printArray(T[][]array,int rows,int columns)
+	{
+		
+		for(int i=0;i<rows;i++)
+		{
+			for(int j=0;j<columns;j++)
+			{
+				System.out.print(array[i][j]+ "\t");
+			}
+			System.out.println();
+		}
+	}
+
+//distinct coupon number
+	
+public static int distinctcoupon(int distinct_number) {
+	int a[]=new int[distinct_number];
 
 
+for(int i=0;i<a.length;i++)
+	{
+		a[i]=(int)(Math.random()*distinct_number);
+
+		for(int j=0;j<i;j++)
+		{
+			if(a[i]==a[j])
+			{
+				i--;
+			}
+		}	
+	}
+	
+	for(int i : a) {
+		
+		System.out.print(i+" ");
+	}
+	return distinct_number;
+}
 }
