@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import com.bridegit.Utility.Utility;
 
-public class Binary {
+public class DecimalToBinary {
 
 	public static void main(String[] args) {
 		Scanner scanner=new Scanner(System.in);

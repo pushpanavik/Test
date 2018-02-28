@@ -14,5 +14,4 @@ public class Permutation {
 	Utility utility=new Utility();
 	String c=utility.permutationofstring(input, Permutation);;
 }
-
 }

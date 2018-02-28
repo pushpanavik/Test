@@ -14,11 +14,12 @@ public class ToCheckAnagrams {
 		
 		Scanner scanner=new Scanner(System.in);
 		System.out.println("enter the first string:=");
-		String	firstString=scanner.next();
+		String	firstString=scanner.nextLine();
 		System.out.println("enter the second string:=");
-		String secondString=scanner.next();
+		String secondString=scanner.nextLine();
 		Utility utility=new Utility();
 		utility.isAnagram(firstString, secondString);
+		
 	}
 			
 	

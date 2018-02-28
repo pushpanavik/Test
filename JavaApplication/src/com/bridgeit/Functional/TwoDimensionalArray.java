@@ -1,4 +1,5 @@
 package com.bridgeit.Functional;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 import com.bridegit.Utility.Utility;
@@ -11,7 +12,7 @@ public class TwoDimensionalArray{
 
 		Scanner scanner = new Scanner(System.in);
 		
-
+		
 		while(true)
 		{
 			System.out.println("1.integer Array");

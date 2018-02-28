@@ -1,5 +1,6 @@
 package com.bridegit.Utility;
 
+import java.io.PrintWriter;
 //Username 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -139,20 +140,25 @@ public String regex(String msg,String regex)
 		int win=0;
 		int bets=0;
 		int cash=stake;
-		while(cash>0 && cash<goal)
+		for(int i=0;i<trials;i++)
 		{
-			bets++;
-			if(Math.random()<0.5)
-			cash++; //wins by $1
-			else
-				cash--;	 //lose by $1
-		}
-		if(cash==goal)
+			while(cash>0 && cash<goal)
+			{
+				bets++;
+				if(Math.random()<0.5)
+					cash++; //wins by $1
+				else
+				cash--;
+			}
+			if(cash==goal)
 			win++;
+		}
 		System.out.println("Number of wins:="+trials);
-		System.out.println("Percentage of wins:="+100*win/trials);
-		System.out.println("Average of bets:="+1.0*bets/trials);
-		return cash;
+		System.out.println("Percentage of wins:="+(win*100/trials));
+		System.out.println("Percentage of lose:="+(100-(win*100)/trials));
+		
+	
+		return 0;
 	}
 
 	//WeatherCast
@@ -171,45 +177,57 @@ public String regex(String msg,String regex)
 	//Anagram
 	public static int isAnagram(String firstString,String secondString)
 	{
-	String copyfirstString=firstString.replaceAll("\\s","");
-	String copysecondString=secondString.replaceAll("\\s","");
-	
-	
-		
 		boolean status=true;
-				if(copyfirstString.length()!=copysecondString.length())
-				{
-					 status=false;
-				}
-						else
-						{
-							
-							char[] firstchar=copyfirstString.toLowerCase().toCharArray();
-							char[] secondchar=copysecondString.toLowerCase().toCharArray();
+				if(firstString.length()==secondString.length())
+				{							
+							char[] firstchar=firstString.toLowerCase().toCharArray();
+							char[] secondchar=secondString.toLowerCase().toCharArray();
 						
 							Arrays.sort(firstchar);
 							Arrays.sort(secondchar);
 							
 							status=Arrays.equals(firstchar,secondchar);
-						
 						}
-						
 						if(status)
 						{
 							System.out.println(firstString +" "+secondString+" is anagram");
 						}
 						else
+							status=false;
+						if(firstString.length()!=secondString.length())
 						{
+							String copyfirstString=firstString.replaceAll("\\s{2}"," ");
+							String copysecondString=secondString.replaceAll("\\s{2}"," ");
+							copyfirstString.equalsIgnoreCase(copysecondString);
+							
+						}
+							else {
+							
 							System.out.println(firstString +" "+secondString+" is  not an anagram");
 						}
 						return 0;
 				}
+	//palindrome 
+	public int palindrome(String number,String temp)
+	{
+		StringBuilder string=new StringBuilder(number);
+		String rever=string.reverse().toString();
+		if(rever.equals(temp))
+		{
+			System.out.println("palindrome");
+		}
+		else
+		{
+			System.out.println("not a plaindrome");
+		}
+		return 0;	
+	}
 	//Prime Number Between 0-1000
-	public int primenumber(int lowestlimit,int highestlimit)
+	public int primenumber(int number)
 	{
 		boolean flag=false;
 	
-		for(int i=lowestlimit;i<highestlimit;i++)
+		for(int i=0;i<number;i++)
 		{
 			for(int j=2;j<=i/2;j++)
 			{
@@ -227,10 +245,10 @@ public String regex(String msg,String regex)
 		{
 			System.out.print( i+" ");
 		}
-	}
-		return 0;
 		
-	}	
+		}
+		return 0;
+	}
 	
 	//BinarySearch
 	public int binarysearch(int searchkey, int found,int a[], int number,int last){
@@ -254,7 +272,7 @@ public String regex(String msg,String regex)
 	return mid;  
 	 } 
 	
-	//Temperature Converion
+	//Temperature Conversion
 public static void temperatureConversion(double temperature) {
 	double  temptofahrenheit=(temperature * 1.8) + 32; 
 	System.out.println(" Temperature to fahrenheit conversion\t" +temptofahrenheit+" ");
@@ -305,9 +323,11 @@ public static void covertDecimalToBinary(int number)
 	
 }
 
-//BubbleSort
-public int BubbleSort(int a[],int n) {
-	Scanner scanner =new Scanner(System.in);
+//BubbleSort method for integer
+public int BubbleSort(int n) {
+	Scanner scanner=new Scanner(System.in);
+	int a[]=new int[n];
+	System.out.println();
 		System.out.println("Enter value for "+n+ " numbers:");
 
 		for(int i=0;i<a.length;i++)       
@@ -336,7 +356,44 @@ public int BubbleSort(int a[],int n) {
 		}
 		return 0;
 	}
-//creating a node
+
+//BubbleSort method for String
+public static String bubbllesortString(int n)
+{
+	Scanner scanner=new Scanner(System.in);
+	String a[]=new String[n];
+	System.out.println();
+	System.out.println("Enter value for "+n+ " numbers:");
+
+	for(int i=0;i<a.length;i++)       
+	{
+	    a[i]=scanner.nextLine();		//taking input from user
+	}
+
+	for(int i=0;i<a.length;i++)         //sorting the array
+	{
+		for(int j=i+1;j<a.length;j++)
+		{
+			if(a[i].(a[j])
+			{
+				String temp=a[i];
+				a[i]=a[j];
+				a[j]=temp;
+			}
+		}
+	}
+	System.out.println();
+	System.out.println("The sorted order is:");
+
+	for(int i=0;i<a.length;i++)      
+	{
+	     System.out.println(a[i]);		//printing the sorted array
+	}
+	return 0;
+	
+}
+	//creating a node
+
 public class node{
 	public String node;
 	public int data;
@@ -364,24 +421,25 @@ public static String  permutationofstring(String input,String Permutation)
 	
 		for(int i=0;i<input.length();i++)
 		{
-
 			System.out.println(Permutation + input.charAt(i) + input.substring(0, i)+ input.substring(i+1,input.length()));
 		}
-	
+	System.out.println();
 	return Permutation;
 		
 	}
+
 //2D-Array
 	public  static <T> void printArray(T[][]array,int rows,int columns)
 	{
-		
+		PrintWriter out=new PrintWriter(System.out);
 		for(int i=0;i<rows;i++)
 		{
 			for(int j=0;j<columns;j++)
-			{
-				System.out.print(array[i][j]+ "\t");
+			{	
+				out.write(array[i][j]+ "\t");
 			}
-			System.out.println();
+			out.println();
+			out.flush();
 		}
 	}
 
