@@ -11,7 +11,8 @@ public class DecimalToBinary {
 		System.out.println("Enter the number\t ");
 		int number=scanner.nextInt();
 		Utility utility=new Utility();
-		utility.covertDecimalToBinary(number);
-		}
-
+		byte[] b = utility.binary(number);
+		 utility.printArray(b);
+		
+	}
 }

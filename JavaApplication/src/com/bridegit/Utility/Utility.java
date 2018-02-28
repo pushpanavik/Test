@@ -309,25 +309,34 @@ public static void monthlyPayment(double rateofinterest, double years,double pri
 }
 
 //Convert Decimal To Binary
-public static void covertDecimalToBinary(int number)
-{
-	int copynumber=number;
-	int result=0;
-	while (copynumber>0)
+	public static byte[] binary(int number)
 	{
-	int remainder=copynumber%2;
-	 result=result+remainder;
+		byte[] b=new byte[32];
+		int index=0;
+		int temp=number;
+		while(temp>0)
+	{
+		b[index++]=(byte)(temp%2);
+		temp=temp/2;
 	}
-	int quotient=copynumber/2;
-	System.out.println(result);
+		return  b;
+	}
 	
-}
+	public void printArray(byte[] b)
+	{
+		for(int i=b.length-1;i>=0;i--)
+		{
+			System.out.print(b[i]+"");
+		}
+		System.out.println();
+	}
+
 
 //BubbleSort method for integer
-public int BubbleSort(int n) {
+
+public int BubbleSort(int n,int a[]) {
 	Scanner scanner=new Scanner(System.in);
-	int a[]=new int[n];
-	System.out.println();
+	
 		System.out.println("Enter value for "+n+ " numbers:");
 
 		for(int i=0;i<a.length;i++)       
@@ -348,21 +357,15 @@ public int BubbleSort(int n) {
 			}
 		}
 		System.out.println();
-		System.out.println("The sorted order is:");
-
-		for(int i=0;i<a.length;i++)      
-		{
-		     System.out.println(a[i]);		//printing the sorted array
-		}
+		
 		return 0;
 	}
 
 //BubbleSort method for String
-public static String bubbllesortString(int n)
+/*public static String bubblesortString(int n)
 {
 	Scanner scanner=new Scanner(System.in);
-	String a[]=new String[n];
-	System.out.println();
+	
 	System.out.println("Enter value for "+n+ " numbers:");
 
 	for(int i=0;i<a.length;i++)       
@@ -374,24 +377,25 @@ public static String bubbllesortString(int n)
 	{
 		for(int j=i+1;j<a.length;j++)
 		{
-			if(a[i].(a[j])
+			if(a[i].compareTo(a[j])<0)
 			{
-				String temp=a[i];
-				a[i]=a[j];
+				String temp=a[j];
+				a[j]=a[i];
 				a[j]=temp;
 			}
 		}
 	}
 	System.out.println();
-	System.out.println("The sorted order is:");
+		System.out.println("The sorted order is:");
 
 	for(int i=0;i<a.length;i++)      
 	{
 	     System.out.println(a[i]);		//printing the sorted array
 	}
-	return 0;
 	
-}
+	return null;
+	
+}*/
 	//creating a node
 
 public class node{
@@ -467,5 +471,13 @@ for(int i=0;i<a.length;i++)
 		System.out.print(i+" ");
 	}
 	return distinct_number;
+}
+
+public static int insertion_sort(int number,String str[])
+{
+	int temp=str[i];
+	
+	if(return 0;
+	
 }
 }

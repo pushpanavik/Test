@@ -20,6 +20,6 @@ public class InsertionSort {
 		}
 		
 		Utility utility=new Utility();		
-		utility.Insertionsort(str);
+		
 	}
 }
