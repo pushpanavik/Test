@@ -495,27 +495,7 @@ public static int insertion_sort(int number,int str[])
 	return 0;
 }	
 
-//Insertion sort method for String
-public static int insertion_sortString(int number,String str[])
-{	
-	
-	for(int i=1;i<str.length;i++)
-	{
-		String key=str[i];
-		int j=i-1;
-		if(key.compareTo(str[i])<0)	{
-			str[j+1]=key;
-			j--;
-		}
-			str[j]=key;
-	}	
-	System.out.println("the sorted array is:");
-	for(int i=0;i<str.length;i++)
-	{
-		System.out.println(str[i]);
-	}
-	return 0;
-}	
+
 
 //Merge Sort
 public static void merge(int low,int high)
