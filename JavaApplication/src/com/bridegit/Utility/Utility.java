@@ -473,11 +473,94 @@ for(int i=0;i<a.length;i++)
 	return distinct_number;
 }
 
-public static int insertion_sort(int number,String str[])
+//Insertion sort method of integer
+public static int insertion_sort(int number,int str[])
+{	
+	for(int j=1;j<str.length;j++)
+	{
+		int key=str[j];
+		int i=j-1;
+		while(i>-1 && (str[i]>key))
+		{	
+				str[i+1]=str[i];
+				i--;
+		}
+		str[i+1]=key;
+	}
+	System.out.println("the sorted array is:");
+	for(int i=0;i<str.length;i++)
+	{
+		System.out.println(str[i]);
+	}
+	return 0;
+}	
+
+//Insertion sort method for String
+public static int insertion_sortString(int number,String str[])
+{	
+	
+	for(int i=1;i<str.length;i++)
+	{
+		String key=str[i];
+		int j=i-1;
+		if(key.compareTo(str[i])<0)	{
+			str[j+1]=key;
+			j--;
+		}
+			str[j]=key;
+	}	
+	System.out.println("the sorted array is:");
+	for(int i=0;i<str.length;i++)
+	{
+		System.out.println(str[i]);
+	}
+	return 0;
+}	
+
+//Merge Sort
+public static void merge(int low,int high)
 {
-	int temp=str[i];
+	if(low<high)
+	{
+		int mid=low+(high-low)/2;
+		
+	}
+}
 	
-	if(return 0;
-	
+public static void mergeparts(int low,int mid,int high,int copyarray[],int array[],int temp[])
+{
+	for(int i=low;i<=high;i++)
+	{
+		copyarray[i]=array[i];
+	}
+	int i=low;
+	int j=mid+1;
+	int k=low;
+	while(i<=mid && j<=high)
+	{
+		if(copyarray[i]<copyarray[j])
+				{
+					temp[k]=copyarray[i];
+					i++;
+				}
+				else {
+					temp[k]=array[j];
+				j++;
+				}
+			k++;		
+	}
+	while(i<=mid)
+	{
+		temp[k]=copyarray[i];
+		k++;
+		i++;
+	}
+	public int printArray(int array[]) {
+			System.out.println("The sorted array is:");
+	for(int i=0;i<array.length;i++)
+	{
+		System.out.print(array[i]);
+	}
+}
 }
 }
