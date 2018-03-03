@@ -251,14 +251,14 @@ public String regex(String msg,String regex)
 	}
 	
 	//BinarySearch
-	public int binarysearch(int searchkey, int found,int a[], int number,int last){
+	public int binarysearch(int inputSearch, list){
 		int first=0;
-		
+		int last;
 	  int mid = (first + last)/2;  
 	   while( first <= last ){  
-	      if ( a[mid] < searchkey ){  
+	      if ( a[mid] < inputSearch ){  
 	        first = mid + 1;     
-	      }else if ( a[mid] == searchkey ){  
+	      }else if ( a[mid] == inputSearch ){  
 	        System.out.println("Element is found at index: " + mid);  
 	        break;  
 	      }else{  
@@ -337,13 +337,6 @@ public static void monthlyPayment(double rateofinterest, double years,double pri
 public int BubbleSort(int n,int a[]) {
 	Scanner scanner=new Scanner(System.in);
 	
-		System.out.println("Enter value for "+n+ " numbers:");
-
-		for(int i=0;i<a.length;i++)       
-		{
-		    a[i]=scanner.nextInt();		//taking input from user
-		}
-
 		for(int i=0;i<a.length;i++)         //sorting the array
 		{
 			for(int j=i+1;j<a.length;j++)
@@ -362,40 +355,38 @@ public int BubbleSort(int n,int a[]) {
 	}
 
 //BubbleSort method for String
-/*public static String bubblesortString(int n)
+public static int bubbleString(int n,String str[],String temp)
 {
-	Scanner scanner=new Scanner(System.in);
-	
-	System.out.println("Enter value for "+n+ " numbers:");
+System.out.println("The Before sorting is:");
+for(int i=0;i<n;i++)
+{
+    System.out.println("\n\t"+ str[i]);
+}
+for(int i=0;i<n;i++)
+{
+    for(int j=i+1;j<n;j++)
+    {
+        if(str[i].compareTo(str[j])<0)
+        {
+            i++;
+        }
+        else
+        {
+            temp=str[i];
+            str[i]=str[j];
+            str[j]=temp;
+            
+        }
+    }
+}
+System.out.println("After sorting is:");
+for(int i=0;i<str.length;i++)
+{
+    System.out.println("\n\t"+ str[i]);
+}
+return 0;
+}
 
-	for(int i=0;i<a.length;i++)       
-	{
-	    a[i]=scanner.nextLine();		//taking input from user
-	}
-
-	for(int i=0;i<a.length;i++)         //sorting the array
-	{
-		for(int j=i+1;j<a.length;j++)
-		{
-			if(a[i].compareTo(a[j])<0)
-			{
-				String temp=a[j];
-				a[j]=a[i];
-				a[j]=temp;
-			}
-		}
-	}
-	System.out.println();
-		System.out.println("The sorted order is:");
-
-	for(int i=0;i<a.length;i++)      
-	{
-	     System.out.println(a[i]);		//printing the sorted array
-	}
-	
-	return null;
-	
-}*/
 	//creating a node
 
 public class node{
@@ -474,7 +465,7 @@ for(int i=0;i<a.length;i++)
 }
 
 //Insertion sort method of integer
-public static int insertion_sort(int number,int str[])
+public static int insertion_sort(int n,int str[])
 {	
 	for(int j=1;j<str.length;j++)
 	{
@@ -495,7 +486,34 @@ public static int insertion_sort(int number,int str[])
 	return 0;
 }	
 
-
+//InsertionSort method for String
+public static int insertionString(int n,String str[],String temp)
+{
+System.out.println("The Before sorting is:");
+for(int i=0;i<n;i++)
+{
+  System.out.println("\n\t"+ str[i]);
+}
+for(int i=0;i<n;i++)
+{
+  for(int j=i+1;j<n;j++)
+  {
+      if(str[i].compareTo(str[j])>0)
+      {
+          temp=str[i];
+          str[i]=str[j];
+          str[j]=temp;
+          
+      }
+  }
+}
+System.out.println("After sorting is:");
+for(int i=0;i<str.length;i++)
+{
+  System.out.println("\n\t"+ str[i]);
+}
+return 0;
+}
 
 //Merge Sort
 public static void merge(int low,int high)
@@ -535,12 +553,6 @@ public static void mergeparts(int low,int mid,int high,int copyarray[],int array
 		k++;
 		i++;
 	}
-	public int printArray(int array[]) {
-			System.out.println("The sorted array is:");
-	for(int i=0;i<array.length;i++)
-	{
-		System.out.print(array[i]);
-	}
-}
+	
 }
 }
