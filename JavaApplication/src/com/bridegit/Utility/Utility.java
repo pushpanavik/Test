@@ -138,29 +138,46 @@ public String regex(String msg,String regex)
 	{
 		
 		int win=0;
-		int bets=0;
 		int cash=stake;
-		for(int i=0;i<trials;i++)
+		int lose=0;
+		
+		for(int i=1;i<=trials;i++)
 		{
-			while(cash>0 && cash<goal)
+			while(cash>0 && cash<=goal)
 			{
-				bets++;
-				if(Math.random()<0.5)
-					cash++; //wins by $1
+				if(Math.random()>0.5)
+				{
+					cash++; 
+			//wins by $1
+				}
 				else
+				{
 				cash--;
+				}
 			}
-			if(cash==goal)
-			win++;
+			if(cash>=goal)
+			{
+				win++;
+				
+			}
+			else
+			{
+				lose--;
+				
+			}
+			cash=stake;
+			
 		}
-		System.out.println("Number of wins:="+trials);
+			System.out.println("Number of wins:="+win);
+			System.out.println("Number of lose:="+lose);
 		System.out.println("Percentage of wins:="+(win*100/trials));
 		System.out.println("Percentage of lose:="+(100-(win*100)/trials));
 		
 	
 		return 0;
 	}
-
+		
+	
 	//WeatherCast
 	public int weathercast(double t, double v)
 	{
@@ -250,28 +267,59 @@ public String regex(String msg,String regex)
 		return 0;
 	}
 	
-	//BinarySearch
-	public int binarysearch(int inputSearch, list){
+	//BinarySearch method for integer
+	public int binarysearch(int inputSearch, int a[],int number){
+		
 		int first=0;
-		int last;
-	  int mid = (first + last)/2;  
+		int last=number-1;
+	  int mid=(first+last)/2;  
 	   while( first <= last ){  
-	      if ( a[mid] < inputSearch ){  
-	        first = mid + 1;     
-	      }else if ( a[mid] == inputSearch ){  
-	        System.out.println("Element is found at index: " + mid);  
-	        break;  
-	      }else{  
-	         last = mid - 1;  
-	      }  
-	      mid = (first + last)/2;  
-	   }  
-	   if ( first > last ){  
-	      System.out.println("Element is not found!");  
+		   if ( a[mid] < inputSearch )
+	           first = mid + 1;
+	         else if ( a[mid] == inputSearch)
+	         {
+	           System.out.println(inputSearch + " found at location " + (mid + 1) + ".");
+	           break;
+	         }
+	         else
+	         {
+	             last = mid - 1;
+	         }
+	         mid = (first + last)/2;
+	      }
+	      if ( first > last )
+	          System.out.println(inputSearch + " is not found.\n");
+	   
+	return -1;
 	   }
-	return mid;  
-	 } 
-	
+	//BinarySearch method for String
+		
+		public static int searchString(String s[],String Search)
+		{
+			 int first=0;
+				int last=s.length;
+			   while( first <= last ){ 
+				  int  mid=(first+last)/2;
+				    if(Search.compareTo(s[mid])>0)
+				    {
+				    	first=mid+1;
+				    }
+				    else if(Search.compareTo(s[mid])<0) {
+				    	last=mid-1;
+				    }
+				    else
+				    {	 
+				 System.out.println(Search + " is found at location" +(mid+1)+ " ");
+				 break;
+				    }
+				    if(first>last)
+				    {
+				    	System.out.println(Search+ "is not found.\n");
+				    }
+				   
+		   }
+			return 0;
+		}
 	//Temperature Conversion
 public static void temperatureConversion(double temperature) {
 	double  temptofahrenheit=(temperature * 1.8) + 32; 
@@ -334,9 +382,14 @@ public static void monthlyPayment(double rateofinterest, double years,double pri
 
 //BubbleSort method for integer
 
-public int BubbleSort(int n,int a[]) {
+public int BubbleSort(int number,int a[]) 
+{
 	Scanner scanner=new Scanner(System.in);
-	
+	System.out.println("The Before sorting is:");
+	for(int i=0;i<number;i++)
+	{
+	    System.out.println("\n\t"+ a[i]);
+	}
 		for(int i=0;i<a.length;i++)         //sorting the array
 		{
 			for(int j=i+1;j<a.length;j++)
@@ -349,42 +402,46 @@ public int BubbleSort(int n,int a[]) {
 				}
 			}
 		}
-		System.out.println();
-		
+		System.out.println("After sorting is:");
+		for(int i=0;i<a.length;i++)
+		{
+		    System.out.println("\n\t"+ a[i]);
+		}
 		return 0;
-	}
-
-//BubbleSort method for String
-public static int bubbleString(int n,String str[],String temp)
-{
-System.out.println("The Before sorting is:");
-for(int i=0;i<n;i++)
-{
-    System.out.println("\n\t"+ str[i]);
 }
-for(int i=0;i<n;i++)
+	
+//BubbleSort method for String
+public static int bubbleString(int number,String s[],String temp)
 {
-    for(int j=i+1;j<n;j++)
+	System.out.println("The Before sorting is:");
+for(int i=0;i<number;i++)
+{
+    System.out.println("\n\t"+ s[i]);
+}
+for(int i=0;i<number;i++)
+{
+    for(int j=i+1;j<number;j++)
     {
-        if(str[i].compareTo(str[j])<0)
+        if(s[i].compareTo(s[j])<0)
         {
             i++;
         }
         else
         {
-            temp=str[i];
-            str[i]=str[j];
-            str[j]=temp;
+            temp=s[i];
+            s[i]=s[j];
+            s[j]=temp;
             
         }
     }
+    
 }
 System.out.println("After sorting is:");
-for(int i=0;i<str.length;i++)
+for(int i=0;i<s.length;i++)
 {
-    System.out.println("\n\t"+ str[i]);
+    System.out.println("\n\t"+ s[i]);
 }
-return 0;
+return -1;
 }
 
 	//creating a node
@@ -465,52 +522,52 @@ for(int i=0;i<a.length;i++)
 }
 
 //Insertion sort method of integer
-public static int insertion_sort(int n,int str[])
+public static int insertion_sort(int number,int a[])
 {	
-	for(int j=1;j<str.length;j++)
+	for(int j=1;j<a.length;j++)
 	{
-		int key=str[j];
+		int key=a[j];
 		int i=j-1;
-		while(i>-1 && (str[i]>key))
+		while(i>-1 && (a[i]>key))
 		{	
-				str[i+1]=str[i];
+				a[i+1]=a[i];
 				i--;
 		}
-		str[i+1]=key;
+		a[i+1]=key;
 	}
 	System.out.println("the sorted array is:");
-	for(int i=0;i<str.length;i++)
+	for(int i=0;i<a.length;i++)
 	{
-		System.out.println(str[i]);
+		System.out.println(a[i]);
 	}
 	return 0;
 }	
 
 //InsertionSort method for String
-public static int insertionString(int n,String str[],String temp)
+public static int insertionString(int number,String a[],String temp)
 {
 System.out.println("The Before sorting is:");
-for(int i=0;i<n;i++)
+for(int i=0;i<number;i++)
 {
-  System.out.println("\n\t"+ str[i]);
+  System.out.println("\n"+ a[i]);
 }
-for(int i=0;i<n;i++)
+for(int i=0;i<number;i++)
 {
-  for(int j=i+1;j<n;j++)
+  for(int j=i+1;j<number;j++)
   {
-      if(str[i].compareTo(str[j])>0)
+      if(a[i].compareTo(a[j])>0)
       {
-          temp=str[i];
-          str[i]=str[j];
-          str[j]=temp;
+          temp=a[i];
+          a[i]=a[j];
+          a[j]=temp;
           
       }
   }
 }
 System.out.println("After sorting is:");
-for(int i=0;i<str.length;i++)
+for(int i=0;i<a.length;i++)
 {
-  System.out.println("\n\t"+ str[i]);
+  System.out.println("\n"+ a[i]);
 }
 return 0;
 }

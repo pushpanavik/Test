@@ -1,6 +1,7 @@
 package com.bridgeit.Algorithm;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -11,33 +12,32 @@ import java.io.*;
 
 public class BinarySearchWord {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-		  String strLine;
-          boolean found=false;
-           String inputSearch; 
-           int pos=0;
-		    Scanner scanner =new Scanner(System.in);
-		    
-		    FileInputStream fstream = new FileInputStream("/home/bridgeit/test/JavaApplication/src/com/bridgeit/Algorithm/file.txt");
-            // Get the object of DataInputStream
-            DataInputStream in = new DataInputStream(fstream);
-            BufferedReader br = new BufferedReader(new InputStreamReader(in));
-           
-            //Read File Line By Line
-            while ((strLine = br.readLine()) != null) {
-            	
-            	System.out.println(strLine);	
-            }
-            in.close();
-	         
-	          
-	         
-		        System.out.println("Enter the word to search");
-		    inputSearch = scanner.nextLine();
-		  
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method st
+		    StringBuilder sb = new StringBuilder();
+	        String strLine = "";
+	        List<String> list = new ArrayList<String>();
+	        try {
+	             BufferedReader br = new BufferedReader(new FileReader("/home/bridgeit/test/JavaApplication/src/com/bridgeit/Algorithm/file.txt"));
+	              while (strLine != null)
+	               {
+	                strLine = br.readLine();
+	                sb.append(strLine);
+	                sb.append(System.lineSeparator());
+	                strLine = br.readLine();
+	                if (strLine==null)
+	                   break;
+	                list.add(strLine);
+	            }
+	         System.out.println(Arrays.toString(list.toArray()));
+	             br.close();
+	        } catch (FileNotFoundException e) {
+	            System.err.println("File not found");
+	        } catch (IOException e) {
+	            System.err.println("Unable to read the file.");
+	        }
+	     }
 		 
 	}
-	}
-}
+	
+

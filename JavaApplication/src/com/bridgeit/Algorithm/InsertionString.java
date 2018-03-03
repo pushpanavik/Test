@@ -10,17 +10,17 @@ public class InsertionString {
 		// TODO Auto-generated method stub
 		Scanner scanner=new Scanner(System.in);
 		System.out.println("Enter how many numbers to be sorted:");
-		int  n=scanner.nextInt();
-		String str[]=new String[n];
+		int  number=scanner.nextInt();
+		String s[]=new String[number];
        
         String temp=null;
-		System.out.println("Enter value for "+n+ " numbers:");
-				for(int i=0;i<n;i++)       
+		System.out.println("Enter value for "+number+ " numbers:");
+				for(int i=0;i<number;i++)       
 				{
-					str[i]=scanner.nextLine();		//taking input from user
+					s[i]=scanner.nextLine();		//taking input from user
 				}
 				Utility utility=new Utility();
-				utility.insertionString(n, str, temp);
+				utility.insertionString(number, s, temp);
 						
 	}
 

@@ -10,15 +10,15 @@ public class BubbleSort
 	{
 		Scanner scanner=new Scanner(System.in);
 		System.out.println("Enter how many numbers to be sorted:");
-		int  n=scanner.nextInt();
-		int a[]=new int[n];
+		int  number=scanner.nextInt();
+		int a[]=new int[number];
 		Utility utility=new Utility();
-					utility.BubbleSort(n, a);
+					utility.BubbleSort(number, a);
 					
-					String str[]=new String[n];
+					String str[]=new String[number];
 			        int size=str.length;
 			        String temp=null;
-					System.out.println("Enter value for "+n+ " numbers:");
+					System.out.println("Enter value for "+number+ " numbers:");
 							for(int i=0;i<a.length;i++)       
 							{
 								a[i]=scanner.nextInt();		//taking input from user
