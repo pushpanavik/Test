@@ -1,3 +1,10 @@
+/***************************************************************************************
+ * Purpose: Flip Coin and print percentage of Heads and Tails. .
+ 
+ *@author  Pushpakumari_Navik
+ *@version 1.0
+ *@since   20-02-2018
+****************************************************************************************/
 package com.bridgeit.Functional;
 import java.util.Scanner;
 
@@ -9,11 +16,12 @@ public class FlipCoin {
 		
 		int answer;
 		Scanner scanner=new Scanner(System.in);
-		System.out.println("Enter the number of time you want to flip coin:\n");
-		int flipcoin=scanner.nextInt();
+		
+		System.out.println("Enter the number of time you want to flip coin:\n"); 
+		int mflipcoin=scanner.nextInt();
 		
 		Utility utility=new Utility();
-utility.flipcoin(flipcoin);
+utility.flipcoin(mflipcoin);
 		 
 				
 	}

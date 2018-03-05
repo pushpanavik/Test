@@ -25,7 +25,7 @@ public class AllSort {
 		
 				
 		boolean flag=true;
-		while(true)
+		do{
 		{
 			System.out.println("Enter Choice");
 			System.out.println("Press 1  binarySearch method for integer");
@@ -42,7 +42,7 @@ public class AllSort {
 			String s[]=new String [number];
 		switch(choice)
 		{
-		case 1:	
+		case 1:	startTime = System.currentTimeMillis();
 				System.out.println("Enter the elements in the array");
 				for(int i=0;i<a.length;i++)
 				{
@@ -52,14 +52,12 @@ public class AllSort {
 				inputSearch=scanner.nextInt();
 				
 				utility.binarysearch(inputSearch, a, number);
-				System.out.println("Enter 1 for startTime");
-				ch=scanner.nextInt();
-				startTime = System.currentTimeMillis();
+				
+				
 				System.out.println(startTime+" ");
 				System.out.println("Enter 2 for startTime");
 				ch1=scanner.nextInt();
 				endTime=System.currentTimeMillis();
-				System.out.println(endTime);
 				difference=endTime-startTime;
 				System.out.println("elapsed time is:"+ difference);
 				al.add(1,difference);
@@ -184,7 +182,7 @@ public class AllSort {
 			System.out.println("please give input &amp; try again...");
 			
 		}
-		flag=false;
+		}while(choice<8)
 		}
 		}
 	}

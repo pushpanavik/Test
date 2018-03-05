@@ -2,6 +2,8 @@ package com.bridgeit.Algorithm;
 import java.io.IOException;
 import java.util.Scanner;
 
+import com.bridegit.Utility.Utility;
+
 
 public class DayOfWeek {
 		
@@ -30,38 +32,32 @@ public class DayOfWeek {
 	            System.out.println("Years are between -10000 and 10000");
 	           
 			}
-		
-			 int y0 = year -(14 -month) / 12;
-		        int x = y0+y0/4-y0/100 +y0/400;
-		        int m0 = month+12*((14 - month) / 12) - 2;
-		        int d0 = (day+x+31*m0/12)%7;  
-		    while(d0>=0 && (d0<= 6)) 
-		     {
-		    	 if(d0==0) {
-		    		 System.out.println("Sunday");
-		    	 		break; }
-		    	 if(d0==1) {
-		    		 System.out.println("Monday");
-		    	 break;}
-		    	 if(d0==2) {
-		    		 System.out.println("Tuesday"); 
-		    	 break;}
-		    	 if(d0==4) {
-		    		 System.out.println("Wednesday");
-		    	 break;}
-		    	 if(d0==4) {
-		    		 System.out.println("Thursday");
-		    	 break;}
-		    	if(d0==5) {
-		    		 System.out.println("friday");
-		    	 break;}
-		    		 if(d0==6) 
-		    		 System.out.println("Saturday");
-		    	 break;
-		    	
-		    	
-		    } 
-		    	
+			Utility u=new Utility();
+		int var=u.dayOfWeek(year, month, day);
+			while(var>=0 && (var<= 6)) 
+			{
+				if(var==0) {
+			 System.out.println("Sunday");
+		 		break; }
+				if(var==1) {
+			 System.out.println("Monday");
+			 break;}
+				if(var==2) {
+			 System.out.println("Tuesday"); 
+			 break;}
+				if(var==4) {
+			 System.out.println("Wednesday");
+			 break;}
+				if(var==4) {
+			System.out.println("Thursday");
+			break;}
+				if(var==5) {
+			 System.out.println("friday");
+			 break;}
+			 if(var==6) {
+			 System.out.println("Saturday");
+			 break;}
+			}	
 		     
 		
 	}

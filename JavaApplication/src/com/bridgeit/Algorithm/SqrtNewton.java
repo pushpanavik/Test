@@ -10,11 +10,7 @@ public class SqrtNewton {
 		Scanner scanner=new Scanner(System.in);
 		System.out.println("Enter the non-negative number");
 		c=scanner.nextDouble();
-		t=Math.sqrt(c);
-		while(Math.abs(t-c/t)>epsilon*t) {
-			t=(c/t+t);
-		}
-		System.out.println(t);
+		
 
 	}
 

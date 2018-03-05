@@ -12,6 +12,6 @@ public class Permutation {
 	String input=scanner.next();
 	String Permutation=" ";
 	Utility utility=new Utility();
-	String c=utility.permutationofstring(input, Permutation);;
+	String c=utility.permutationofstring(input, Permutation);
 }
 }
