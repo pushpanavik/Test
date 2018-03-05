@@ -1,3 +1,10 @@
+/***************************************************************************************
+ * Purpose:To implement Gambler Problem and Print Number of Wins and Percentage of Win and Loss.
+ 
+ *@author  Pushpakumari_Navik
+ *@version 1.0
+ *@since   28-02-2018
+****************************************************************************************/
 package com.bridgeit.Functional;
 
 import java.util.Scanner;
@@ -17,7 +24,7 @@ public class GamblerProgram {
 		System.out.println("Enter the number of trial you want to do:=");
 		trials=scanner.nextInt();
 		Utility utility=new Utility();
-		utility.gambler(stake, goal, trials);
+		utility.gambler(stake, goal, trials);S
 		
 			
 	}

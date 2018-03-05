@@ -8,16 +8,16 @@
 package com.bridgeit.Functional;
 import java.util.Scanner;
 import com.bridegit.Utility.Utility;
-
+/*the main function is to calculate the euclidean distance from point (x,y) to origin (0,0).  */
 public class Distance {
 	public static void main(String args[])
 	{
-		int mx,mx1,my,my1;;  /*taking x and y as the first coordinate point and  x1 and y1 as the second coordinate  */
+		int mx,my;  /*taking x and y as the first coordinate point and  x1 and y1 as the second coordinate  */
 		Scanner scanner=new Scanner(System.in);
 		System.out.println("Enter the x coordinate point"); 
 		mx=scanner.nextInt();
 		
-		System.out.println("Enter the yy coordinate point");
+		System.out.println("Enter the y coordinate point");
 		my=scanner.nextInt();
 		
 		

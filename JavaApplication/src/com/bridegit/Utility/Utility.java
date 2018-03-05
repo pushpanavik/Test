@@ -174,7 +174,7 @@ public String regex(String msg,String regex)
 			{
 				a[i]=(int)(Math.random()*distinct_number); //repeatedly choose a random number  .
 
-				for(int j=0;j<i;j++)
+				for(int j=0;j<i;j++)	//check if condition is true or not
 				{
 					if(a[i]==a[j])		/* check whether it's a new one or the same */
 					{
@@ -768,5 +768,4 @@ public static void mergeparts(int low,int mid,int high,int copyarray[],int array
         return 0;
         
     }
-}
 }

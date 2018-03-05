@@ -10,11 +10,9 @@ import java.util.Scanner;
 
 import com.bridegit.Utility.Utility;
 public class FlipCoin {
-
+/* it takes mflipcoin from user and generate random function and then count for percentage of heads and tails */
 	public static void main(String[] args) {
-		
-		
-		int answer;
+	
 		Scanner scanner=new Scanner(System.in);
 		
 		System.out.println("Enter the number of time you want to flip coin:\n"); 
