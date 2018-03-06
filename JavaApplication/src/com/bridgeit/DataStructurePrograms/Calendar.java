@@ -1,5 +1,5 @@
 /***************************************************************************************
- * Purpose:To prints the Euclidean distance from the point (x, y) to the origin (0, 0). .
+ * Purpose:
  
  *@author  Pushpakumari_Navik
  *@version 1.0

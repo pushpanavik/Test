@@ -10,6 +10,7 @@ public class PrimeNumber {
 		Scanner scanner=new Scanner(System.in);
 		System.out.println("Enter the number");
 	int number=scanner.nextInt();
+	
 		Utility utility=new Utility();
 		utility.primenumber(number);
 		

@@ -5,21 +5,26 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-
-
-//Username 
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Stack;
+/*
+ * @param to find <<username>> and replace it with the user input name
+ * 
+ */
 
 public class Utility {
+	
 public String regex(String msg,String regex)
 {
 	String replace=	msg.replaceAll(msg,regex);
 		System.out.println("Hello\t" +replace +" "+",How are you?");
 		return replace;
 }
-
+/*
+ * @param to determine the percentage of heads and tails
+ * taking number of flips from the user 
+ */
 	
 //2. Flip Coin and print percentage of Heads and Tails
 		public static void flipcoin(int mflipcoin) {
@@ -473,6 +478,54 @@ public String regex(String msg,String regex)
 		}
 				
 //5. Question to find your number	
+		 public static int guessNumber(int lower,int upper,int mid,int count,int number)
+         {
+             Scanner scanner=new Scanner(System.in);
+                 String value=null;
+                 System.out.println("Enter your guess number between '0' to " +(number-1)+" ");
+         int guessno=scanner.nextInt();
+         System.out.println("Is your number:"+mid);
+		System.out.println();
+                System.out.println("Enter if your answerr is yes or low or high ");
+                value=scanner.next();
+          do{
+          if (value.equals("high"))
+         {
+             lower= mid;
+		count++;
+         }
+         else if (value.equals("yes"))
+         {
+		System.out.println("The number you thought was: "+mid);
+		int no=count+1;
+		System.out.println("It takes "+no+" times to find your exact number");
+		break;
+         }
+         else if(value.equals("low"))
+         {
+		upper=mid;
+		count++;
+         }
+         if(count<number)
+         {
+				mid=(lower+ upper)/2;
+				System.out.println("Is your number "+mid+":");
+				value=scanner.next();
+			}
+		}
+		while(lower<=upper);
+                  
+			if (count>number)
+			{
+				System.out.println("Number not found");
+			}
+			else
+			{
+				System.exit(0);
+			}
+     return 0;
+		
+         }          
 		
 //6. Binary Search the Word from Word List	
 
@@ -537,7 +590,77 @@ public int BubbleSort(int number,int a[])
 }
 
 //9. Merge Sort  
+//Merge Sort
+
+
+public static void mergeSort(String array[],int beg,int mid,int end)
+{
+	beg=0;end=array.length-1;
+	int i=beg,index=beg,j=mid+1;
+	String temp[]=new String[array.length];
+	if((i<=mid)&&(j<=end))
+	{
+		if(array[i].compareTo(array[j])>0)
+		{
+			temp[index]=array[i];
+			array[i]=array[j];
+			array[j]=temp[index];
+			i++;
+		}
+		else
+		{
+			temp[index]=array[j];
+		j++;
+		}
+	}
+	else if(i>mid)
+		{
+			while(j<=end)
+			{
+				temp[index]=array[j];
+				j++;
+				index++;
+			}
+		}
+		else 
+		{
+		
+			while(i<=mid)
+			{
+				temp[index]=array[i];
+				i++;
+				index++;
+			}
+		}
+	for(int k=0;k<index;k++)
+	{
+		array[k]=temp[k];
+	}
+	
+}
+public void mergeSort(String array[], int beg, int end)
+{
+  if (beg < end)
+  {
+      // Same as (l+r)/2, but avoids overflow for
+      // large l and h
+      int mid = beg+(end-beg)/2;
+
+      // Sort first and second halves
+      mergeSort(array, beg, mid);
+      mergeSort(array, mid+1,end);
+
+      mergeSort(array, beg, mid, end);
+  }
+}
+	public  static void printMergeArray(String array[], int number)
+	{
+	    int i;
+	    for (i=0;i<number;i++)
+	        System.out.println(array[i] +" ");
+	}
 //10. Find the Fewest Notes to be returned for Vending Machine
+	
 //11.dayOfWeek 
 public static int dayOfWeek(int year,int month,int day)
 {
@@ -676,96 +799,56 @@ public class node{
 	
 
 
-//Merge Sort
-public static void merge(int low,int high)
-{
-	if(low<high)
-	{
-		int mid=low+(high-low)/2;
-		
-	}
-}
-	
-public static void mergeparts(int low,int mid,int high,int copyarray[],int array[],int temp[])
-{
-	for(int i=low;i<=high;i++)
-	{
-		copyarray[i]=array[i];
-	}
-	int i=low;
-	int j=mid+1;
-	int k=low;
-	while(i<=mid && j<=high)
-	{
-		if(copyarray[i]<copyarray[j])
-				{
-					temp[k]=copyarray[i];
-					i++;
-				}
-				else {
-					temp[k]=array[j];
-				j++;
-				}
-			k++;		
-	}
-	while(i<=mid)
-	{
-		temp[k]=copyarray[i];
-		k++;
-		i++;
-	}
-	
-}
+/****************************************************************************************************************************************************************/
+												//DataStructure Program
+	/*
+   * @param   									
+   */
+   public class Stack {
+    	   private int maxSize;
+    		private int[] stackArray;
+    	    private int top=0;
 
+    	    //for size  
+    		public Stack(int s)
+    		{
+    		maxSize = s;
+    		stackArray = new int[maxSize];
+    		top = -1;
+    		}
+    	 
+    	    public void push(int j)
+    	    {
+    	        stackArray[++top]=j;
+    	        
+    	    }
+    	    public int pop()
+    	    {
+    	       
+    	           return stackArray[top--];
+    	          
+    	           
+    	       }
+    	    public boolean isFull()
+    		{
+    		return (top == maxSize - 1);
+    		}
+    	    public int size()
+    	    {
+    	        return top;
+    	    }
+    	    public int peek()
+    	    {
+    	        return stackArray[top];     
+    	                    }   
 
-    int top=0;
-    public void push(char ch, Stack<Character> stack[])
-    {
-        stack[top]=ch;
-        top++;
-    }
-    public  void pop(String expr,Stack<Character>stack)
-    {
-       if(top==-1)
-        {
-            System.out.println("Stack is empty");
-        } 
-       else
-       {
-           expr=stack[top];
-           top--;
-       }
-        
-    }
-    public int display(int stack[])
-    {
-        if(top==-1)
-        {
-            System.out.println("Stack is empty");
-        }
-        else
-        {
-            for(int s: stack )
-                {
-                     System.out.println(s +" ");
-                }
-        }
-        return 0;
-    }
-    public int size()
-    {
-        return top;
-    }
-    public int peek()
-    {
-        if(top==-1)
-        {
-            System.out.println("Stack is empty");
-        }  else
-            {
-               return stack[top];     
-                    }
-        return 0;
-        
-    }
+    	    boolean isEmpty() {
+    	       return (top==-1);
+    	        
+    	    }
+    	   
+   }
+
+   
+   
 }

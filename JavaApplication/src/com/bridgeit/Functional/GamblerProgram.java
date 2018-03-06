@@ -24,7 +24,7 @@ public class GamblerProgram {
 		System.out.println("Enter the number of trial you want to do:=");
 		trials=scanner.nextInt();
 		Utility utility=new Utility();
-		utility.gambler(stake, goal, trials);S
+		utility.gambler(stake, goal, trials);
 		
 			
 	}
