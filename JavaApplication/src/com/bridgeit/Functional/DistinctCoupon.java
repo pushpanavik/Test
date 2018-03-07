@@ -19,8 +19,8 @@ public class DistinctCoupon {
 		Scanner scanner=new Scanner(System.in);
 		System.out.println("Enter the distinct coupon number:");	//Enter number of coupons you want
 		int distinct_number=scanner.nextInt();
-	Utility utility=new Utility();			//class where method is defined for generating distinct coupon
-	utility.distinctcoupon(distinct_number);
-	
-}
+		Utility utility=new Utility();			//class where method is defined for generating distinct coupon
+		utility.distinctcoupon(distinct_number);
+
+	}
 }

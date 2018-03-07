@@ -30,24 +30,32 @@ public class Calendar {
 		System.out.println("Enter the year ");
 		int year=scanner.nextInt();
 		System.out.println("month"+month+ " "+"year"+year+ " ");
-		 Utility u=new Utility();
-		 int [] dayofmonth=new int[] {0,31,29,31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-			boolean leap= u.leap(year);
+		Utility u=new Utility();
+		int [] dayofmonth=new int[] {0,31,29,31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+		boolean leap= u.leap(year);
 		if(month==2 && leap==true) dayofmonth[month]=29;
 		String []mon=new String[] {"","January","February","March","April","May","June","July","August","September","October","November","December"};
-		
+		String daysOfWeek[]=new String [] {"Sun","Mon","Tue","Wed","Thur","Fri","Sat"};
+		for(int i=0;i<6;i++)
+		{
+			for(int j=0;j<7;j++)
+			{
+				if(i==0 && j==0)
+				{
+					
+				}
+			}
+		}
 				
 		
 			 
-			 int d =day(year, month, 1);
-
-		        // print the calendar
-		        for (int i = 0; i < d; i++)
+			 
+		        /*for (int i = 0; i < d; i++)
 		           System.out.println("   ");
 		        for (int i = 1; i <= dayofmonth[month]; i++) {
 		           System.out.println( i+ " ");
 		            if (((i + d) % 7 == 0) || (i == dayofmonth[month])) System.out.println();
-		        }
+		        }*/
 			
 	}
 

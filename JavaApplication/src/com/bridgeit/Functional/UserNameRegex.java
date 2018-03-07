@@ -6,8 +6,15 @@ import java.util.regex.Pattern;
 
 import com.bridegit.Utility.Utility;
 
+/**
+ * Purpose: To print User Input and Replace String Template “Hello <<UserName>>, How are you?” with  
+ * @author Pushpakumari_Navik
+ *
+ */
 public class UserNameRegex {
-
+/*
+ * take username as input and replace it with the <<username>>.
+ */
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 

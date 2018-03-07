@@ -4,17 +4,21 @@ import java.util.Scanner;
 
 import com.bridegit.Utility.Utility;
 
-public class PrimeNumber {
+public class PalindromeNum {
 
 	public static void main(String[] args) {
+		// TODO Auto-generated method stub
 		Scanner scanner=new Scanner(System.in);
-		System.out.println("Enter the number");
-	int number=scanner.nextInt();
-	int array[]=new int[number];
-		Utility utility=new Utility();
-		utility.primenumber(number);
 		
+		System.out.println("enter the second number");
+		int secondnumber=scanner.nextInt();
+		
+		{
+			
+		}
 		
 		
 	}
+	
+
 }

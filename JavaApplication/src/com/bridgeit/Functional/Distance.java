@@ -16,14 +16,14 @@ public class Distance {
 		Scanner scanner=new Scanner(System.in);
 		System.out.println("Enter the x coordinate point"); 
 		mx=scanner.nextInt();
-		
+
 		System.out.println("Enter the y coordinate point");
 		my=scanner.nextInt();
-		
-		
+
+
 		Utility utility=new Utility();	/* calling utility class */
 		utility.distance(mx, my);
-		
-		
+
+
 	}
 }

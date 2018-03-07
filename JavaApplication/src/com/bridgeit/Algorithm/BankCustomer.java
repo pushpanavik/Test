@@ -16,7 +16,7 @@ public class BankCustomer {
 		System.out.println("Enter how many people you want to add in the queue");
 		int number=scanner.nextInt();
 		int customer[]=new int[number];
-		ArrayList []list=new ArrayList[number];
+		int customerDetails[]=new int[number];
 		for(int i=0;i<customer.length;i++)
 		{
 			System.out.println("Enter your Account Number");
@@ -24,11 +24,12 @@ public class BankCustomer {
 			
 			System.out.println("Enter Initial Balance");
 			double initialbal=scanner.nextDouble();
+			
 		}
 	
-		for(int i=0;i<customer.length;i++)
-		{
-			
+		for(int i=0;i<number;i++)
+		{	
+			System.out.println(customerDetails[i] );
 		}
 		 
 		

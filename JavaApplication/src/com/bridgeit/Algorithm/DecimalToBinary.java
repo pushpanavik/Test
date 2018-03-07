@@ -13,6 +13,6 @@ public class DecimalToBinary {
 		Utility utility=new Utility();
 		byte[] b = utility.binary(number);
 		 utility.printArray(b);
-		
+		 
 	}
 }

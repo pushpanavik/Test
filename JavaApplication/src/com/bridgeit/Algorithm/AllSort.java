@@ -53,7 +53,6 @@ public class AllSort {
 				
 				utility.binarysearch(inputSearch, a, number);
 				
-				
 				System.out.println(startTime+" ");
 				System.out.println("Enter 2 for startTime");
 				ch1=scanner.nextInt();
@@ -66,7 +65,7 @@ public class AllSort {
 				utility.lapsedTime();
 				break;
 				
-		case 2: 		
+		case 2: startTime = System.currentTimeMillis();		
 				System.out.println("Enter the elements in the array");
 				for(int i=0;i<s.length;i++)
 				{
@@ -77,15 +76,7 @@ public class AllSort {
 				String  Search=scanner.next();
 				
 				utility.searchString(s,Search);
-		        
-				System.out.println("Enter 1 for startTime");
-				ch=scanner.nextInt();
-				startTime = System.currentTimeMillis();
-				System.out.println(startTime+" ");
-				System.out.println("Enter 2 for startTime");
-				ch1=scanner.nextInt();
 				endTime=System.currentTimeMillis();
-				System.out.println(endTime);
 				difference=endTime-startTime;
 				System.out.println("elapsed time is:"+ difference);
 				al.add(2,difference);
@@ -98,8 +89,7 @@ public class AllSort {
 					a[i]=scanner.nextInt();
 				}
 				utility.insertion_sort(number, a);
-				System.out.println("Enter 1 for startTime");
-				ch=scanner.nextInt();
+				
 				startTime = System.currentTimeMillis();
 				System.out.println(startTime+" ");
 				System.out.println("Enter 2 for startTime");

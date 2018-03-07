@@ -3,15 +3,18 @@ package com.bridegit.Utility;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
+
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
-import java.util.Stack;
+
 /*
  * @param to find <<username>> and replace it with the user input name
  * 
  */
+
+
 
 public class Utility {
 	
@@ -52,7 +55,8 @@ public String regex(String msg,String regex)
 		}
 		
 //3. Leap Year
-		/* static variable is declared to check for given month is leap year or not */
+		/* 
+		 * @param static variable is declared to check for given month is leap year or not */
 		public static boolean leap(int year) {
 			if (year % 400 == 0 && year % 4 == 0 ) { 		/* to check whether myear mod 400 is zero and myear mod 4 is zero */
 
@@ -64,7 +68,8 @@ public String regex(String msg,String regex)
 		}
 		
 //4. Power of 2 
-		/* to take user input and  give power of that input */  
+		/*
+		 * @param to take user input and  give power of that input */  
 		public int power(int n) {
 			for (int i = 0; i < n; i++) {	 //repeat until i equals N.
 				System.out.println("Math.pow(" + n + "," + i + ")=" + Math.pow(n, i)); //prints a table of the powers of 2 that are less than or equal to 2^N.
@@ -72,24 +77,7 @@ public String regex(String msg,String regex)
 			return n;
 		}
 	
-	public String getFileText(String fileName) throws FileNotFoundException{
-		
-		try{
-			BufferedReader	br=new BufferedReader(new FileReader(fileName));
-			StringBuilder sb=new StringBuilder();
-			String line=br.readLine();
-			while(line!=null){
-			sb.append(line);
-			sb.append(System.lineSeparator());
-			line=br.readLine();
-			}
-			return sb.toString();
-		}
-			catch(Exception e){
-			return null;
-			}
-			
-	}
+	
 //5. Harmonic Number 
 	
 	public int harmonic(int n) {
@@ -247,18 +235,32 @@ public String regex(String msg,String regex)
 	
 	
 //12.Permutation of String
-	public static String  permutationofstring(String input,String Permutation)
-	{
-		
-			for(int i=0;i<input.length();i++)
-			{
-				System.out.println(Permutation + input.charAt(i) + input.substring(0, i)+ input.substring(i+1,input.length()));
-			}
-		System.out.println();
-		return Permutation;
-			
-	}
-	
+	/*
+	 * @param method to take input from user to print permutation of string
+	 */
+	public void permute(String str, int l, int r)
+    {
+        if (l == r)			// l is the index position compared with length of string 
+            System.out.println(str);
+        else
+        {
+            for (int i = l; i <= r; i++) 
+            {
+                str = swap(str,l,i);
+                permute(str, l+1, r);
+                str = swap(str,l,i);
+            }
+        }
+    }
+	 public String swap(String a, int i, int j)
+	    {
+	        char temp;
+	        char[] charArray = a.toCharArray();
+	        temp = charArray[i] ;
+	        charArray[i] = charArray[j];
+	        charArray[j] = temp;
+	        return String.valueOf(charArray);
+	    }
 //13. Simulate Stopwatch Program
 	public void lapsedTime() throws InterruptedException {
 
@@ -296,6 +298,25 @@ public String regex(String msg,String regex)
 		double w=(((35.74+0.6215)*t)+((add-35.75)*q));
 		System.out.println(w);
 		return 0;
+	}
+	
+public String getFileText(String fileName) throws FileNotFoundException{
+		
+		try{
+			BufferedReader	br=new BufferedReader(new FileReader(fileName));
+			StringBuilder sb=new StringBuilder();
+			String line=br.readLine();
+			while(line!=null){
+			sb.append(line);
+			sb.append(System.lineSeparator());
+			line=br.readLine();
+			}
+			return sb.toString();
+		}
+			catch(Exception e){
+			return null;
+			}
+			
 	}
 	
 /*********************************************************************************************************************/
@@ -336,12 +357,13 @@ public String regex(String msg,String regex)
 	
 //2.Prime Number Between 0-1000
 		public int primenumber(int number)
-		{
+		{	
+			
 			boolean flag=false;
 		
-			for(int i=0;i<number;i++)
+			for(int i=2;i<number;i++)
 			{
-				for(int j=2;j<=i/2;j++)
+				for(int j=2;j<i;j++)
 				{
 				if(i%j==0)
 				{
@@ -361,6 +383,116 @@ public String regex(String msg,String regex)
 			}
 			return 0;
 		}
+		
+		
+		public static boolean isPrime(int number)
+		{
+			// condition to check if no less than two
+			if(number<2)
+			{
+			return false;
+			}
+			else 
+			{
+				// for loop to for checking prime no
+				for(int i=2;i<=number;i++)
+				{
+					// if factor divides evenly into n, n is not prime, so break out of
+					// loop
+					if(number%i==0)
+					{
+						return false;
+					}
+
+				}
+			}
+			return true;
+			
+		}
+		
+		public static boolean isPalindrome(String str)
+		{
+			char [] array=str.toLowerCase().toCharArray();
+			boolean isPalindrome=true;
+			int j=array.length-1;
+			for(int i=0;i<array.length;i++,j--)
+			if(array[i]==array[j])
+			{
+				isPalindrome= true;
+			}
+			else
+			{
+				isPalindrome=false;
+			}
+			return false;
+		}
+		public static void printPrimePalindrome()
+		{
+			System.out.println("Palindrome Prime number:");
+			for (int number = 2; number < 1000; number++)
+			{
+				if (isPrime(number))
+				{
+					if (isPalindrome(Integer.toString(number))) 
+					{
+						System.out.println(number);
+					}
+				}
+			}
+		}
+		public static boolean isAnagramPrime(String str1, String str2) {
+			boolean isAnagram = true;
+			char arr1[] = str1.toLowerCase().toCharArray();
+			char arr2[] = str2.toLowerCase().toCharArray();
+			Arrays.sort(arr1);
+			Arrays.sort(arr2);
+			if (arr1.length != arr2.length) {
+				return false;
+			} else {
+				for (int i = 0; i < arr1.length; i++) {
+					if (arr1[i] == arr2[i]) {
+						isAnagram = true;
+					} else {
+						isAnagram = false;
+						break;
+					}
+
+				}
+			}
+			return isAnagram;
+		}
+		
+		public static int primeAnagram() 
+		{
+			ArrayList<String> list=new ArrayList<String>();
+			System.out.println("Prime numbers that are anagram");
+			for (int i = 0; i < 1000; i++) 
+			{
+				if (isPrime(i)) 
+				{
+					list.add(String.valueOf(i));
+				}
+			}
+			for (int i = 0; i < list.size(); i++) 
+			{
+				for (int j = i + 1; j < list.size(); j++) 
+				{
+					if (isAnagramPrime(list.get(i), list.get(j)))
+					{
+						System.out.println(list.get(i) + "    " + list.get(j));
+					}
+				}
+			}
+			return 0;
+
+		}
+		public int normalYear()
+		{
+			int normalYear[]= new int[] {31,28,31,30,31,30,31,31,30,31,30,31};
+			return  0;
+		}
+		public
+		
 		
 //3. Extend Program
 //4. To the Utility Class write the following static methods
@@ -590,8 +722,6 @@ public int BubbleSort(int number,int a[])
 }
 
 //9. Merge Sort  
-//Merge Sort
-
 
 public static void mergeSort(String array[],int beg,int mid,int end)
 {
@@ -738,8 +868,10 @@ return t;
 	}
 		return  b;
 	}
-	
-	public void printArray(byte[] b)
+/*
+ * @param covert  decimal number to binary	
+ */
+public void printArray(byte[] b)
 	{
 		for(int i=b.length-1;i>=0;i--)
 		{
@@ -747,14 +879,40 @@ return t;
 		}
 		System.out.println();
 	}
+public static int swapNibbles(int number)
+{
+    return ((number & 0x0F) << 4 | (number & 0xF0) >> 4);
+}
+	
+
 
 //16. Binary.java
+	public static byte[] decTobinary(int number)
+	{
+		byte[] b=new byte[8];
+		int index=0;
+		int temp=number;
+		while(temp>0)
+	{
+		b[index++]=(byte)(temp%2);
+		temp=temp/2;
+	}
+		return  b;
+	}
+	public int AnagramCheck(int number,int array[])
+	{
+		for(int i=0;i<number;i++)
+		{
+			
+		}
+	}
+	
 	
 /*****************************************************************************************************************************************/
 													//DataStructure Programs
 
 	
-	public int palindrome(String number,String temp)
+	public int palindromeString(String number,String temp)
 	{
 		StringBuilder string=new StringBuilder(number);
 		String rever=string.reverse().toString();
@@ -801,53 +959,7 @@ public class node{
 
 /****************************************************************************************************************************************************************/
 												//DataStructure Program
-	/*
-   * @param   									
-   */
-   public class Stack {
-    	   private int maxSize;
-    		private int[] stackArray;
-    	    private int top=0;
-
-    	    //for size  
-    		public Stack(int s)
-    		{
-    		maxSize = s;
-    		stackArray = new int[maxSize];
-    		top = -1;
-    		}
-    	 
-    	    public void push(int j)
-    	    {
-    	        stackArray[++top]=j;
-    	        
-    	    }
-    	    public int pop()
-    	    {
-    	       
-    	           return stackArray[top--];
-    	          
-    	           
-    	       }
-    	    public boolean isFull()
-    		{
-    		return (top == maxSize - 1);
-    		}
-    	    public int size()
-    	    {
-    	        return top;
-    	    }
-    	    public int peek()
-    	    {
-    	        return stackArray[top];     
-    	                    }   
-
-    	    boolean isEmpty() {
-    	       return (top==-1);
-    	        
-    	    }
-    	   
-   }
+	
 
    
    

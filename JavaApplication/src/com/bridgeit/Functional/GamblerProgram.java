@@ -10,7 +10,9 @@ package com.bridgeit.Functional;
 import java.util.Scanner;
 
 import com.bridegit.Utility.Utility;
-
+/*
+ *  ask the user for amount of cash he want to invest,the amount he want to win as goal and number of times he want to play.
+ */
 public class GamblerProgram {
 
 	public static void main(String[] args) {
