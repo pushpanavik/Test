@@ -36,8 +36,8 @@ public class Calendar {
 		System.out.println();
 		
 		String daysOfWeek[]=new String [] {"Sun","Mon","Tue","Wed","Thur","Fri","Sat"};
-		for(int i=0;i<7;i++) {
-			for(int j=0;j<7;j++)
+		for(int i=0;i<=6;i++) {
+			for(int j=0;j<=6;j++)
 			if(i==0 && j==0)
 			{
 				System.out.print("Sun\t");
@@ -71,7 +71,7 @@ public class Calendar {
 		}
 		 System.out.println();
 		       for (int i = 0; i <d; i++)
-		          System.out.print("");
+		          System.out.print("        ");
 		        for (int i = 1; i<= dayofmonth[month]; i++) {
 		        	
 		           System.out.printf( "%2d\t",i);

@@ -3,6 +3,7 @@ package com.bridgeit.DataStructurePrograms;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 //import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,8 +14,8 @@ import java.util.Scanner;
 
 public class UnorderedList {
 
-	public static void main(String[] args) throws IOException {
-	FileInputStream file=new FileInputStream("/home/bridgeit/test/JavaApplication/src/com/bridgeit/DataStructurePrograms/file.txt");
+	public static void main(String[] args) throws IOException,FileNotFoundException {
+	FileInputStream file=new FileInputStream("/home/bridgeit/test/JavaApplication/src/com/bridegit/Utility/Files/Integer");
 	DataInputStream dataInputStream=new DataInputStream(file);
 	BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(dataInputStream));
 	String stringline;

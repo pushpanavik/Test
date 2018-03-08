@@ -297,24 +297,7 @@ public String regex(String msg,String regex)
 		return 0;
 	}
 	
-public String getFileText(String fileName) throws FileNotFoundException{
-		
-		try{
-			BufferedReader	br=new BufferedReader(new FileReader(fileName));
-			StringBuilder sb=new StringBuilder();
-			String line=br.readLine();
-			while(line!=null){
-			sb.append(line);
-			sb.append(System.lineSeparator());
-			line=br.readLine();
-			}
-			return sb.toString();
-		}
-			catch(Exception e){
-			return null;
-			}
-			
-	}
+
 	
 /*********************************************************************************************************************/
 												//Algorithm Program
@@ -353,10 +336,21 @@ public String getFileText(String fileName) throws FileNotFoundException{
 				}
 	
 //2.Prime Number Between 0-1000
-		public int primenumber()
+		/**
+		 * @param number to print prime numbers between 0-1000
+		 * 
+		 */
+		/**
+		 * @param number
+		 * @return
+		 */
+		/**
+		 * @param number
+		 * @return
+		 */
+		public int primenumber(int number)
 		{	
-			Scanner scanner=new Scanner(System.in);
-			int number =scanner.nextInt();
+			
 			
 			boolean flag=false;
 		
@@ -384,10 +378,13 @@ public String getFileText(String fileName) throws FileNotFoundException{
 		}
 		
 		
-		public static boolean isPrime()
+/**
+ * @param to check whether the number is prime or not
+ * @return if it is Prime than return true;
+ */
+public static boolean isPrime(int number)
 		{
-			Scanner scanner=new Scanner(System.in);
-			int number =scanner.nextInt();
+			
 			// condition to check if no less than two
 			if(number<2)
 			{
@@ -404,7 +401,7 @@ public String getFileText(String fileName) throws FileNotFoundException{
 					{
 						return false;
 					}
-
+					
 				}
 			}
 			return true;
@@ -430,10 +427,10 @@ public String getFileText(String fileName) throws FileNotFoundException{
 		}
 		public static void printPrimePalindrome()
 		{
-			System.out.println("Palindrome Prime number:");
+			System.out.println("Palindrome Prime number:==>>");
 			for (int number = 2; number < 1000; number++)
 			{
-				if (isPrime())
+				if (isPrime(number))
 				{
 					if (isPalindrome(Integer.toString(number))) 
 					{
@@ -910,13 +907,6 @@ public static int swapNibbles(int number)
 	}
 		return  b;
 	}
-	public int AnagramCheck(int number,int array[])
-	{
-		for(int i=0;i<number;i++)
-		{
-			
-		}
-	}
 	
 	
 /*****************************************************************************************************************************************/
@@ -938,33 +928,22 @@ public static int swapNibbles(int number)
 		return 0;	
 	}
 	
-	
-	
-
-	//creating a node
-
-public class node{
-	public String node;
-	public int data;
-	public String data1;
-	public int next;
-
-	public void setNode(String node) {
-		this.node = node;
-	}
-	public void setData(int data) {
-		this.data = data;
-	}
-	public void setData1(String data1) {
-		this.data1 = data1;
-	}
-	public void setNext(int next) {
-		this.next = next;
+public static <T extends Comparable<T>> void  input(T[] elements)
+{
+	Scanner scanner	=new Scanner(System.in);;
+	try
+	{
+		scanner.next();
+	}catch(Exception e)
+	{
+		System.out.println(e.getMessage());
 	}
 	
 }
+	
 
-public static int readFile(String filepath)
+
+public static String[] readFile(String filepath)
 {
 	String word[]= {};
 	ArrayList<String> list=new ArrayList<String>();

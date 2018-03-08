@@ -19,10 +19,10 @@ public class BinarySearchForWord {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-			Utiltity utility=new Utility();
+			Utility utility=new Utility();
 			String words[]={},search;
 			Scanner scanner=new Scanner(System.in);;
-			words =u.readFile("/home/bridgeit/test/JavaApplication/src/com/bridegit/Utility/Files/StringFile");
+			words =utility.readFile("/home/bridgeit/test/JavaApplication/src/com/bridegit/Utility/Files/StringFile");
 			System.out.println("Enter word to search");
 			search=scanner.next();
 			Utility.bubblesortString(words);
