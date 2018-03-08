@@ -9,7 +9,7 @@ import com.bridegit.Utility.Utility;
 
 public class AllSort {
 
-	public static void main(String[] args) throws InterruptedException {
+	public static <T> void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
 		Scanner scanner=new Scanner(System.in);
 		Utility utility=new Utility();
@@ -38,7 +38,7 @@ public class AllSort {
 			int choice=scanner.nextInt();
 			System.out.println("Enter how many numbers you want in the array:");
 			int  number=scanner.nextInt();
-			int a[]=new int[number];
+			
 			String s[]=new String [number];
 		switch(choice)
 		{

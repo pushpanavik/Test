@@ -13,50 +13,76 @@ import com.bridegit.Utility.Utility;
 
 public class Calendar {
 
-	public static int day(int month, int day, int year) {
-        int y = year - (14 - month) / 12;
-        int x = y + y/4 - y/100 + y/400;
-        int m = month + 12 * ((14 - month) / 12) - 2;
-        int d = (day + x + (31*m)/12) % 7;
-        return d;
-	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		Utility u=new Utility();
 		Scanner scanner=new Scanner(System.in);
 		
 		System.out.println("Enter the month");
 		int month=scanner.nextInt();
-		
 		System.out.println("Enter the year ");
 		int year=scanner.nextInt();
-		System.out.println("month"+month+ " "+"year"+year+ " ");
-		Utility u=new Utility();
-		int [] dayofmonth=new int[] {0,31,29,31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+		
+		System.out.println("month\t"+month+ " "+"year\t"+year+ " ");
+		
+		String []mon=new String[] {"","January","February","March","April","May","June","July","August","September","October","November","December"};
+		int [] dayofmonth=new int[] {0,31,28,31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+		int d=u.day(month, 1, year);
+		
 		boolean leap= u.leap(year);
 		if(month==2 && leap==true) dayofmonth[month]=29;
-		String []mon=new String[] {"","January","February","March","April","May","June","July","August","September","October","November","December"};
+		
+		System.out.println(" " + dayofmonth[month] + "\t " + year);
+		System.out.println();
+		
 		String daysOfWeek[]=new String [] {"Sun","Mon","Tue","Wed","Thur","Fri","Sat"};
-		for(int i=0;i<6;i++)
-		{
+		for(int i=0;i<7;i++) {
 			for(int j=0;j<7;j++)
+			if(i==0 && j==0)
 			{
-				if(i==0 && j==0)
-				{
-					
-				}
+				System.out.print("Sun\t");
+			}
+			else if(i==0 && j==1)
+			{
+				System.out.print("Mon\t");
+			}
+			else if(i==0 && j==2 )
+			{
+			
+				System.out.print("Tue\t");
+			}
+			else if(i==0 && j==3)
+			{
+				System.out.print("Wed\t");
+			}
+			else if(i==0 && j==4)
+			{
+			
+				System.out.print("Thu\t");
+			}
+			else if(i==0 && j==5)
+			{
+				System.out.print("Fri\t");
+			}
+			else if(i==0 && j==6)
+			{
+				System.out.print("Sat\t");
 			}
 		}
-				
-		
-			 
-			 
-		        /*for (int i = 0; i < d; i++)
-		           System.out.println("   ");
-		        for (int i = 1; i <= dayofmonth[month]; i++) {
-		           System.out.println( i+ " ");
-		            if (((i + d) % 7 == 0) || (i == dayofmonth[month])) System.out.println();
-		        }*/
+		 System.out.println();
+		       for (int i = 0; i <d; i++)
+		          System.out.print("");
+		        for (int i = 1; i<= dayofmonth[month]; i++) {
+		        	
+		           System.out.printf( "%2d\t",i);
+		            if (((i+d)%7 == 0)||(i==dayofmonth[month]))
+		            	{
+		            	System.out.println();
+		            	}
+		        }
+		 
+	    }
 			
-	}
-
+	
 }
+

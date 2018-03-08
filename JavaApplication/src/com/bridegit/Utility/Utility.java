@@ -13,9 +13,6 @@ import java.util.Scanner;
  * @param to find <<username>> and replace it with the user input name
  * 
  */
-
-
-
 public class Utility {
 	
 public String regex(String msg,String regex)
@@ -356,8 +353,10 @@ public String getFileText(String fileName) throws FileNotFoundException{
 				}
 	
 //2.Prime Number Between 0-1000
-		public int primenumber(int number)
+		public int primenumber()
 		{	
+			Scanner scanner=new Scanner(System.in);
+			int number =scanner.nextInt();
 			
 			boolean flag=false;
 		
@@ -385,8 +384,10 @@ public String getFileText(String fileName) throws FileNotFoundException{
 		}
 		
 		
-		public static boolean isPrime(int number)
+		public static boolean isPrime()
 		{
+			Scanner scanner=new Scanner(System.in);
+			int number =scanner.nextInt();
 			// condition to check if no less than two
 			if(number<2)
 			{
@@ -412,6 +413,7 @@ public String getFileText(String fileName) throws FileNotFoundException{
 		
 		public static boolean isPalindrome(String str)
 		{
+			
 			char [] array=str.toLowerCase().toCharArray();
 			boolean isPalindrome=true;
 			int j=array.length-1;
@@ -431,7 +433,7 @@ public String getFileText(String fileName) throws FileNotFoundException{
 			System.out.println("Palindrome Prime number:");
 			for (int number = 2; number < 1000; number++)
 			{
-				if (isPrime(number))
+				if (isPrime())
 				{
 					if (isPalindrome(Integer.toString(number))) 
 					{
@@ -801,6 +803,14 @@ public static int dayOfWeek(int year,int month,int day)
 	return d0;
 	
 }
+
+public static int day(int month, int day, int year) {
+    int y = year - (14 - month) / 12;
+    int x = y + y/4 - y/100 + y/400;
+    int m = month + 12 * ((14 - month) / 12) - 2;
+    int d = (day + x + (31*m)/12) % 7;
+    return d;
+}
 	
 	
 	
@@ -883,7 +893,8 @@ public static int swapNibbles(int number)
 {
     return ((number & 0x0F) << 4 | (number & 0xF0) >> 4);
 }
-	
+
+
 
 
 //16. Binary.java
@@ -953,8 +964,33 @@ public class node{
 	
 }
 
-
+public static int readFile(String filepath)
+{
+	String word[]= {};
+	ArrayList<String> list=new ArrayList<String>();
+	String line, temp[]= {};
+	BufferedReader br;
+	FileReader fr;
+	int index=0;
+	try
+	{
+		fr=new FileReader(filepath);
+		br=new BufferedReader(fr);
+		while((line=br.readLine())!=null)
+		{
+			temp=line.split(" ");
+		}
+		for(int i=0;i<temp.length;i++)
+		{
+			list.add(temp[i]);
+		}
 	
+	word=list.toArray(new String[list.size()]);
+	br.close();
+	}
+	catch(Exception e) {}
+	return readFile(filepath);
+}
 
 
 /****************************************************************************************************************************************************************/

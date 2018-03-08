@@ -20,9 +20,7 @@ public class Stack {
 	    }
 	    public int pop()
 	    {
-	       
-	           return stackArray[top--];
-	          
+	           return stackArray[top--];      
 	           
 	       }
 	    public boolean isFull()

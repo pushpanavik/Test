@@ -8,16 +8,14 @@ import com.bridegit.Utility.Utility;
 public class BankCustomer {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Utility utility=new Utility();
-	//
+		//
 		Scanner scanner= new Scanner(System.in);
 		
 		System.out.println("Enter how many people you want to add in the queue");
 		int number=scanner.nextInt();
 		int customer[]=new int[number];
 		int customerDetails[]=new int[number];
-		for(int i=0;i<customer.length;i++)
+		for(int i=0;i<number;i++)
 		{
 			System.out.println("Enter your Account Number");
 			int	Accountnumber=scanner.nextInt();
@@ -26,11 +24,15 @@ public class BankCustomer {
 			double initialbal=scanner.nextDouble();
 			
 		}
-	
-		for(int i=0;i<number;i++)
-		{	
-			System.out.println(customerDetails[i] );
+		while(customer.length!=0)
+		{
+			for(int i=0;i<customer.length;i++)
+			{	
+				System.out.println(customerDetails[i] );
+			}
+			break;
 		}
+		
 		 
 		
 		/*int deposit;
