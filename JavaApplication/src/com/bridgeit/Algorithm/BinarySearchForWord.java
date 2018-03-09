@@ -21,23 +21,14 @@ public class BinarySearchForWord {
 		// TODO Auto-generated method stub
 			Utility utility=new Utility();
 			String words[]={},search;
-			Scanner scanner=new Scanner(System.in);;
-			words =utility.readFile("/home/bridgeit/test/JavaApplication/src/com/bridegit/Utility/Files/StringFile");
-			System.out.println("Enter word to search");
-			search=scanner.next();
-			Utility.bubblesortString(words);
-			int index = Utility.binarysearchstring(search, words, 0, words.length);
-			   if(index <0)
-			   {
-				   System.out.println("Element not found");
-			   }
-			   else
-			   {
-				   System.out.println("found at index " + index);
-			   }
-			   scanner.close();
+			Scanner scanner=new Scanner(System.in);
+			String filepath="/home/bridgeit/test/JavaApplication/src/com/bridegit/Utility/Files/StringFile";
+			 words =utility.readFile(filepath);
+			/*System.out.println("Enter word to search");
+			search=scanner.next();*/
+			
 		}
 
 }
-}
+
 	

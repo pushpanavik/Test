@@ -11,14 +11,10 @@ public class PrimePalindromeCheck {
 		// TODO Auto-generated method stub
 		Utility utility=new Utility();
 		Scanner scanner=new Scanner(System.in);
-	System.out.println("enter the number");
-		int number=scanner.nextInt();
-		System.out.println("Prime number between 0-1000");
-		utility.isPrime(number);
-		utility.primeAnagram();
-		utility.printPrimePalindrome();
-	}	
+	utility.
+		
+		}
+		
 		
 	}
-
 

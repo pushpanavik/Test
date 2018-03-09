@@ -14,9 +14,9 @@ public class ToCheckAnagrams {
 		
 		Scanner scanner=new Scanner(System.in);
 		System.out.println("enter the first string:=");
-		String	firstString=scanner.nextLine();
+		String	firstString=scanner.next();
 		System.out.println("enter the second string:=");
-		String secondString=scanner.nextLine();
+		String secondString=scanner.next();
 		Utility utility=new Utility();
 		utility.isAnagram(firstString, secondString);
 		

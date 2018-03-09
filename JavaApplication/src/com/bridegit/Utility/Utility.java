@@ -3,17 +3,20 @@ package com.bridegit.Utility;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /*
  * @param to find <<username>> and replace it with the user input name
  * 
  */
 public class Utility {
+	Scanner scanner=new Scanner(System.in);
 	
 public String regex(String msg,String regex)
 {
@@ -350,13 +353,12 @@ public String regex(String msg,String regex)
 		 */
 		public int primenumber(int number)
 		{	
-			
-			
+			ArrayList<Integer>list=new ArrayList<Integer>();
 			boolean flag=false;
 		
 			for(int i=2;i<number;i++)
 			{
-				for(int j=2;j<i;j++)
+				for(int j=2;j<=i;j++)
 				{
 				if(i%j==0)
 				{
@@ -371,6 +373,7 @@ public String regex(String msg,String regex)
 			if(flag==false)
 			{
 				System.out.print( i+" ");
+				
 			}
 			
 			}
@@ -378,11 +381,12 @@ public String regex(String msg,String regex)
 		}
 		
 		
+		
 /**
  * @param to check whether the number is prime or not
  * @return if it is Prime than return true;
  */
-public static boolean isPrime(int number)
+public static  boolean isPrime(int number)
 		{
 			
 			// condition to check if no less than two
@@ -407,6 +411,16 @@ public static boolean isPrime(int number)
 			return true;
 			
 		}
+//Take Integer Input
+	public int inputInteger() throws IOException{
+		try{	
+			return scanner.nextInt();
+		}
+		catch(NumberFormatException nfe){
+			System.out.println(nfe.getMessage());	
+		}
+		return 0;
+	}
 		
 		public static boolean isPalindrome(String str)
 		{
@@ -909,7 +923,6 @@ public static int swapNibbles(int number)
 	}
 	
 	
-/*****************************************************************************************************************************************/
 													//DataStructure Programs
 
 	
@@ -928,7 +941,8 @@ public static int swapNibbles(int number)
 		return 0;	
 	}
 	
-public static <T extends Comparable<T>> void  input(T[] elements)
+	
+public static <T extends Comparable<T>> void  input(T[] range)
 {
 	Scanner scanner	=new Scanner(System.in);;
 	try
@@ -968,14 +982,67 @@ public static String[] readFile(String filepath)
 	br.close();
 	}
 	catch(Exception e) {}
-	return readFile(filepath);
+	return word;
 }
 
 
 /****************************************************************************************************************************************************************/
 												//DataStructure Program
+
+private  final String REGEX_NAME="<<username>>";
+private final String REGEX_MOBILENUMBER="91-xxxxxxxxxx";
+private final String REGEX_FULLNAME="<<fullname>>";
+private final String REGEX_DATE="09";
+
+public String convertString(UserDetails userDetails,String message){
+	Pattern p = Pattern.compile(REGEX_NAME);
+	Matcher m = p.matcher(message); 
+	message = m.replaceAll(userDetails.getfName());
+
+	p = Pattern.compile(REGEX_FULLNAME);
+	m = p.matcher(message); 
+	message = m.replaceAll(userDetails.getfName()+" "+userDetails.getlName());
+
+	p = Pattern.compile(REGEX_MOBILENUMBER);
+	m = p.matcher(message); 
+	message = m.replaceAll(userDetails.mobileNo());
+
+	p = Pattern.compile(REGEX_DATE);
+	m = p.matcher(message); 
+	message = m.replaceAll(userDetails.date());
+
+	return message;
+}
+
+//take input word
+	public String inputString(){
+		try{
+			return br.readLine();
+		}
+		catch(IOException ioe){
+			System.out.println(ioe.getMessage());
+		}
+		return "";
+	}
 	
+
+		//Take Double Input
+		public double inputDouble(){
+			try{
+				try{	
+					return Double.parseDouble(br.readLine());
+				}
+				catch(NumberFormatException nfe){
+					System.out.println(nfe.getMessage());	
+				}
+			}catch(IOException ioe){
+				System.out.println(ioe.getMessage());
+			}
+			return 0.0;
+		}
+
+}
 
    
    
-}
+
