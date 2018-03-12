@@ -11,6 +11,12 @@ import java.util.Scanner;
 
 import com.bridegit.Utility.Utility;
 
+/**
+ * Purpose: To take input year and month from user and display  2D Calendar in the array.
+ * @author Pushpakumari_Navik
+ *@version 1.0
+ *@since: 08-03-2018
+ */
 public class Calendar {
 
 	public static void main(String[] args) {

@@ -2,9 +2,66 @@ package com.bridgeit.DataStructurePrograms;
 
 import java.util.*;
 
+public void push(int val)
+{
+  StackNode newNode = new StackNode(val);
+  newNode.link = head;
+  head = newNode;
+  stackSize++;
+}
+ public StackNode pop()
+{
+	StackNode newNode=new StackNode(val);
+  if(head == null)
+    return null;
+  StackNode temp = head;
+  head = head.link;
+
+  return temp;
+}
+
+
+void displayStack()
+{
+  if(stackSize == 0)
+    {
+      System.out.println("Empty Stack");
+      return ;
+    }
+  StackNode temp = head;
+
+  while(temp != null)
+  {
+    System.out.println(temp.data);
+    temp = temp.link;
+  }
+}
+
+int searchQueue(int val)
+{
+  StackNode temp = head;
+
+  if(temp.data == val)
+    {
+      //System.out.println(val+" is an Anagram");
+      return 1;
+    }
+  while(temp.link != null && temp.data != val)
+  {
+    temp = temp.link;
+  }
+  if(temp.data == val)
+    {
+      //System.out.println(val+" is an Anagram");
+      return 1;
+    }
+  return 0;
+}
+}
 
 class PrimeStack
 {
+	StackOperator stackoperator=new StackOperator();
 
   public static void findPrime(int low, int high, StackOperator stackoperator){
     int i,flag=0;
@@ -31,10 +88,10 @@ class PrimeStack
 
   public static void findAnagrams(StackOperator stackoperator)
   {
-    int arr[] = new int[stackoperator.stackSize],i=0;
+    int arr[] = new int[stackoperator.stackSize] ,i=0;
     int brr[] = new int[stackoperator.stackSize];
 
-    StackNode temp = stackoperator.front;
+    StackNode temp = stackoperator.head;
 
     System.out.println("\nAnagrams are ");
 
@@ -76,6 +133,7 @@ class PrimeStack
     }
   }
 }
+ 
 
   public static void main(String args[])
   {

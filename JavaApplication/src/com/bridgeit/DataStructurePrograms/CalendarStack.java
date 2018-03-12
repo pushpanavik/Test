@@ -1,5 +1,10 @@
 package com.bridgeit.DataStructurePrograms;
-
+/**
+ * Purpose: to take month and year as an input from user and display the calendar in the stack.
+ * @author Pushpakumari_Navik
+ *@version 1.0
+ *@since 09-03-2018
+ */
 import java.util.*;
 import java.lang.*;
 class CalStack
@@ -130,6 +135,7 @@ class CalStack
 
 
 }
+
 
 class CalendarStack{
 	public static void main(String args[])

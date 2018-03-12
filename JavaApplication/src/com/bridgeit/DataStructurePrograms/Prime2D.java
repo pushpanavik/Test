@@ -1,6 +1,13 @@
 package com.bridgeit.DataStructurePrograms;
 //question No-11
 import java.util.*;
+/**
+ * Purpose: To Print 2D prime array within a range of 0-100,100-200,200-300..and so on till 1000.
+ * @author Pushpakumari_Navik
+ * @version 1.0
+ * @since 07-03-2018
+ *
+ */
 class primeCalculate{
 
 	int[][] printArray=new int[50][40];
@@ -119,6 +126,7 @@ class primeCalculate{
 		}
 	}
 }
+
 
 class Prime2D{
 	public static void main(String...args)

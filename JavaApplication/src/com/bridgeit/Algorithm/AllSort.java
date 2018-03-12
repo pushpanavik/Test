@@ -63,7 +63,7 @@ public class AllSort {
                     System.out.println("\nEnter the element to be searched ");
                     int key = read.nextInt();
                     startTime = System.currentTimeMillis();
-                    int result = utility.binarySearch(arr, 0, lenInt, key);
+                    int result = utility.binarySearch(arr, 0, lenInt, key); 
                     System.out.println("Sorted array: \n");
 
                     for (int i = 0; i < lenInt; i++) {

@@ -1,8 +1,15 @@
 package com.bridgeit.DataStructurePrograms;
 
-//question no-5 Palindrome Checker
+
 import java.util.*;
 
+/**
+ * Purpose : To take string as an input and store the character in the dequeue , reverse the string 
+ * 			  and then check whether the string is Palindrome Or Not.
+ * @author Pushpakumari_Navik
+ *@version 1.0
+ *@since 09-03-2018
+ */
 class DequeDemo
 {
 public static void main(String args[])

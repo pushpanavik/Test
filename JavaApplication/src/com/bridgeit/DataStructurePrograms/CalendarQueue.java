@@ -2,6 +2,13 @@ package com.bridgeit.DataStructurePrograms;
 
 import java.util.Scanner;
 
+/**
+ * Purpose: Program to display 2D Calendar using Queue.
+ * @author: Pushpakumari_Navik
+ * @version:  1.0
+ * @since: 9-03-2018
+ *
+ */
 class Queue
 {
 
@@ -112,6 +119,10 @@ class Queue
 
 }
 
+/**
+ * @author bridgeit
+ *
+ */
 class CalendarQueue{
 	public static void main(String args[])
 	{

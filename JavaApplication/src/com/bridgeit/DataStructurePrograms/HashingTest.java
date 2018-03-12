@@ -6,7 +6,16 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
+/**
+ * Purpose: To create a Slot of 10 to store Chain of Numbers that belong to each Slot
+ * 		    to efficiently search a number from a given set of number if found than delete that
+ * 			number from file and display the table else if not found then divide the number with 11 and store
+ * 			that number in the remainder position.
+ * @author Pushpakumari_Navik
+ * @version 1.0
+ * @version 09-03-2018
+ *
+ */
 
 class Node 
 {
@@ -154,6 +163,7 @@ class HashChaining
   return flag;
   }
 }
+
 class HashingTest
 {
   public static void main(String args[]) throws FileNotFoundException

@@ -79,6 +79,9 @@ public String regex(String msg,String regex)
 	
 	
 //5. Harmonic Number 
+		/*
+		 * @param to print nth harmonic value of a given number
+		 */
 	
 	public int harmonic(int n) {
 		int i = 1;
@@ -92,7 +95,9 @@ public String regex(String msg,String regex)
 	}
 	
 //6. Factors using Brute Force
-	/* To compute the prime factorization using Brute force technique */
+	/* 
+	 * @param To compute the prime factorization using Brute force technique 
+	 * */
 	public int primefactors(int n) 
 	{
 		int i = 1;
@@ -113,7 +118,10 @@ public String regex(String msg,String regex)
 	}
 	
 //7. Gambler
-	/* To simulate the gambler problem program to check for how many times the user wons or lose with finite set of trials*/
+	/* @param
+	 * To simulate the gambler problem program to check for how many times the user wons or lose
+	 *  with finite set of trials
+	*/
 		public int gambler(int stake,int goal,int trials)
 		{
 			
@@ -302,8 +310,7 @@ public String regex(String msg,String regex)
 	
 
 	
-/*********************************************************************************************************************/
-												//Algorithm Program
+
 	//1. An Anagram Detection Example
 	public static int isAnagram(String firstString,String secondString)
 	{
@@ -411,7 +418,10 @@ public static  boolean isPrime(int number)
 			return true;
 			
 		}
-//Take Integer Input
+//
+/*
+ *@param  Take Integer Input
+ */
 	public int inputInteger() throws IOException{
 		try{	
 			return scanner.nextInt();
@@ -504,11 +514,11 @@ public static  boolean isPrime(int number)
 			int normalYear[]= new int[] {31,28,31,30,31,30,31,31,30,31,30,31};
 			return  0;
 		}
-		public
+		
 		
 		
 //3. Extend Program
-//4. To the Utility Class write the following static methods
+/*//4. To the Utility Class write the following static methods
 		//Binary search integer
 				public int binarysearch(int inputSearch, int a[],int number){
 					
@@ -620,7 +630,7 @@ public static  boolean isPrime(int number)
 		    System.out.println("\n\t"+ s[i]);
 		}
 		return -1;
-		}
+		}*/
 				
 //5. Question to find your number	
 		 public static int guessNumber(int lower,int upper,int mid,int count,int number)
@@ -876,7 +886,9 @@ return t;
 }
 
 //15.toBinary
-//Convert Decimal To Binary
+/*
+ * @param Convert Decimal To Binary
+ */
 	public static byte[] binary(int number)
 	{
 		byte[] b=new byte[32];
@@ -908,7 +920,10 @@ public static int swapNibbles(int number)
 
 
 
-//16. Binary.java
+//16.Binary.java
+/*
+ * @param to convert decimal number to binary
+ */
 	public static byte[] decTobinary(int number)
 	{
 		byte[] b=new byte[8];
@@ -922,10 +937,9 @@ public static int swapNibbles(int number)
 		return  b;
 	}
 	
-	
-													//DataStructure Programs
-
-	
+/*
+ * @param To check whether it is palindrome or not.
+ */
 	public int palindromeString(String number,String temp)
 	{
 		StringBuilder string=new StringBuilder(number);
@@ -954,9 +968,9 @@ public static <T extends Comparable<T>> void  input(T[] range)
 	}
 	
 }
-	
-
-
+/*
+ * @param to read File 
+ */
 public static String[] readFile(String filepath)
 {
 	String word[]= {};
@@ -984,10 +998,6 @@ public static String[] readFile(String filepath)
 	catch(Exception e) {}
 	return word;
 }
-
-
-/****************************************************************************************************************************************************************/
-												//DataStructure Program
 
 private  final String REGEX_NAME="<<username>>";
 private final String REGEX_MOBILENUMBER="91-xxxxxxxxxx";
@@ -1040,6 +1050,165 @@ public String convertString(UserDetails userDetails,String message){
 			}
 			return 0.0;
 		}
+
+
+public static int binarySearch(int []arr,int l, int r, int value)
+{
+
+  if(l <= r)
+  {
+    int mid = l + (r-1)/2;
+
+    if( arr[mid] == value)
+    {
+      return mid;
+    }
+    else if( arr[mid] > value)
+    {
+      return binarySearch(arr,l,mid-1,value);
+    }
+    else //if( arr[mid] < value)
+    {
+      return binarySearch(arr,mid+1,r,value);
+    }
+  }
+  return -1;
+
+}
+
+public static String[] bubbleSort(String []arr,int l)
+{
+  for(int i=0;i<l-1;i++)
+  {
+    for(int j=0;j<l-1;j++)
+    {
+      if(arr[j].compareTo(arr[j+1]) > 0)
+      {
+        String temp = arr[j];
+        arr[j] = arr[j+1];
+        arr[j+1] = temp;
+      }
+    }
+  }
+
+  /*System.out.println(" ");
+            for(int i=0;i<l;i++)
+              System.out.println(""+arr[i]);
+              */
+  return arr;
+}
+
+public static int[] InsertionSort(int []arr, int n)
+{
+  int j=0,key;
+      for(int i=1;i<n;i++)
+        {
+          j=i-1;
+          key=arr[i];
+          while(j>=0 && arr[j] > key )
+          {
+            arr[j+1] = arr[j];
+            j=j-1;
+          }
+          arr[j+1] = key;
+        }
+/*
+        System.out.println("");
+        for(int i=0;i<n;i++)
+          System.out.println(""+arr[i]);
+*/
+          return arr;
+}
+
+public static long[] InsertionSort(long []arr, int n)
+{
+  int j=0; long key;
+      for(int i=1;i<n;i++)
+        {
+          j=i-1;
+          key=arr[i];
+          while(j>=0 && arr[j] > key )
+          {
+            arr[j+1] = arr[j];
+            j=j-1;
+          }
+          arr[j+1] = key;
+        }
+/*
+        System.out.println("");
+        for(int i=0;i<n;i++)
+          System.out.println(""+arr[i]);
+*/
+          return arr;
+}
+public static String[] InsertionSort(String []str, int n)
+{
+  int j=0;
+  String key;
+      for(int i=1;i<n;i++)
+        {
+          j=i-1;
+          key=str[i];
+          while(j>=0 && str[j].compareTo(key) > 0 )
+          {
+            str[j+1] = str[j];
+            j=j-1;
+          }
+          str[j+1] = key;
+        }
+
+/*        System.out.println("");
+        for(int i=0;i<n;i++)
+          System.out.println(""+str[i]);
+*/
+return str;
+}
+
+public static int binarySearch(String []str,int l, int r, String value)
+{
+  //System.out.println(l+""+r);
+  if(l <= r)
+  {
+    int mid = l + (r-1)/2;
+
+    if( str[mid].equalsIgnoreCase(value) )
+    {
+      return mid;
+    }
+    else if( str[mid].compareTo(value) > 0)
+    {
+      return binarySearch(str,l,mid-1,value);
+    }
+    else //if( arr[mid] < value)
+    {
+      return binarySearch(str,mid+1,r,value);
+    }
+  }
+  return -1;
+
+}
+public static int[] bubbleSort(int []arr, int n)
+{
+
+      for(int i=0;i<n-1;i++)
+        {
+          for(int j=0;j<(n-1);j++)
+          {
+            if(arr[j]>arr[j+1])
+            {
+              int temp = arr[j];
+              arr[j] = arr[j+1];
+              arr[j+1] = temp;
+            }
+          }
+        }
+
+
+        return arr;
+
+}
+
+
 
 }
 

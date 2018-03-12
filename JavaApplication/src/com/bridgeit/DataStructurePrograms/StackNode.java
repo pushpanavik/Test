@@ -1,14 +1,14 @@
 package com.bridgeit.DataStructurePrograms;
 
-public class StackNode {
+class StackNode {
     
 
   int data;
-  StackNode next;
+   StackNode next;
    public StackNode(int val)
   {
     data = val;
     next = null;
-  }
+  } 
 
 }
