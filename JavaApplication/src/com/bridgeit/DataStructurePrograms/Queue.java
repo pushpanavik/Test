@@ -11,7 +11,7 @@ public class Queue<E>
     // method for Adding The Queue
     public void addAtFront(int data)
     {
-        Node<E> temp = new Node();
+        Node<E> temp = new Node<E>();
         temp.data =data;
         temp.nextNode = null;
         if(front == null)

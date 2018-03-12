@@ -2,155 +2,157 @@ package com.bridgeit.Functional;
 import java.util.Scanner;
 
 public class TicTacToe {
-	public static final int CROSS=1;
-	public static final int EMPTY=0;
-	public static final int MINUS=2;
-	public static final int PLAYING = 0;
-	public static final int DRAW = 1;
-	public static final int CROSS_WON = 2;
-	public static final int MINUS_WON = 3;
-	public static int[][] board = new int[3][3];
-	public static int currentState;
-	public static int currentPlayer;
-	public static int currentRow, currentCol;
-	 public static Scanner scanner=new Scanner(System.in);
-	public static void main(String args[]) 
-	{
-		do 
-		{
-			playerMove(currentPlayer);
-			updateGame(currentPlayer,currentRow,currentCol);
-			printBoard();
-			//if Game over
-			if(currentState==CROSS) {
-				System.out.println("X wins");
-			}
-			else if(currentState==MINUS) {
-				System.out.println("- wins");
-			}
-			else
-				System.out.println("It's a draw");
+	 
 
-			currentPlayer=(currentPlayer==CROSS)?MINUS:CROSS;
-		}
-		while(currentState == PLAYING);
-	}
-		public static void printBoard() {
-			for (int row = 0; row < 3; ++row) {
-		         for (int col = 0; col < 3; ++col) {
-		            printCell(board[row][col]); 
-		            if (col != 3 - 1) {
-		               System.out.print("|");   
-		            }
-		         }
-		         System.out.println();
-		         if (row != 3- 1) {
-		            System.out.println("-----------"); 
-		         }
-		      }
-		      System.out.println();
-			
-		}
 
-		public static void printCell(int content) {
-			 switch (content)
-			 {
-	         case EMPTY:  System.out.print("   "); break;
-	         case MINUS: System.out.print(" O "); break;
-	         case CROSS:  System.out.print(" X "); break;
-	      }
-			
-		}
+    public static void main(String args[])
+    {
+        Scanner scan =new Scanner(System.in);
 
-		public static void updateGame(int seed,int currentCol,int currentRow)
-		{
-			if(hasWon(seed))
-			{
-				currentState=(seed==CROSS_WON)?MINUS_WON:CROSS_WON;
-			}
-			else if (isDraw()) {  // check for draw
-		         currentState = DRAW;
-		      }
-		}	
-		
-		public static boolean isDraw()
-		{
-			for (int row = 0; row < 3; ++row) 
-			{
-		        for (int col = 0; col < 3; ++col) 
-		        {
-		            if (board[row][col] == EMPTY) 
-		            {
-		            	return false;
-		            }
-		         }
-			}
-			 return true;
-		}
+        int row,col;
+        int count=0;
+        char a[][]=new char[3][3];
+        char pos='x';
+        TicTacToe t1=new TicTacToe();
 
-		public static boolean hasWon(int seed) {
-			 return(board[currentRow][0] == seed        
-	                && board[currentRow][1] == seed
-	                && board[currentRow][2] == seed
-	           || board[0][currentCol] == seed      
-	                && board[1][currentCol] == seed
-	                && board[2][currentCol] == seed
-	           || currentRow == currentCol         //diagonal
-	                && board[0][0] == seed
-	                && board[1][1] == seed
-	                && board[2][2] == seed
-	           || currentRow + currentCol == 2 // opposite diagonal
-	                && board[0][2] == seed
-	                && board[1][1] == seed
-	                && board[2][0] == seed);
-		}
+        t1.initializeboard(a);
+        boolean b1=false;
+        while(count<9)
+        {
+       	System.out.println("Player "+pos+": Enter the row and col you want to enter");											//pos='x';
+		    row=scan.nextInt();
+        col=scan.nextInt();
+        int flag=t1.placemark(a,row,col,pos);
 
-		public static void playerMove(int seed)
-		{
-			
-			boolean valid=false;
-			do {
-				if(seed==CROSS)
-				{
-					System.out.println("Player 'X',enter your move (row[1-3] column[1-3]): ");
-				}
-				else {
-					System.out.print("Player 'O', enter your move (row[1-3] column[1-3]): ");
-				}
-				int row=scanner.nextInt()-1;
-				int col=scanner.nextInt()-1;
-				if (row >= 0 && row < 3 && col >= 0 && col < 3 && board[row][col] == EMPTY) 
-				{
-					currentRow = row;
-					currentCol = col;
-					board[currentRow][currentCol] = seed;
-					valid=true;
-				}else
-				{
-					System.out.println("This move at (" + (row + 1) + "," + (col + 1)
-							+ ") is not valid. Try again...");
-				}
-			} while (!valid);
-		}
-		
-		public static void initGame() 
-		{
-			
-			for (int row = 0; row < 3; ++row) 
-			{
-		         for (int col = 0; col < 3; ++col) 
-		         {
-		            board[row][col] = EMPTY; 
-		            currentState = PLAYING; // ready to play
-		            currentPlayer = CROSS;  // cross plays first
-		         }
-			}
-		}
-		   
-		
-	}
+      	if(flag==0)
+      		{
+            count--;
+      		}
+        if (flag ==-1) {
+            count--;
+            System.out.println("\nEnter a valid input");
+          }
+        b1=t1.checkForWin(a);
 
-	
-	
+    		if(b1==true)
+    		{
+    			t1.printtable(a);
+    			System.out.println("Player" + " " + pos + " has won the game");
+    			break;
+    		}
+
+        pos=t1.changeplayer(pos);
+        t1.printtable(a);
+        count++;
+        }
+
+        /*b1=t1.checkForWin(a);
+        if (count ==9 && !b1)
+          System.out.println("Draw!");
+        */
+    }
+
+
+    static void initializeboard(char a[][])
+    {
+
+        for(int i=0;i<3;i++)
+        {
+            for(int j=0;j<3;j++)
+                {
+                a[i][j]= '-' ;
+
+                }
+        }
+    }
+
+    static void printtable(char a[][])
+    {
+       System.out.println("\n \n-------------------------------------------------");
+        for(int i=0;i<3;i++)
+        {
+            System.out.print("|\t" );
+            for(int j=0;j<3;j++)
+            {
+                System.out.print(a[i][j]+"\t|\t");
+            }
+
+            System.out.println("\n \n-------------------------------------------------");
+        }
+    }
+
+    static int placemark(char a[][],int row,int col,char pos)
+    {
+    	if((row>=0)&&(row<3))
+    	{
+    		if((col>=0)&&(col<3))
+    		{
+    			if(a[row][col]=='-')
+    			{
+    				a[row][col]=pos;
+    				return 1;
+    				//checkwin(a);
+    			}
+    			else
+    			{
+    				System.out.println("Already inserted in that position. Please choose another position");
+    				return 0;
+    			}
+    		}
+    	}
+    	return -1;
+    }
+
+    static char changeplayer(char pos)
+    {
+    	if(pos=='x')
+    	{
+    		pos='o';
+    		return pos;
+    	}
+    	else if(pos=='o')
+    	{
+    		pos='x';
+    		return pos;
+    	}
+    	return pos;
+    }
+
+
+public boolean checkForWin(char a[][]) {
+        return (checkRowsForWin(a) || checkColumnsForWin(a) || checkDiagonalsForWin(a));
+    }
+
+
+
+    public boolean checkRowsForWin(char a[][]) {
+        for (int i = 0; i < 3; i++) {
+            if (checkRowCol(a[i][0], a[i][1], a[i][2]) == true) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
+    public boolean checkColumnsForWin(char a[][]) {
+        for (int i = 0; i < 3; i++) {
+            if (checkRowCol(a[0][i], a[1][i], a[2][i]) == true) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
+    public boolean checkDiagonalsForWin(char a[][]) {
+        return ((checkRowCol(a[0][0], a[1][1], a[2][2]) == true) || (checkRowCol(a[0][2], a[1][1], a[2][0]) == true));
+    } 
+     public boolean checkRowCol(char c1, char c2, char c3) {
+        return ((c1 != '-') && (c1 == c2) && (c2 == c3));
+     }
+}
 
 
