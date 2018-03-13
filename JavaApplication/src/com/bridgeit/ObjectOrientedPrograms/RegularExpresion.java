@@ -15,27 +15,12 @@ public class RegularExpresion {
 		
 		System.out.println("Enter Name");
 		String username=scanner.nextLine();
-		/*boolean flag;
-		while(!username.matches("[a-zA-Z]"))
-		{
-			System.out.println("Name must contains only alphabets(a-zA-Z).please enter valid name");
-			flag=false;
-			
-		}*/
+		
 		
 		System.out.println("Enter fullName");
 		String surname=scanner.nextLine();
 		String fullname=surname.substring(0, surname.length());
-		/*if(fullname.matches("[a-zA-Z]"))	
-		{
-			flag=true;
-		}
-		else
-		{
-			System.out.println("fullName must contains only alphabets(a-zA-Z).please enter valid name");
-			
-		}
-		*/
+		
 		
 		System.out.println("Enter Contact Number  ");
 		String contactNo=scanner.nextLine();

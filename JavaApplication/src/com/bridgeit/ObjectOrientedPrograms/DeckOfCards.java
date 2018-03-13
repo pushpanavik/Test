@@ -11,15 +11,15 @@ public class DeckOfCards {
 			deck[i]=i;
 			for(int i=0;i<deck.length;i++)
 		{
-			int index= i+(int) Math.random()*deck.length-i;
+			int index=(int) Math.random()*deck.length;
 			int temp=deck[i];
 			deck[i]=deck[index];
 			deck[index]=temp;
 		}
 			for(int i=0;i<deck.length;i++)
 			{
-				String rank=Rank[deck[i]%4];
-				String suit=suits[deck[i]/4];
+				String rank=Rank[deck[i]% 13];
+				String suit=suits[deck[i]/13];
 				System.out.println("cards\t" +deck[i] + " ");
 			}
 			}

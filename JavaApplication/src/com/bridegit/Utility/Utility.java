@@ -999,30 +999,7 @@ public static String[] readFile(String filepath)
 	return word;
 }
 
-private  final String REGEX_NAME="<<username>>";
-private final String REGEX_MOBILENUMBER="91-xxxxxxxxxx";
-private final String REGEX_FULLNAME="<<fullname>>";
-private final String REGEX_DATE="09";
 
-public String convertString(UserDetails userDetails,String message){
-	Pattern p = Pattern.compile(REGEX_NAME);
-	Matcher m = p.matcher(message); 
-	message = m.replaceAll(userDetails.getfName());
-
-	p = Pattern.compile(REGEX_FULLNAME);
-	m = p.matcher(message); 
-	message = m.replaceAll(userDetails.getfName()+" "+userDetails.getlName());
-
-	p = Pattern.compile(REGEX_MOBILENUMBER);
-	m = p.matcher(message); 
-	message = m.replaceAll(userDetails.mobileNo());
-
-	p = Pattern.compile(REGEX_DATE);
-	m = p.matcher(message); 
-	message = m.replaceAll(userDetails.date());
-
-	return message;
-}
 
 //take input word
 	public String inputString(){
