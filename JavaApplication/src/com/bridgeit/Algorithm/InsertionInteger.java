@@ -11,16 +11,16 @@ public class InsertionInteger {
 		Scanner scanner=new Scanner(System.in);
 		System.out.println("Enter how many numbers to be sorted:");
 		int  number=scanner.nextInt();
-		int a[]=new int[number];
+		int arr[]=new int[number];
        
         String temp=null;
 		System.out.println("Enter value for "+number+ " numbers:");
 				for(int i=0;i<number;i++)       
 				{
-					a[i]=scanner.nextInt();		//taking input from user
+					arr[i]=scanner.nextInt();		//taking input from user
 				}
 				Utility utility=new Utility();
-				utility.insertion_sort(number, a);
+				utility.insertionSortforInt(arr);
 	}
 
 }

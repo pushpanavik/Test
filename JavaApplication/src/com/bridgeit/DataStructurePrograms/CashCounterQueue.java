@@ -1,39 +1,44 @@
 package com.bridgeit.DataStructurePrograms;
  
 public class CashCounterQueue {
-	Node temp=new Node();
-	Node front,rear;
-	public  CashCounterQueue()
-	{
-		this.rear=null;
-		this.front=null;
-	}
-	 public void insert(int data)
-	{
+	
+	private int accountnumber;
+    private int initialbal;
+    private String name;
+    
+	public CashCounterQueue() {
 		
-		if(rear==null)
-		{
-			this.rear=this.front=temp;
-			return;
-		}
-			this.rear.nextNode=temp;
-			this.rear=temp;
-				
 	}
-	 public void show()
-	 {
-		if(this.front==null)
-		{
-			System.out.println("Queue is Empty");
-		}
-		while(temp.nextNode!=null)
-		{
-			System.out.println(temp.data);
-			temp=temp.nextNode;
-			System.out.println(temp.data);
-			
-		}
-	 }
-	
+	public int getAccountnumber() {
+		return accountnumber;
+	}
+	public void setAccountnumber(int accountnumber) {
+		this.accountnumber = accountnumber;
+	}
+	public int getInitialbal() {
+		return initialbal;
+	}
+	public void setInitialbal(int initialbal) {
+		this.initialbal = initialbal;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public CashCounterQueue(int accountnumber,String name,int initialbal) {
+		super();
+		this.accountnumber = accountnumber;
+		this.initialbal = initialbal;
+		this.name = name;
 	}
 	
+@Override
+public String toString() {
+	return "CashCounterQueue [name=" + name+",accountnumber="+ accountnumber+ ", initialbal= "+ initialbal+"]";
+
+}
+}
+
+

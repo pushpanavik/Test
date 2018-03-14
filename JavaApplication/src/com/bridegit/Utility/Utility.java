@@ -11,6 +11,8 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.bridgeit.DataStructurePrograms.CashCounterQueue;
+
 /*
  * @param to find <<username>> and replace it with the user input name
  * 
@@ -350,14 +352,7 @@ public String regex(String msg,String regex)
 		 * @param number to print prime numbers between 0-1000
 		 * 
 		 */
-		/**
-		 * @param number
-		 * @return
-		 */
-		/**
-		 * @param number
-		 * @return
-		 */
+		
 		public int primenumber(int number)
 		{	
 			ArrayList<Integer>list=new ArrayList<Integer>();
@@ -518,7 +513,7 @@ public static  boolean isPrime(int number)
 		
 		
 //3. Extend Program
-/*//4. To the Utility Class write the following static methods
+//4. To the Utility Class write the following static methods
 		//Binary search integer
 				public int binarysearch(int inputSearch, int a[],int number){
 					
@@ -630,7 +625,7 @@ public static  boolean isPrime(int number)
 		    System.out.println("\n\t"+ s[i]);
 		}
 		return -1;
-		}*/
+		}
 				
 //5. Question to find your number	
 		 public static int guessNumber(int lower,int upper,int mid,int count,int number)
@@ -968,6 +963,7 @@ public static <T extends Comparable<T>> void  input(T[] range)
 	}
 	
 }
+
 /*
  * @param to read File 
  */
@@ -1003,7 +999,9 @@ public static String[] readFile(String filepath)
 
 //take input word
 	public String inputString(){
+		BufferedReader br;
 		try{
+			br=new BufferedReader(in)
 			return br.readLine();
 		}
 		catch(IOException ioe){
@@ -1053,54 +1051,16 @@ public static int binarySearch(int []arr,int l, int r, int value)
 
 }
 
-public static String[] bubbleSort(String []arr,int l)
-{
-  for(int i=0;i<l-1;i++)
-  {
-    for(int j=0;j<l-1;j++)
-    {
-      if(arr[j].compareTo(arr[j+1]) > 0)
-      {
-        String temp = arr[j];
-        arr[j] = arr[j+1];
-        arr[j+1] = temp;
-      }
-    }
-  }
 
-  /*System.out.println(" ");
-            for(int i=0;i<l;i++)
-              System.out.println(""+arr[i]);
-              */
-  return arr;
-}
 
-public static int[] InsertionSort(int []arr, int n)
-{
-  int j=0,key;
-      for(int i=1;i<n;i++)
-        {
-          j=i-1;
-          key=arr[i];
-          while(j>=0 && arr[j] > key )
-          {
-            arr[j+1] = arr[j];
-            j=j-1;
-          }
-          arr[j+1] = key;
-        }
-/*
-        System.out.println("");
-        for(int i=0;i<n;i++)
-          System.out.println(""+arr[i]);
-*/
-          return arr;
-}
 
-public static long[] InsertionSort(long []arr, int n)
+
+          
+
+public static int[] InsertionSort(int []arr, int lenInt)
 {
-  int j=0; long key;
-      for(int i=1;i<n;i++)
+  int j=0; int key;
+      for(int i=1;i<lenInt;i++)
         {
           j=i-1;
           key=arr[i];
@@ -1134,10 +1094,6 @@ public static String[] InsertionSort(String []str, int n)
           str[j+1] = key;
         }
 
-/*        System.out.println("");
-        for(int i=0;i<n;i++)
-          System.out.println(""+str[i]);
-*/
 return str;
 }
 
@@ -1185,8 +1141,88 @@ public static int[] bubbleSort(int []arr, int n)
 
 }
 
+public static String[] bubbleSortString(String []arr, int lenInt)
+{
+
+      for(int i=0;i<lenInt-1;i++)
+        {
+          for(int j=0;j<(lenInt-1);j++)
+          {
+            if(arr[j].compareTo(arr[j+1])>0)
+            {
+              String temp = arr[j];
+              arr[j] = arr[j+1];
+              arr[j+1] = temp;
+            }
+          }
+        }
 
 
+        return arr;
+
+}
+public static void insertionSortforInt(int arr[]){
+	int leng = arr.length;
+	for (int i=1; i<leng; ++i)
+	{
+		int key = arr[i];
+		int j = i-1;
+
+		while (j>=0 && arr[j] > key)
+		{
+			arr[j+1] = arr[j];
+			j = j-1;
+		}
+		arr[j+1] = key;
+	}
+}
+public int updateDeposit(int deposit_amount,int initialbal)
+{
+	CashCounterQueue cash=new CashCounterQueue();
+	int update_deposit=initialbal+deposit_amount;
+	return update_deposit;
+	
+	
+}
+public void continueToProcess()
+{
+	MethodUtil util=new MethodUtil();
+	int choice;
+	do {
+		int deposit_amount;
+		int withdraw_amount;
+		int update_Balance=0;
+		System.out.println("Enter your choice");
+		System.out.println("1.  Deposit");
+		System.out.println("2. Withdraw ");
+		System.out.println("3. Check Balance");
+		System.out.println("4.Number of people in queue");
+		choice=util.integerInput();
+		switch(choice)
+		{
+		case 1:
+				System.out.println("enter deposit");
+				deposit_amount=util.integerInput();
+				
+		case 2:
+			System.out.println("enter the amount to withdraw");
+			withdraw_amount=util.integerInput();
+				
+		}
+	}while(choice<5);
+	
+}
+public void DeckOfCards(String [] Rank,String [] suits)
+{
+	int number=Rank.length* suits.length;
+	String [] deckOfCards=new String[number];	
+	
+for(int i=0;i<Rank.length;i++) 
+{
+	for(int j=0;i<suits.length;j++)
+		
+}
+}
 }
 
    

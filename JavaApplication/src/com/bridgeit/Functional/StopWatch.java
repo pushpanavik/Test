@@ -15,7 +15,7 @@ public class StopWatch {
 		System.out.println(startTime);
 
 
-		System.out.println("Enter 2 for startTime");
+		System.out.println("Enter 2 for sopTime");
 		int ch1=scanner.nextInt();
 		long endTime=System.currentTimeMillis();
 		System.out.println(endTime);	

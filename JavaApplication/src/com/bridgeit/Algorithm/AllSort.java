@@ -120,7 +120,7 @@ public class AllSort {
                 case 4:
 
                     startTime = System.currentTimeMillis();
-                    str = Utility.bubbleSort(str, lenString);
+                    str = Utility.bubbleSortString(str, lenInt);
                     System.out.println("Sorted array :\n");
                     endTime = System.currentTimeMillis();
                     difference = endTime = startTime;

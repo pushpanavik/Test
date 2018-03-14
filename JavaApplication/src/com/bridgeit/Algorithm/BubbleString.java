@@ -18,7 +18,7 @@ public class BubbleString {
 			System.out.println("Enter value for "+number+ " numbers:");
 					for(int i=0;i<number;i++)       
 					{
-						s[i]=scanner.nextLine();		//taking input from user
+						s[i]=scanner.next();		//taking input from user
 					}
 					
 					Utility utility=new Utility();
