@@ -21,8 +21,11 @@ public class StockReport {
 		int value_of_each_stock;
 		int  total;
 		int Share_price;
+		int valueforstock;
+		int total_stock=0;
 		JSONObject obj=new JSONObject();
 		JSONObject allinone=new JSONObject();
+		JSONObject totalstock=new JSONObject();
 		
 		//JSONArray array=new JSONArray();
 		System.out.println("Enter number of stock");
@@ -33,30 +36,29 @@ public class StockReport {
 			System.out.println("Enter the Stock Name");
 			Name=scanner.next();
 			allinone.put("Stock Name",Name);
-			obj.put("Stock",allinone);
+			//obj.put("Stock",allinone);
 			
 			System.out.println("Enter the Number of share");
 			No_share=util.inputInteger();
 			allinone.put("Share Price", No_share);
-			obj.put("Stock",allinone);
+			//obj.put("Stock",allinone);
 
-			System.out.println("Enter the Share Price");
+			System.out.println("Enter Price of share");
 			Share_price=util.inputInteger();
 
-			allinone.put("Share Price", Share_price);
-			obj.put("Stock",allinone);
+			allinone.put("Price", Share_price);
+			//obj.put("Stock",allinone);
 			
+			//System.out.println("Value for stock is");
+			valueforstock=No_share*Share_price;
+			total_stock+=valueforstock;
+			
+			allinone.put("each_stock_value",valueforstock);
+			
+			obj.put("Stock"+i,allinone);	
 			System.out.println();
-			value_of_each_stock=No_share*Share_price;
-			obj.put("Stock",allinone);
-			
-			for(int k=0;i<report;i++)
-			{
-				
-			}
-			 
 		}
-
+			
 		try {
 			FileWriter file=new FileWriter("/home/bridgeit/Desktop/Files Folder/Stock.json");
 			{
@@ -64,11 +66,13 @@ public class StockReport {
 				file.flush();
 				file.close();
 			}
+			System.out.print("Total stock price is: "+total_stock+ " ");
 			System.out.println("Successfully Copied JSON Object to File...");
 			System.out.println("\nJSON Object: " + obj);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
 }

@@ -1,8 +1,10 @@
 package com.bridegit.Utility;
 
 import java.io.BufferedReader;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -11,6 +13,9 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import com.bridgeit.DataStructurePrograms.CashCounterQueue;
 
@@ -1186,6 +1191,84 @@ public int updateDeposit(int deposit_amount,int initialbal)
 	
 	
 }
+
+public int integerInput() 
+{
+	try 
+	{
+		return scanner.nextInt();
+	}
+	catch(Exception e)
+	{
+		System.out.println(e.toString());
+	}
+	return 0;
+}
+
+public long longInput() 
+{
+	try 
+	{
+		return scanner.nextLong();
+	}
+	catch(Exception e)
+	{
+		System.out.println(e.toString());
+	}
+	return 0;
+}
+
+public double doubleInput() 
+{
+	try 
+	{
+		return scanner.nextDouble();
+	}
+	catch(Exception e)
+	{
+		System.out.println(e.toString());
+	}
+	return 0.0;
+}
+
+public float floatInput() 
+{
+	try 
+	{
+		return scanner.nextFloat();
+	}
+	catch(Exception e)
+	{
+		System.out.println(e.toString());
+	}
+	return 0.0f;
+}
+
+ public String inputStringLine() 
+ {
+	 try 
+	 {
+		 return scanner.nextLine();
+	 }
+	 catch(Exception e) 
+	 {
+		 System.out.println(e.toString());
+	 }
+	 return null;
+ }
+ 
+ public String inputString() 
+ {
+	 try 
+	 {
+		 return scanner.next();
+	 }
+	 catch(Exception e) 
+	 {
+		 System.out.println(e.toString());
+	 }
+	 return null;
+ }
 /*public void continueToProcess()
 {
 	MethodUtil util=new MethodUtil();
@@ -1370,11 +1453,115 @@ class Queue <T>{
 		}
 	}
 }
+public void inventorymanage(int varieties)
+{
+	Utility u=new Utility();
 
-
-		
+JSONObject obj=new JSONObject();
+JSONObject wheatobj=new JSONObject();
+JSONObject pulsesobj=new JSONObject();
+JSONObject riceobj=new JSONObject();
+JSONArray array=new JSONArray();
+String Name;
+long Weight;
+long overall_cost=0;
+long inventory_cost;
+long total_cost_Of_product1=0;
+long total_cost_Of_product2=0;
+long price_per_kg;
+long total_cost_Of_product=0L;
+long cost_of_item;
+for(int i=0;i<varieties;i++)
+{
+	System.out.println("Enter Wheat Name");
+	Name=u.inputString();
+	wheatobj.put("Name"+Name, Name);
+	System.out.println("Enter Weight");
+	Weight=u.longInput();
+	wheatobj.put("Weight"+Name, Weight);
+	System.out.println("Enter price per kg");
+	price_per_kg=u.longInput();
+	wheatobj.put("price_per_kg"+Name, price_per_kg);
+	cost_of_item= Weight*price_per_kg;
 	
+	wheatobj.put(" cost of   "+Name+   "variety", cost_of_item );
+	total_cost_Of_product+=cost_of_item;
+	/*inventory_cost+=total_cost_Of_product;*/
+	//wheatobj.put("total_cost_Of_product",total_cost_Of_product );
+	obj.put("Varieties_of_wheat",wheatobj);
+}
 
+
+for(int i=0;i<varieties;i++)
+{
+	System.out.println("Enter Pulses Name");
+	Name=u.inputString();
+	pulsesobj.put("Name"+Name, Name);
+	System.out.println("Enter Weight");
+	Weight=u.longInput();
+	pulsesobj.put("Weight"+Name, Weight);
+	System.out.println("Enter price per kg");
+	price_per_kg=u.longInput();
+	pulsesobj.put("price_per_kg"+Name, price_per_kg);
+	cost_of_item= Weight*price_per_kg;
+	pulsesobj.put(" cost of "+Name+ "variety",cost_of_item);
+	total_cost_Of_product1+=cost_of_item;
+	/*inventory_cost=total_cost_Of_product;*/
+//	pulsesobj.put("total_cost_Of_product",total_cost_Of_product );
+	obj.put("Varieties_of_pulses",pulsesobj);
+	
+}
+
+
+for(int i=0;i<varieties;i++)
+{
+	System.out.println("Enter Rice Name");
+	Name=u.inputString();
+	riceobj.put("Name"+i, Name);
+	System.out.println("Enter Weight");
+	Weight=u.longInput();
+	riceobj.put("Weight"+i,Weight);
+	System.out.println();
+	System.out.println("Enter price per kg");
+	price_per_kg=u.longInput();
+	riceobj.put("price_per_kg"+i,price_per_kg);
+	cost_of_item= Weight*price_per_kg;
+	riceobj.put(" cost of "+Name+ "variety", cost_of_item);
+	total_cost_Of_product2+=cost_of_item;
+	/*inventory_cost=total_cost_Of_product;*/
+	//riceobj.put("total_cost_Of_product" ,total_cost_Of_product );
+	obj.put("Varieties_of_rices",riceobj);
+	overall_cost =total_cost_Of_product+total_cost_Of_product1 +total_cost_Of_product2;
+}
+System.out.println("Inventory cost is\t" +overall_cost);
+
+try {
+	FileWriter file=new FileWriter("/home/bridgeit/Desktop/Files Folder/abc.json");
+	{
+		file.write(obj.toJSONString());
+		file.flush();
+		file.close();
+	}
+	System.out.println("Successfully Copied JSON Object to File...");
+	System.out.println("\nJSON Object: " + obj);
+}
+	catch (IOException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}		
+}
+public void createUser()
+{
+	Utility util=new Utility();
+	System.out.println("Enter the name of user");
+	String name=util.inputString();
+}
+public void buyShare() throws IOException
+{
+	Utility util=new Utility();
+	System.out.println("Enter the number of share you want to buy");
+	int number_of_share=util.inputInteger();
+}
 }
 
    
