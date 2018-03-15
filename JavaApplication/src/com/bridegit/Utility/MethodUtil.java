@@ -1,4 +1,4 @@
-package com.bridegit.Utility;
+/*package com.bridegit.Utility;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileWriter;
@@ -110,17 +110,17 @@ public class MethodUtil {
 		 }
 
 		
-		/*
+		
 		 * functional programs
 		 * 
-		 */
+		 
 		
-		/**
+		*//**
 		    * Function to replace the <<UserName>> with proper name
 		    * 
 		    * @param sample the sample is used to store the predefined String
 		    * @param name the name is used to print the String with proper name
-		    */
+		    *//*
 		public static void displayName(String username)
 		{
 			String sample = "Hello <<UserName>>, How are you?";
@@ -128,13 +128,13 @@ public class MethodUtil {
 			System.out.println(name);
 		}
 		
-		/**
+		*//**
 		 *Function Prints the percentage of Heads and Tails
 		 * 
 		 * @param noofHeads to count the number of Heads
 		 * @param percentageofHeads to store the percentage of Heads
 		 * @param percentageofTails to store the percentage of Tails 
-		 */
+		 *//*
 		
 		public static void percentageofHeadsAndTails(int times) 
 		{
@@ -156,12 +156,12 @@ public class MethodUtil {
 			System.out.println("The percentage of heads : "+percentageofHeads);
 			System.out.println("The percentage of Tails : "+percentageofTails);
 		}
-		/**
+		*//**
 		 * function determines the entered year is a leap year or not
 		 * and printing the result according to it
 		 * 
 		 *@param year the year is entered by the user to check if it is leap year or not
-		 */
+		 *//*
 		public static void checkLeapYear(int year) 
 		{
 			if(year%100==0) 
@@ -190,13 +190,13 @@ public class MethodUtil {
 		}
 		
 		
-		/**
+		*//**
 		 * function taking n as a input and prints a table of the powers of 2  
 		 * that are less than or equal to 2^n.
 		 * 
 		 * @param result the result holds the value of each row of a 
 		 * table
-		 */
+		 *//*
 		public static void Table(int n)
 		{
 			for(int i=0;i<=n;i++)
@@ -206,11 +206,11 @@ public class MethodUtil {
 			}
 		}
 		
-		/**
+		*//**
 		 * function print the Nth harmonic value
 		 * 
 		 * @param total the total holds harmonic value
-		 */
+		 *//*
 		public static void harmonicValue(int N) 
 		{
 			double total=0.0;
@@ -223,12 +223,12 @@ public class MethodUtil {
 		}
 		
 		
-		/**
+		*//**
 		 *checking the provided number is prime or not 
 		 * 
 		 * @param number to check whether it is prime or not
 		 * @return the number if the number is prime else -1
-		 */
+		 *//*
 		public static int findPrime(int number) 
 		{
 			for(int i=2;i<number;i++) 
@@ -240,7 +240,7 @@ public class MethodUtil {
 			}
 			return number;
 		}
-		/**
+		*//**
 		 * the outcome function checks whether the gambler
 		 * is reaching his goal or going broke after playing n times
 		 * and based on the result printing the percentage of win 
@@ -249,7 +249,7 @@ public class MethodUtil {
 		 * @param win the win to count the number of wins
 		 * @param Stake the stake means the cash the gambler is using per round
 		 * 
-		 */
+		 *//*
 		public static void outcome(int stake,int goal,int noofTimes) 
 		{
 			float win = 0;
@@ -298,13 +298,13 @@ public class MethodUtil {
 			
 		}
 		
-		/**
+		*//**
 		 *function generates the distinct coupon numbers using the random 
 		 *function of Math class.
 		 *
 		 *@param count to keep the count of distinct coupon numbers
 		 *@param randomNumber to keep the count of generated random numbers
-		 */
+		 *//*
 		public static void couponGenerator(int distinctcoupons,int[] coupons) 
 		{
 			int count = 0;
@@ -347,10 +347,10 @@ public class MethodUtil {
 		}
 
 
-		/**
+		*//**
 		 * function prints the two dimensional array using PrintWriter class 
 		 * 
-		 */
+		 *//*
 		public static <E> void printTwoDimensionalArray(E[][] object) 
 		{
 			for(int i=0;i<object.length;i++)
@@ -365,11 +365,11 @@ public class MethodUtil {
 			}
 		}
 		
-		/**
+		*//**
 		 * function prints the distinct triplets that exactly sum to 0
 		 * 
 		 * @param distinctTriplets the distinctTriplets counts the number of distinct triplets
-		 */
+		 *//*
 		public static void sumEqualToZero(int[] number)
 		{
 			int distinctTriplets = 0;
@@ -390,13 +390,13 @@ public class MethodUtil {
 			System.out.println("Number of distinct Triplets : "+distinctTriplets);	
 		}
 		
-		/**
+		*//**
 		 * function prints the eculidean distance from (x,y) to (0,0)
 		 * 
 		 * @param xRaiseToX to store the x raise to x value
 		 * @param yRaiseToY to store the y raise to y value
 		 * @param sum to store the sum of x^x and y^y
-		 */
+		 *//*
 		public static void euclideanDistance(int x,int y) 
 		{
 			//finding the power of x and y
@@ -411,11 +411,11 @@ public class MethodUtil {
 			System.out.print("The euclidean distance from the point ("+x+","+y+") to the origin (0, 0) : "+euclideanDistance);
 		}
 		
-		/**
+		*//**
 		 * function acts as a stop watch when user press 1 the stop watch starts 
 		 * and when user press 2 the stop watch stops.
 		 * at the end the elapsed time is calculated and printed to the console.
-		 */
+		 *//*
 		public static void watch() 
 		{
 			long startTime=0l;
@@ -455,14 +455,14 @@ public class MethodUtil {
 
 		}
 		
-		/**
+		*//**
 		 * function finds the roots of the quadratic equation 
 		 * using general formula and prints the two roots in 
 		 * the console
 		 * 
 		 * @param root1 is the first root of the quadratic equation
 		 * @param root2 is the second root of the quadratic equation
-		 */
+		 *//*
 		public static void roots(int a,int b,int c) 
 		{
 			
@@ -474,12 +474,12 @@ public class MethodUtil {
 			System.out.println("root2 of x = "+root2);
 		}
 		
-		/**
+		*//**
 		 *function calculates the wind chill using general formula and later print it.
 		 *
 		 * @param windchill the windchill holds the result of mathematical operation
 		 * 
-		 */
+		 *//*
 		public static void windChillCalculator(double t,double v) 
 		{
 			double windchill = 0.0;
@@ -520,12 +520,12 @@ public class MethodUtil {
 		
 		
 		//////////////////////////
-		/*
+		
 		 * algorithm programs
 		 * 
-		 */
+		 
 		
-		/**
+		*//**
 		 * function ensure that the two strings are anagram 
 		 * or not and print the result according to it.
 		 * 
@@ -533,7 +533,7 @@ public class MethodUtil {
 		 * @param array3 is initially an empty char array
 		 * @param word3 is the string conversion of character array
 		 * 
-		 */
+		 *//*
 		public static void checkAnagram(String word1,String word2) 
 		{
 			
@@ -563,10 +563,10 @@ public class MethodUtil {
 			}
 		}
 		
-		/**
+		*//**
 		 * sorts the character array using bubble sort algorithm
 		 * 
-		 */
+		 *//*
 		
 		public static void bubbleSorting(char[] arr,int n) 
 		{
@@ -585,12 +585,12 @@ public class MethodUtil {
 			}
 		}
 		
-		/**
+		*//**
 		 * function find the prime number is palindrome or not 
 		 *  
 		 *@return true if the prime number is palindrome else return 
 		 *false 
-		 */
+		 *//*
 				public static boolean primePalindromeFinder(int primeNumber) 
 				{
 					String temp = "";
@@ -609,11 +609,11 @@ public class MethodUtil {
 					}	
 					return false;
 				}
-				/**
+				*//**
 				 *function find the prime number is anagram or not
 				 *
 				 *@return true if anagram else return false 
-				 */
+				 *//*
 				
 				public static boolean primeAnagramFinder(int num1,int num2) 
 				{
@@ -643,9 +643,9 @@ public class MethodUtil {
 					}
 					return false;
 				}
-		/**
+		*//**
 		 * function performs the binary search operation on integer array
-		 */
+		 *//*
 				public static int binarySearch(int[] sort, int n,int fe) 
 				{
 					int start = 0;
@@ -668,7 +668,7 @@ public class MethodUtil {
 					}
 					return -1;
 				}
-		/**
+		*//**
 		 * function performs the binary search operation on string array	
 		 * 
 		 * @param sort sorted array provided by the user
@@ -676,7 +676,7 @@ public class MethodUtil {
 		 * @param fe the element the user want to search in the sorted array
 		 * @return the index of the element of the if it is present in the array 
 		 * 			else returns -1
-		 */
+		 *//*
 				public static int binarySearchForString(String[] sort, int n,String fe) 
 				{
 					int start = 0;
@@ -701,11 +701,11 @@ public class MethodUtil {
 				}
 
 		
-		/**
+		*//**
 		 *function sort the array based on insertion sort algorithm 
 		 * 
 		 * @param value to hold the current value of the array
-		 */
+		 *//*
 		
 		public static<E extends Comparable<E>> void insertionSorting(E[] unsorted,int n) 
 		{
@@ -728,10 +728,10 @@ public class MethodUtil {
 			System.out.println();
 		}
 		
-		/**
+		*//**
 		 * function sort the array based on bubble sort algorithm
 		 * 
-		 */
+		 *//*
 		public static<E extends Comparable<E>> void bubbleSort(E[] unsorted,int n) 
 		{
 			for(int j=0;j<n-1;j++) 
@@ -754,13 +754,13 @@ public class MethodUtil {
 			System.out.println();
 		}
 		
-		/**
+		*//**
 		 * function mergeSort merge the two unsorted array into a third array
 		 * 
 		 * @param i holds the index of left array
 		 * @param j holds the index of right array
 		 * @param k holds the index of third/merged array 
-		 */
+		 *//*
 		public static void mergeSort(String[] left,String[] right,int lsize,int rsize,String[] array) 
 		{
 			int i=0,j=0,k=0;
@@ -795,7 +795,7 @@ public class MethodUtil {
 		}
 		//dividing the array into two equal halves 
 		//and inserting values in them 
-		/**
+		*//**
 		 * the function divides the array into two equal halves
 		 * and insert values into them and recursively calls itself 
 		 * until the array has only one element.
@@ -803,7 +803,7 @@ public class MethodUtil {
 		 * @param lsize to find the left array size
 		 * @param rsize to find the right array size
 		 * @param n
-		 */
+		 *//*
 		public static void divideMerge(String[] array ,int n) 
 		{
 			String[] left;String[] right;
@@ -834,13 +834,13 @@ public class MethodUtil {
 		}
 		
 		
-		/**
+		*//**
 		 * the function prints the fewest notes as well as the 
 		 * minimum number of notes as a change.
 		 * 
 		 * @param size the size is counted to define the change array.
 		 * @param numberofNotes the numberofNotes is to keep the count of minimum number of notes
-		 */
+		 *//*
 		public static void numberofNotes(int amount,int[] notes) 
 		{
 			int size = 0;
@@ -887,12 +887,12 @@ public class MethodUtil {
 					System.out.println("minimum number of notes : "+numberofNotes);
 		}
 		
-		/**
+		*//**
 		 *function takes the day as input and print the day of the week that it
 		 *falls on
 		 * @return 
 		 *
-		 */
+		 *//*
 		public static int dayOfWeek(int month,int day,int year) 
 		{
 			int y0 = year-((14-month)/12);
@@ -905,14 +905,14 @@ public class MethodUtil {
 			
 		}
 		
-		/**
+		*//**
 		 * function convert the celsius to fahrenheit and vice versa conversion
 		 * and print the desired result in the console
 		 * 
 		 * @param a used to hold double value
 		 * @param b used to hold double value
 		 * 
-		 */
+		 *//*
 		public static void temperatureConversion(double temp,String tempType) 
 		{
 			double a = 5;
@@ -929,13 +929,13 @@ public class MethodUtil {
 				System.out.println("temperature in Celsius :"+ctemp);
 			}
 		}
-		/**
+		*//**
 		 *function takes P R Y as a input,calculates and print the payment
 		 *you would have to make over Y years to pay off a Principal 
 		 *loan amount at R per cent interest compounded monthly
 		 *
 		 *@param payment to make after each month over Y years
-		 */
+		 *//*
 
 		public static void monthlyPayment(double principal,double rateofInterest,int noofYears) 
 		{
@@ -952,13 +952,13 @@ public class MethodUtil {
 				
 		}
 		
-		/**
+		*//**
 		 * function sqrt is used compute the square root of a 
 		 * nonnegative number c given in the input using Newton's method
 		 * and print the square root in the console.
 		 * 
 		 * @param epsilon is constant value;
-		 */
+		 *//*
 		public static void sqrt(int number) 
 		{
 		
@@ -972,11 +972,11 @@ public class MethodUtil {
 			System.out.println("square root of "+c+" : "+t);
 			
 		}
-		/**
+		*//**
 		 *function convert a decimal number into a 
 		 *binary number and print it to the console
 		 * 
-		 */
+		 *//*
 		
 		public static void toBinary(int number) 
 		{
@@ -998,11 +998,11 @@ public class MethodUtil {
 			}
 		}
 		
-		/**
+		*//**
 		 *function convert the decimal number into 
 		 *binary number 
 		 * 
-		 */
+		 *//*
 		
 		//16 decimal to binary then nibble swapping then binary to decimal and then power of 2
 			public static void binaryConversion(int number) 
@@ -1025,10 +1025,10 @@ public class MethodUtil {
 				}
 				nibbleSwapping(binary);
 			}
-			/**
+			*//**
 			 * function swaps the nibble of a binary number
 			 * @param binary the binary number to swap the nibble
-			 */
+			 *//*
 			public static void nibbleSwapping(int[] binary) 
 			{
 				String temp="";
@@ -1058,22 +1058,22 @@ public class MethodUtil {
 				
 				//System.out.println(afterNibbleSwapping);
 				
-				/*for(int i=0;i<temp3.length();i++) 
+				for(int i=0;i<temp3.length();i++) 
 				{
 					if(temp3.charAt(i)!='5') 
 					{
 						System.out.print(temp3.charAt(i));
 					}
-				}*/
+				}
 				//converting swapped nibble to decimal and finding it is power of 2 or not
 				powerofTwo(temp2);
 			}
-			/**
+			*//**
 			 * function checks that the decimal number provided by the user 
 			 * is the power of 2 or not.
 			 * 
 			 * @param number decimal number in terms of String provided by user
-			 */
+			 *//*
 			public static void powerofTwo(String number) 
 			{
 				int[] binaryNumber = new int[number.length()];
@@ -1081,10 +1081,10 @@ public class MethodUtil {
 				{
 					binaryNumber[i]=Character.getNumericValue(number.charAt(i));
 				}
-				/*for(int ele:binaryNumber) 
+				for(int ele:binaryNumber) 
 				{
 					System.out.print(ele+" ");
-				}*/
+				}
 				
 				int j=0;
 				int total=0;
@@ -1105,17 +1105,17 @@ public class MethodUtil {
 			}
 
 		
-		/*
+		
 		 * Data structure
 		 * 
-		 */
+		 
 			
-		/***************   QUEUE  ****************************/
+		*//***************   QUEUE  ****************************//*
 			
-		/**
+		*//**
 		 * function deposit return the balance of current customer
 		 * after performing the deposit operation
-		 */
+		 *//*
 		double balance;
 		public double deposit(Customer[] customer,double amount,int index) 
 		{
@@ -1124,11 +1124,11 @@ public class MethodUtil {
 			return customer[index].getmInitialBalance();
 		}
 
-		/**
+		*//**
 		 * function withdraw return the balance of current customer
 		 * after performing the withdraw operation and it also check 
 		 * the condition of minimum balance
-		 */
+		 *//*
 		public double withdraw (CashCounterQueue[] cashcounter,double amount,int index) 
 		{
 			if(cashcounter[index].geti()>=amount)
@@ -1143,22 +1143,22 @@ public class MethodUtil {
 			}
 		}
 
-		/**
+		*//**
 		 * function checkBalance return the current balance of 
 		 * current customer
 		 * 
-		 */
+		 *//*
 		public double checkBalance(Customer[] customer,int index) 
 		{
 			return customer[index].getmInitialBalance();
 		}
 
-		/*********** STACK **********************************/
-		/**
+		*//*********** STACK **********************************//*
+		*//**
 		 * function convert a string into char array
 		 * @param input string provided by user
 		 * @return char array
-		 */
+		 *//*
 		public static char[] intoCharArray(String input) 
 		{
 			char[] output = input.toCharArray();
@@ -1167,7 +1167,7 @@ public class MethodUtil {
 		}
 		
 		
-		/**function call the push and pop methods based on the character 
+		*//**function call the push and pop methods based on the character 
 		 * retrieved from the array
 		 * 
 		 * @param stack the stack is the data structure used to store a data
@@ -1175,7 +1175,7 @@ public class MethodUtil {
 		 * @param expression char passed by the user
 		 * @return the pointer to the stack
 		 * 
-		 */
+		 *//*
 		public static int stackOperation(char[] stack,int top, char[] expression) 
 		{
 			
@@ -1202,35 +1202,35 @@ public class MethodUtil {
 			return top;
 		}
 		
-		/**
+		*//**
 		 * function insert an element into the stack
 		 * @param stack the stack is the data structure used to store a data
 		 * @param expression char passed by the user 
 		 * @param top points to the stacks index
-		 */
+		 *//*
 		public static void push(char[] stack,char expression , int top) 
 		{
 			stack[top]=expression;
 		}
-		/**
+		*//**
 		 * function removes an element from the stack
 		 * @param stack the stack is the data structure used to store a data
 		 * @param expression char passed by the user
 		 * @param top points to the stacks index
-		 */
+		 *//*
 		public static void pop(char[] stack,char expression,int top) 
 		{
 			stack[top]=expression;
 		}
 		
 		
-		/***************** Calendar ***********************************/
+		*//***************** Calendar ***********************************//*
 		
-		/**
+		*//**
 		 * function check whether the year is a leap year or not
 		 * @param year the year represent the 4 digit value
 		 * @return true if the year is leap else false
-		 */
+		 *//*
 		public static boolean yearType(int year) 
 		{
 			if(year%400==0 || year%4==0) 
@@ -1239,35 +1239,35 @@ public class MethodUtil {
 			}
 			return false;
 		}
-		/**
+		*//**
 		 * function returns the number of days in a month
 		 * @param month the month ranges from 1 to 12 
 		 * @return the days present in a month
-		 */
+		 *//*
 		public static int leapYear(int month) 
 		{
 			int[] daysofMonth = {31,29,31,30,31,30,31,31,30,31,30,31};
 			
 			return daysofMonth[month-1];
 		}
-		/**
+		*//**
 		 * function returns the number of days in a month
 		 * @param month the month ranges from 1 to 12 
 		 * @return the days present in a month
-		 */
+		 *//*
 		public static int normalYear(int month) 
 		{
 			int[] daysofMonth = {31,28,31,30,31,30,31,31,30,31,30,31};
 			
 			return daysofMonth[month-1];
 		}
-		/**
+		*//**
 		 * the function prints the calendar in the form of two dimensional array
 		 * @param startDay the first day of the month
 		 * @param numberofDays  number of days in a month 
 		 * @param year entered by the user
 		 * @param month entered by the user
-		 */
+		 *//*
 		public static void calendar(int startDay,int numberofDays,int year,int month) 
 		{	
 			int[][] calendar = new int[6][7];
@@ -1329,7 +1329,7 @@ public class MethodUtil {
 		
 		
 		
-		/**
+		*//**
 		 * function traverse the string from left to right and 
 		 * stores the character in the Deque from rear.later it 
 		 * traverse the Deque from front and forms a string.
@@ -1340,7 +1340,7 @@ public class MethodUtil {
 		 * 
 		 * @param name input string entered by user.
 		 * @return true if the string is palindrome else false.
-		 */
+		 *//*
 		public static boolean palindromeChecker(String name) 
 		{
 			
@@ -1369,11 +1369,11 @@ public class MethodUtil {
 		}
 		
 		
-		/**
+		*//**
 		 * function counts the columns of int jagged array
 		 * 
 		 * @param name of the two dimensional array
-		 */
+		 *//*
 		public static void columnCountof2DArray(int[][] name) 
 		{
 			int j = 0; 
@@ -1402,11 +1402,11 @@ public class MethodUtil {
 			}
 		}
 		
-		/**
+		*//**
 		 * function stores the prime numbers into 2D int array
 		 * 
 		 * @param name of the two dimensional array
-		 */
+		 *//*
 		public static void storePrimes(int[][] name) 
 		{
 			int k = 0;
@@ -1433,12 +1433,12 @@ public class MethodUtil {
 			}
 		}
 		
-		/**
+		*//**
 		 * function print the Two Dimensional int jagged array
 		 * 
 		 * @param name of the 2D int array
 		 * @param length of the 2D int array
-		 */
+		 *//*
 		public static void jaggedArrayPrint(int[][] name, int length) 
 		{
 			for(int q=0;q<name.length;q++) 
@@ -1465,14 +1465,14 @@ public class MethodUtil {
 		
 		
 		
-		/**
+		*//**
 		 * the function reads the contents of file and add it to the customized 
 		 * linked list by using the byte reader classes.
 		 * 
 		 * 
 		 * @param path the directory where the file is present for reading
 		 * @param list linked list containing words
-		 */
+		 *//*
 		public static <T> void fileReading(String path, MyLinkedList<T> list) 
 		{
 			String empty = "";
@@ -1514,12 +1514,12 @@ public class MethodUtil {
 		}
 		
 		
-		/**
+		*//**
 		 * the function writes the data part of linked list into the file
 		 * 
 		 * @param path the directory where the file is present for writing
 		 * @param words linked list containing words
-		 */
+		 *//*
 		public static <T> void fileWriting(String path, MyLinkedList<String> words)
 		{
 			try
@@ -1540,12 +1540,12 @@ public class MethodUtil {
 			}
 		}
 		
-		/**
+		*//**
 		 * the function finds the factorial of a number
 		 * 
 		 * @param number to find the factorial
 		 * @return the value of factorial in double
-		 */
+		 *//*
 		public static double factorial(double number)
 		{
 			double fact = 1;
@@ -1557,12 +1557,12 @@ public class MethodUtil {
 			return fact;
 		}
 		
-		/**
+		*//**
 		 * the function return the number of binary search trees that can be constructed 
 		 * based on the number of nodes 
 		 * @param nodes used to construct the binary search trees
 		 * @return the count of binary search trees
-		 */
+		 *//*
 		public static double binarySearchTrees(double nodes) 
 		{
 			double firstTerm = (2*nodes);
@@ -1574,13 +1574,13 @@ public class MethodUtil {
 			return numberofBinarySearchTress;
 		}
 		
-		/**
+		*//**
 		 * the function prints the calendar using queue.
 		 * @param startDay the first day of the month
 		 * @param numberofDays  number of days in a month 
 		 * @param year entered by the user
 		 * @param month entered by the user
-		 */
+		 *//*
 		public static void calendarPrintUsingQueue(int startDay,int numberofDays,int year,int month) 
 		{	
 			MyQueue<Integer> calendar = new MyQueue<Integer>();
@@ -1641,7 +1641,7 @@ public class MethodUtil {
 		
 		
 		
-		/**
+		*//**
 		 * the function prints the calendar using the stack.
 		 * 
 		 * @param startDay the first day of the month
@@ -1649,7 +1649,7 @@ public class MethodUtil {
 		 * @param year entered by the user
 		 * @param month entered by the user
 		 * 
-		 */
+		 *//*
 		public static void calendarPrintUsingStack(int startDay,int numberofDays,int year,int month) 
 		{	
 			MyStack<Integer> calendar = new MyStack<Integer>();
@@ -1717,3 +1717,4 @@ public class MethodUtil {
 	}
 	
 
+*/

@@ -7,11 +7,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.bridgeit.DataStructurePrograms.CashCounterQueue;
+
 
 /*
  * @param to find <<username>> and replace it with the user input name
@@ -997,20 +999,20 @@ public static String[] readFile(String filepath)
 
 
 
-//take input word
+/*//take input word
 	public String inputString(){
 		BufferedReader br;
 		try{
-			br=new BufferedReader(in)
+			br=new BufferedReader(System.in);
 			return br.readLine();
 		}
 		catch(IOException ioe){
 			System.out.println(ioe.getMessage());
 		}
 		return "";
-	}
+	}*/
 	
-
+/*
 		//Take Double Input
 		public double inputDouble(){
 			try{
@@ -1024,7 +1026,7 @@ public static String[] readFile(String filepath)
 				System.out.println(ioe.getMessage());
 			}
 			return 0.0;
-		}
+		}*/
 
 
 public static int binarySearch(int []arr,int l, int r, int value)
@@ -1184,7 +1186,7 @@ public int updateDeposit(int deposit_amount,int initialbal)
 	
 	
 }
-public void continueToProcess()
+/*public void continueToProcess()
 {
 	MethodUtil util=new MethodUtil();
 	int choice;
@@ -1211,18 +1213,168 @@ public void continueToProcess()
 		}
 	}while(choice<5);
 	
-}
+}*/
 public void DeckOfCards(String [] Rank,String [] suits)
 {
-	int number=Rank.length* suits.length;
-	String [] deckOfCards=new String[number];	
-	
-for(int i=0;i<Rank.length;i++) 
-{
-	for(int j=0;i<suits.length;j++)
+	String [] array=new String [52];
+	for(int i=0;i<array.length;i++)
+	{
+		String quo=suits[i/13];
 		
+		String rem=Rank[i%13];
+	 array[i] = quo+rem;
+	//	System.out.print(array[i]+" ");
+	}	
+	System.out.println();
+	Random r=new Random();
+	
+	int length=array.length;
+	//System.out.print(length + " length of ARRAY");
+	for(int i=0;i<array.length;i++)
+	{
+		int index=r.nextInt(52);
+		//System.out.print(index+ " ");
+		
+		String temp=array[i];
+		array[i]=array[index];
+		array[index]=temp;
+	}
+	for(String u : array)
+	{
+		System.out.println(u);
+		//System.out.println("\n");
+	}
+	System.out.println();
+
+
+	String [] []str=new String [suits.length][9];
+	for (int i = 0; i < 4; i++) 
+	{
+		System.out.print("Player"+(i+1)+ "\t");
+		//System.out.println();
+		
+		for (int j = 0; j <9 ; j++) 
+		{
+			
+			str[i][j]=array[i+j*4];
+			System.out.print("       " +str[i][j]+ "        ");
+			
+		}
+		
+		System.out.println();
+	}
 }
+public <T> void DeckOfCardsInQueue(String [] Rank,String [] suits)
+{
+	Queue<T> deckofcard=new Queue<>();
+	String [] array=new String [52];
+	for(int i=0;i<array.length;i++)
+	{
+		String quo=suits[i/13];
+		
+		String rem=Rank[i%13];
+	 array[i] = quo+rem;
+	//	System.out.print(array[i]+" ");
+	}	
+	System.out.println();
+	Random r=new Random();
+	
+	int length=array.length;
+	//System.out.print(length + " length of ARRAY");
+	for(int i=0;i<array.length;i++)
+	{
+		int index=r.nextInt(52);
+		//System.out.print(index+ " ");
+		
+		String temp=array[i];
+		array[i]=array[index];
+		array[index]=temp;
+	}
+	for(String u : array)
+	{
+		System.out.println(u);
+		//System.out.println("\n");
+	}
+	System.out.println();
+
+
+	String [] []str=new String [suits.length][9];
+	for (int i = 0; i < 4; i++) 
+	{
+		System.out.print("Player"+(i+1)+ "\t");
+		//System.out.println();
+		
+		for (int j = 0; j <9 ; j++) 
+		{
+			
+			str[i][j]=array[i+j*4];
+			deckofcard.insert((T) str[i][j]);
+			//System.out.print("       " +str[i][j]+ "        ");
+			
+		}
+		
+		System.out.println();
+	}
 }
+class Node<T>{
+	public T data;
+	public Node  next;
+	public Node(T val)
+	{
+		data=val;
+	}
+}
+class Queue <T>{
+	public Node First;
+	public Node Last;
+	public int currentsize=0;
+	public Queue()
+	{
+		First=null;
+		Last=null;
+	}
+	public void insert(T val)
+	{
+		Node<T> newnode=new Node<T>(val);
+		newnode.data=val;
+		newnode.next=null;
+		if(isEmpty())
+		{
+			First=newnode;
+			currentsize++;
+			System.out.println(val);
+		}
+		else
+			Last.next=newnode;
+			newnode.next=(Node) Last;
+			currentsize++;
+			System.out.println(val);
+	}
+	public boolean isEmpty() {
+		// TODO Auto-generated method stub
+		if(First==null && Last==null)
+		{
+		return true;
+		}
+		return false;
+	}
+	public void display()
+	{
+	
+		 Node temp=First;
+		while(temp!=null)
+		{
+			temp=temp.next;
+		
+			
+		}
+	}
+}
+
+
+		
+	
+
 }
 
    

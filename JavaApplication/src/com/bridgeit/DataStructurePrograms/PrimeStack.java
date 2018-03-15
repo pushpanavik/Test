@@ -1,4 +1,4 @@
-package com.bridgeit.DataStructurePrograms;
+/*package com.bridgeit.DataStructurePrograms;
 
 import java.util.*;
 
@@ -148,4 +148,4 @@ class PrimeStack
     //QO.displayStack();
 
   }
-}
+}*/

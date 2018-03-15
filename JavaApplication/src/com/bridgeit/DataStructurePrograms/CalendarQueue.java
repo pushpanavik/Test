@@ -18,7 +18,7 @@ class Queue
 	int NumberOfDays;
   boolean leap;
 
-	class Node
+	public class Node
 	{
 		int data;
 		Node link;

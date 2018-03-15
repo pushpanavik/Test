@@ -1,10 +1,8 @@
 package com.bridgeit.ObjectOrientedPrograms;
 
-import java.util.Random;
-
 import com.bridegit.Utility.Utility;
 
-public class DeckOfCards {
+public class DeckOfCardsInQueue {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -13,5 +11,9 @@ public class DeckOfCards {
 		Utility u=new Utility();
 		u.DeckOfCards(Rank, suits);
 		
-	}		
+	}
+	
+	
+	
+
 }

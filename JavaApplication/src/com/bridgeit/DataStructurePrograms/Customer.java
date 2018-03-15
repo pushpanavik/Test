@@ -1,4 +1,4 @@
-package com.bridgeit.DataStructurePrograms;
+/*package com.bridgeit.DataStructurePrograms;
 
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -24,7 +24,7 @@ public class Customer {
 		int number=scanner.nextInt();
 		for(int i=0;i<number;i++)
 		{		
-		/*LinkedList<String> q=new LinkedList<String>();*/
+		LinkedList<String> q=new LinkedList<String>();
 		
 		System.out.println("Enter Name");
 		name=util.inputString();
@@ -83,3 +83,4 @@ public class Customer {
 	}
 	
 }
+*/

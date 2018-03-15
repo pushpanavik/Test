@@ -2,6 +2,7 @@ package com.bridgeit.ObjectOrientedPrograms;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import org.json.simple.JSONArray;
@@ -16,16 +17,17 @@ public class StockReport {
 		Scanner scanner=new Scanner(System.in);
 		Utility util=new Utility();
 		String Name;
-		int No_share;
+		int  No_share;
 		int value_of_each_stock;
-		int total;
+		int  total;
 		int Share_price;
 		JSONObject obj=new JSONObject();
 		JSONObject allinone=new JSONObject();
 		
 		//JSONArray array=new JSONArray();
-		System.out.println("Enter how many stock report  you want to make");
+		System.out.println("Enter number of stock");
 		int report=scanner.nextInt();
+		String str[]=new String[report];
 		for (int i=0;i<report;i++)
 		{
 			System.out.println("Enter the Stock Name");
@@ -47,6 +49,11 @@ public class StockReport {
 			System.out.println();
 			value_of_each_stock=No_share*Share_price;
 			obj.put("Stock",allinone);
+			
+			for(int k=0;i<report;i++)
+			{
+				
+			}
 			 
 		}
 

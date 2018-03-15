@@ -1,4 +1,4 @@
-package com.bridgeit.Algorithm;
+/*package com.bridgeit.Algorithm;
 
 import com.bridgeit.DataStructurePrograms.CashCounterQueue;
 
@@ -12,3 +12,4 @@ q.show();
 	}
 
 }
+*/
