@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -16,8 +17,11 @@ import java.util.regex.Pattern;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 import com.bridgeit.DataStructurePrograms.CashCounterQueue;
+import com.bridgeit.ObjectOrientedPrograms.Doctor;
+import com.bridgeit.ObjectOrientedPrograms.Patient;
 
 
 /*
@@ -1453,6 +1457,264 @@ class Queue <T>{
 		}
 	}
 }
+/**
+	 * the function return the number of binary search trees that can be constructed 
+	 * based on the number of nodes 
+	 * @param nodes used to construct the binary search trees
+	 * @return the count of binary search trees
+	 */
+   public static double binarySearchTrees(double nodes) 
+	{
+		double firstTerm = (2*nodes);
+		double secondTerm = (nodes+1);
+		double thirdTerm = nodes;
+		
+		double numberofBinarySearchTress = factorial(firstTerm)/(factorial(secondTerm)*factorial(thirdTerm));
+				
+		return numberofBinarySearchTress;
+	}
+   
+   
+   
+   /*public void findDoctorByName(ArrayList<Doctor> doctorList, String dname)
+   {
+     int flag =0;
+     Iterator iter = doctorList.iterator();
+
+     while(iter.hasNext())
+     {
+       Doctor d = (Doctor)iter.next();
+       if(dname.equals(d.name))
+       {
+         flag =1;
+         System.out.println("flag!!!");
+         System.out.println("\nDoctor Found!");
+         System.out.println("Doctor ID: "+d.docId);
+         System.out.println("Doctor Name: "+d.name);
+         System.out.println("Specialization: "+d.specialization);
+         System.out.println("Availability: "+d.availability);
+
+       }
+
+     }
+     if(flag == 0)
+     {
+       System.out.println("Doctor Not Found");
+     }
+   }	*/	   
+   
+   //searches Doctor by Name and prints the details if found.
+   public void findDoctorByName(ArrayList<Doctor> doctorList, String dname)
+   {
+     int flag =0;
+     Iterator iter = doctorList.iterator();
+
+     while(iter.hasNext())
+     {
+       Doctor d = (Doctor)iter.next();
+       if(dname.equalsIgnoreCase(d.name))
+       {
+         flag =1;
+         System.out.println("flag!!!");
+         System.out.println("\nDoctor Found!");
+         System.out.println("Doctor ID: "+d.docId);
+         System.out.println("Doctor Name: "+d.name);
+         System.out.println("Specialization: "+d.specialization);
+         System.out.println("Availability: "+d.availability);
+
+       }
+
+     }
+     if(flag == 0)
+     {
+       System.out.println("Doctor Not Found");
+     }
+   }
+   
+ //Searches Doctor ArrayList using Specialization and prints the details if found
+   public void findDoctorBySpec(ArrayList<Doctor> doctorList, String spec)
+   {
+     int flag =0;
+     Iterator iter = doctorList.iterator();
+
+     while(iter.hasNext())
+     {
+       Doctor d = (Doctor)iter.next();
+       if(spec.equalsIgnoreCase(d.specialization))
+       {
+         flag =1;
+         System.out.println("\nDoctor Found!");
+         System.out.println("Doctor ID: "+d.docId);
+         System.out.println("Doctor Name: "+d.name);
+         System.out.println("Specialization: "+d.specialization);
+         System.out.println("Availability: "+d.availability);
+       }
+     }
+     if(flag == 0)
+     {
+       System.out.println("Doctor Not Found");
+     }
+   }
+	
+ //Searches Doctor ArrayList using Availability and prints the details if found
+     
+   public void findDoctorByAvaila(ArrayList<Doctor> doctorList, String availa)
+   {
+     int flag =0;
+     Iterator iter = doctorList.iterator();
+
+     while(iter.hasNext())
+     {
+       Doctor d = (Doctor)iter.next();
+       if(availa.equalsIgnoreCase(d.availability))
+       {
+         flag =1;
+         System.out.println("\nDoctor Found!");
+         System.out.println("Doctor ID: "+d.docId);
+         System.out.println("Doctor Name: "+d.name);
+         System.out.println("Specialization: "+d.specialization);
+         System.out.println("Availability: "+d.availability);
+       }
+     }
+     if(flag == 0)
+     {
+       System.out.println("Doctor Not Found");
+     }
+   }
+
+   //Searches Patient ArrayList using Patient ID and prints the details if found
+   public void findPatientByID(ArrayList<Patient> patientList, String pid)
+   {
+     int flag =0;
+     Iterator iter = patientList.iterator();
+     while(iter.hasNext())
+     {
+       Patient p = (Patient)iter.next();
+       if(pid.equalsIgnoreCase(p.patId))
+       {
+         flag =1;
+         System.out.println("\nPatient Found!");
+         System.out.println("Patient ID: "+p.patId);
+         System.out.println("Patient Name: "+p.patName);
+         System.out.println("Age: "+p.age);
+         System.out.println("Mobile Number: "+p.mobileNo);
+       }
+     }
+     if (flag ==0)
+     {
+       System.out.println("Patient Not Found");
+     }
+   }
+   
+ //Searches the Patient ArrayList using Name and prints the details if found
+   public void findPatientByName(ArrayList<Patient> patientList, String pname)
+   {
+     int flag =0;
+     Iterator iter = patientList.iterator();
+     while(iter.hasNext())
+     {
+       Patient p = (Patient)iter.next();
+       if(pname.equalsIgnoreCase(p.patName))
+       {
+         flag =1;
+         System.out.println("\nPatient Found!");
+         System.out.println("Patient ID: "+p.patId);
+         System.out.println("Patient Name: "+p.patName);
+         System.out.println("Age: "+p.age);
+         System.out.println("Mobile Number: "+p.mobileNo);
+       }
+     }
+     if (flag ==0)
+     {
+       System.out.println("Patient Not Found");
+     }
+   }
+   
+
+   //Searches Patient ArrayList using Mobile number and prints the details if found
+   public void findPatientByMobNo(ArrayList<Patient> patientList, String mobno)
+   {
+     int flag =0;
+     Iterator iter = patientList.iterator();
+     while(iter.hasNext())
+     {
+       Patient p = (Patient)iter.next();
+       if(mobno.equalsIgnoreCase(p.mobileNo))
+       {
+         flag =1;
+         System.out.println("\nPatient Found!");
+         System.out.println("Patient ID: "+p.patId);
+         System.out.println("Patient Name: "+p.patName);
+         System.out.println("Age: "+p.age);
+         System.out.println("Mobile Number: "+p.mobileNo);
+       }
+     }
+     if (flag ==0)
+     {
+       System.out.println("Patient Not Found");
+     }
+   }
+ //Prints all the available details in the Doctor ArrayList
+  public  void printDoctorRecords(ArrayList<Doctor> doctorList)
+   {
+	 /* DoctorObject.put("Doctor", jsonarray);*/
+     Iterator iter = doctorList.iterator();
+
+     while(iter.hasNext())
+     {
+       Doctor d = (Doctor)iter.next();
+
+       System.out.println("\nDoctor ID: "+d.docId);
+       System.out.println("Doctor Name: "+d.name);
+       System.out.println("Specialization: "+d.specialization);
+       System.out.println("Availability: "+d.availability);
+       System.out.println("");
+
+     } 
+   }
+  
+//Prints all the available details in the Patient ArrayList
+   public void printPatientRecords( ArrayList<Patient> p) 
+   {
+ 	 
+     Iterator iter = p.iterator();
+     while(iter.hasNext())
+     {
+       Patient pat = (Patient)iter.next();
+       System.out.println("\nPatient ID: "+pat.patId);
+       System.out.println("Patient Name: "+pat.patName);
+       System.out.println("Age: "+pat.age);
+       System.out.println("Mobile Number: "+pat.mobileNo);
+       System.out.println("");
+     }
+
+   }
+   
+   //Searches Doctor ArrayList using Doctor ID and prints the details if found
+   public void findDoctorByID(ArrayList<Doctor> doctorList, String did)
+   {
+     int flag =0;
+     Iterator iter = doctorList.iterator();
+     while(iter.hasNext())
+     {
+       Doctor d = (Doctor)iter.next();
+       if(did.equals(d.docId))
+       {
+         flag =1;
+         System.out.println("\nDoctor Found!");
+         System.out.println("Doctor ID: "+d.docId);
+         System.out.println("Doctor Name: "+d.name);
+         System.out.println("Specialization: "+d.specialization);
+         System.out.println("Availability: "+d.availability);
+       }
+     }
+     if (flag ==0)
+     {
+       System.out.println("Doctor Not Found");
+     }
+   }
+
+ 	
 public void inventorymanage(int varieties)
 {
 	Utility u=new Utility();
@@ -1550,19 +1812,39 @@ try {
 	e.printStackTrace();
 }		
 }
-public void createUser()
+/**
+	 * the function finds the factorial of a number
+	 * 
+	 * @param number to find the factorial
+	 * @return the value of factorial in double
+	 */
+   public static double factorial(double number)
+	{
+		double fact = 1;
+		while(number>0)
+		{
+			fact=fact*number;
+			number--;
+		}
+		return fact;
+	}
+public String readJSonFile()
 {
-	Utility util=new Utility();
-	System.out.println("Enter the name of user");
-	String name=util.inputString();
+	try
+	{
+		String file="";
+		JSONParser parser=new JSONParser();
+		Object obj=parser.parse(new FileReader(file));
+		
+	}
+	catch(Exception e)
+	{
+		e.printStackTrace();
+	}
+	return null;
 }
-public void buyShare() throws IOException
-{
-	Utility util=new Utility();
-	System.out.println("Enter the number of share you want to buy");
-	int number_of_share=util.inputInteger();
 }
-}
+
 
    
    
