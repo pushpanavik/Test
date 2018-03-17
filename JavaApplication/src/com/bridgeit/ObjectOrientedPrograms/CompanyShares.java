@@ -1,7 +1,10 @@
 package com.bridgeit.ObjectOrientedPrograms;
 
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.LinkedList;
+
 
 import com.bridegit.Utility.Utility;
 
@@ -13,7 +16,8 @@ public class CompanyShares {
 	
 	public static void main(String[] args) {
 
-		LinkedList list = new LinkedList();
+		LinkedList list=new LinkedList();
+		
 		Utility utility = new Utility();
 		System.out.println();
 		System.out.println("********* Company Shares ********");
@@ -24,19 +28,21 @@ public class CompanyShares {
 			System.out.println("2. remove the shares");
 			System.out.println("3. Display the shares");
 			System.out.println("4. total shares");
+			
 			System.out.println("5. Exit");
 			int choice = utility.inputInteger();          
 			switch (choice)
 			{
 			case 1 : 
 				System.out.println("Enter element to insert");
-				list.insertbegin(utility.inputInteger());
+				list.add(utility.inputInteger());
+				list.add(DateFormat.getDateTimeInstance().format(new Date(0)));
 				break;      
 
 			case 2 : 
 				System.out.println("Enter position");
 				int position =utility.inputInteger();
-				list.deletenode(position);
+				list.delete(position);
 				System.out.println("remove successfuly");
 				break;
 				

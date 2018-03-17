@@ -1,6 +1,4 @@
 package com.bridgeit.ObjectOrientedPrograms;
-
-
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -23,9 +21,6 @@ import com.bridegit.Utility.Utility;
  * @author PUSHPA
  */
 public class CliniqueManagent {
-
-
-
    public static void main(String args[]) throws ParseException, org.json.simple.parser.ParseException
   {
 	   JSONObject DoctorObject=new JSONObject();
@@ -41,16 +36,7 @@ public class CliniqueManagent {
     int age,choice,searchChoice,flag=0,flag1=0;
     Date date;
 
-    //Creating objects of Doctor class
-   /* Doctor Pushpa = new Doctor();
-    Doctor Poonam = new Doctor();
-    Doctor Madhuri = new Doctor();
-    Doctor Usha = new Doctor();*/
-
-    //Creating objects of Patient class
-    /*Patient p1 = new Patient();
-    Patient p2 = new Patient();
-    Patient p3=new Patient();*/
+    
 
     //Creating an object of ClinicManagement class
     CliniqueManagent CM = new CliniqueManagent();
@@ -62,19 +48,7 @@ public class CliniqueManagent {
     ArrayList<Doctor> doctorList = new ArrayList<Doctor>();
     ArrayList<Patient> patientList = new ArrayList<Patient>();
 
-    //Adding the created objects of Doctor class to the Doctor ArrayList
-   /* doctorList.add(Pushpa);
-    doctorList.add(Poonam);
-    doctorList.add(Madhuri);
-    doctorList.add(Usha);*/
-
-    //Adding the created objects of Patient class to the Patient ArrayList
-    /*patientList.add(p1);
-    patientList.add(p2);
-    patientList.add(p3);*/
-
-    //do..while(); to get the create the user driven menu
-   /* {"Doctor":["Doctor IDD101","Doctor NamePUSHPA","Specializationcardiologist","Availabilitymonday","Timing7-9pm","Doctor IDD102","Doctor NameSALMA","SpecializationENT","Availabilitywednesday","Timing5-7pm"]}*/
+    
     
     do {
       System.out.println("\n--------------------\nEnter your choice\n1:Add Doctor+ \n2:Add Patient"
@@ -126,8 +100,8 @@ public class CliniqueManagent {
         doc = new Doctor(id,name,spec,availa,timing); //passing value in the object from constructor
         doctorList.add(doc);
         DoctorObject.put("Doctor", jsonarray);
-      /*  array.add(DoctorObject);*/
-       // object2.put("Existing Record Of Doctors", Doctor);
+        arrayobj.
+     
         
         filewriter.write(DoctorObject.toJSONString());
         filewriter.flush();
@@ -175,18 +149,18 @@ public class CliniqueManagent {
         break;
 
         case 3:
-        	util.printDoctorRecords(doctorList);    //Prints all the details of Doctor available in
+        	util.printDoctorRecords();    //Prints all the details of Doctor available in
         break;
 
         case 4:
         	
-        util.printPatientRecords(patientList);        //Prints all the details of Patient available in
+        util.printPatientRecords();        //Prints all the details of Patient available in
         break;
 
         case 5:                                     //Searches Doctor by ID, Name, Availability and Specialization
         do {
           System.out.println("\n------------\nSearch Doctor\n1:By Name \n2:By ID \n"
-          +"3:By Specialization\n4:By Availability\n5: By Timing");
+          +"3:By Specialization\n4:By Availability\n5: By Timing\n6. Exit");
           searchChoice = scan.nextInt();
           switch(searchChoice)
           {

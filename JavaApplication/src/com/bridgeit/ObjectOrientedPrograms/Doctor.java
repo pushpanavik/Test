@@ -29,12 +29,43 @@ public String availability;
     availability = availa;
     timing=timing;
   }
+  
 
-  //toString method to print the details of the object
+  public String getDocId() {
+	return docId;
+}
+public void setDocId(String docId) {
+	this.docId = docId;
+}
+public String getName() {
+	return name;
+}
+public void setName(String name) {
+	this.name = name;
+}
+public String getSpecialization() {
+	return specialization;
+}
+public void setSpecialization(String specialization) {
+	this.specialization = specialization;
+}
+public String getTiming() {
+	return timing;
+}
+public void setTiming(String timing) {
+	this.timing = timing;
+}
+public String getAvailability() {
+	return availability;
+}
+public void setAvailability(String availability) {
+	this.availability = availability;
+}
+//toString method to print the details of the object
   @Override
   public String toString()
   {
-    return "\nDoctor ID: "+docId+" \nDoctor Name: "+name+" \nSpecialization: " +specialization+
-    " \navailability: "+availability+" \nTiming:" +timing+  "\n";
+    return "\nDoctor ID: "+this.getDocId()+" \nDoctor Name: "+this.getName()+" \nSpecialization: " +this.getSpecialization()+
+    " \navailability: "+this.getAvailability()+" \nTiming:" +this.getTiming()+  "\n";
   }
 }

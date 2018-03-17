@@ -1,7 +1,7 @@
 package com.bridegit.Utility;
 
 import java.io.BufferedReader;
-
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -22,6 +23,11 @@ import org.json.simple.parser.JSONParser;
 import com.bridgeit.DataStructurePrograms.CashCounterQueue;
 import com.bridgeit.ObjectOrientedPrograms.Doctor;
 import com.bridgeit.ObjectOrientedPrograms.Patient;
+import com.bridgeit.ObjectOrientedPrograms.SocketAdapter;
+import com.bridgeit.ObjectOrientedPrograms.SocketClassAdapterImpl;
+import com.bridgeit.ObjectOrientedPrograms.SocketObjectAdapterImpl;
+import com.bridgeit.ObjectOrientedPrograms.Socket;
+import com.bridgeit.ObjectOrientedPrograms.Volt;
 
 
 /*
@@ -1655,7 +1661,7 @@ class Queue <T>{
      }
    }
  //Prints all the available details in the Doctor ArrayList
-  public  void printDoctorRecords(ArrayList<Doctor> doctorList)
+  public  void printDoctorRecords(J)
    {
 	 /* DoctorObject.put("Doctor", jsonarray);*/
      Iterator iter = doctorList.iterator();
@@ -1664,17 +1670,17 @@ class Queue <T>{
      {
        Doctor d = (Doctor)iter.next();
 
-       System.out.println("\nDoctor ID: "+d.docId);
-       System.out.println("Doctor Name: "+d.name);
-       System.out.println("Specialization: "+d.specialization);
-       System.out.println("Availability: "+d.availability);
+       System.out.println("\nDoctor ID: "+this.get);
+       System.out.println("Doctor Name: "+);
+       System.out.println("Specialization: "+);
+       System.out.println("Availability: "+);
        System.out.println("");
 
      } 
    }
   
 //Prints all the available details in the Patient ArrayList
-   public void printPatientRecords( ArrayList<Patient> p) 
+   public void printPatientRecords() 
    {
  	 
      Iterator iter = p.iterator();
@@ -1691,14 +1697,14 @@ class Queue <T>{
    }
    
    //Searches Doctor ArrayList using Doctor ID and prints the details if found
-   public void findDoctorByID(ArrayList<Doctor> doctorList, String did)
+   public void findDoctorByID(ArrayList<Doctor> doctorList, String docID)
    {
      int flag =0;
      Iterator iter = doctorList.iterator();
      while(iter.hasNext())
      {
        Doctor d = (Doctor)iter.next();
-       if(did.equals(d.docId))
+       if(docID.equals(d.docId))
        {
          flag =1;
          System.out.println("\nDoctor Found!");
@@ -1843,6 +1849,107 @@ public String readJSonFile()
 	}
 	return null;
 }
+public void unorderedList()
+{
+	try {
+		File file = new File("/home/bridgeit/test/JavaApplication/src/com/bridgeit/DataStructurePrograms/StringFile");
+
+		boolean flag = false;
+		BufferedReader buffer = new BufferedReader(new FileReader(file));
+
+		Scanner scanner = new Scanner(System.in);
+		String words = buffer.readLine();
+
+		FileWriter fileWriter = new FileWriter("/home/bridgeit/test/JavaApplication/src/com/bridgeit/DataStructurePrograms/StringFile");
+		String[] str1 = words.trim().split(" ");
+
+		LinkedList<String> linkedList = new LinkedList<String>();
+
+		for (int i = 0; i < str1.length; i++)
+		{
+			linkedList.add(str1[i]);
+		}
+
+
+		System.out.println(linkedList.toString());
+
+		System.out.println("Enter the String to search...");
+		String search = scanner.next();
+
+		for (int i = 0; i < linkedList.size(); i++) 
+		{
+			if (linkedList.get(i).equalsIgnoreCase(search)) 
+			{
+				linkedList.remove(i);
+				flag = true;
+			}
+		}
+		//System.out.println(linkedList.toString());
+
+		if (flag == false){
+			
+			linkedList.add(search);
+		}
+			
+
+		if (flag == true) 
+		{
+			for (int i = 0; i < linkedList.size(); i++) {
+				String str2 = (String) (linkedList.get(i)) + " ";
+				fileWriter.write(str2);
+				fileWriter.flush();
+			}
+
+		} else {
+			for (int i = 0; i < linkedList.size(); i++) 
+			{
+				String str11 = (String) linkedList.get(i) + " ";
+				fileWriter.write(str11);
+				fileWriter.flush();
+			}
+		}
+		System.out.println(linkedList.toString());
+		buffer.close();
+		scanner.close();
+		fileWriter.close();
+	} catch (Exception e) {
+		e.printStackTrace();
+	}	
+}
+public static Volt getVolt(SocketAdapter sockAdapter, int i) {
+	switch (i)
+	{
+	case 3: return sockAdapter.get3Volt();
+	case 12: return sockAdapter.get12Volt();
+	case 120: return sockAdapter.get120Volt();
+	default: return sockAdapter.get120Volt();
+	}
+}
+public static void testObjectAdapter() {
+	SocketAdapter sockAdapter = new SocketObjectAdapterImpl();
+	Volt v3 = getVolt(sockAdapter,3);
+	Volt v12 = getVolt(sockAdapter,12);
+	Volt v120 = getVolt(sockAdapter,120);
+	System.out.println("v3 volts using Object Adapter="+v3.getVolts());
+	System.out.println("v12 volts using Object Adapter="+v12.getVolts());
+	System.out.println("v120 volts using Object Adapter="+v120.getVolts());
+	
+}
+
+public static void testClassAdapter() {
+	SocketAdapter sockAdapter = new SocketClassAdapterImpl();
+	Volt v3 = getVolt(sockAdapter,3);
+	Volt v12 = getVolt(sockAdapter,12);
+	Volt v120 = getVolt(sockAdapter,120);
+	System.out.println("v3 volts using Class Adapter="+v3.getVolts());
+	System.out.println("v12 volts using Class Adapter="+v12.getVolts());
+	System.out.println("v120 volts using Class Adapter="+v120.getVolts());
+}
+public void insert()
+{
+	
+}
+
 }
 
 
