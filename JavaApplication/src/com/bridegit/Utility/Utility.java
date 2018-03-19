@@ -20,7 +20,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import com.bridgeit.DataStructurePrograms.CashCounterQueue;
 import com.bridgeit.ObjectOrientedPrograms.Doctor;
 import com.bridgeit.ObjectOrientedPrograms.Patient;
 import com.bridgeit.ObjectOrientedPrograms.SocketAdapter;
@@ -28,6 +27,26 @@ import com.bridgeit.ObjectOrientedPrograms.SocketClassAdapterImpl;
 import com.bridgeit.ObjectOrientedPrograms.SocketObjectAdapterImpl;
 import com.bridgeit.ObjectOrientedPrograms.Socket;
 import com.bridgeit.ObjectOrientedPrograms.Volt;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Stack;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
+import org.json.simple.parser.JSONParser;
 
 
 /*
@@ -35,6 +54,10 @@ import com.bridgeit.ObjectOrientedPrograms.Volt;
  * 
  */
 public class Utility {
+	
+	private static File file;
+	private static FileWriter fileWriter;
+	private static FileReader fileReader;
 	Scanner scanner=new Scanner(System.in);
 	
 public String regex(String msg,String regex)
@@ -90,9 +113,17 @@ public String regex(String msg,String regex)
 		/*
 		 * @param to take user input and  give power of that input */  
 		public int power(int n) {
-			for (int i = 0; i < n; i++) {	 //repeat until i equals N.
+			if(n<31)
+				{
+				for (int i = 0; i < n; i++)
+				{
+					//repeat until i equals N.
+				
 				System.out.println("Math.pow(" + n + "," + i + ")=" + Math.pow(n, i)); //prints a table of the powers of 2 that are less than or equal to 2^N.
 			}
+				
+				}
+			System.out.println("Number should between 0 and 31");
 			return n;
 		}
 	
@@ -169,7 +200,7 @@ public String regex(String msg,String regex)
 				}
 				else
 				{
-					lose--;		//keeps a track of number of lose
+					lose++;		//keeps a track of number of lose
 					
 				}
 				cash=stake;		/* continue with the next trial */
@@ -231,20 +262,43 @@ public String regex(String msg,String regex)
 			
 			boolean found = false;
 			int count=0;
-			for (int i = 0; i < number - 2; i++) {		//take the first value from the array
-				for (int j = i + 1; j < number - 1; j++) {	// take the second value from the same array
+			for (int i = 0; i < number; i++) {		//take the first value from the array
+				for (int j = i + 1; j < number ; j++) {	// take the second value from the same array
 					
 					for (int k = j + 1; k < number; k++) {	// takes the third value from the array.
 						if (array[i] + array[j] + array[k] == 0) {	//to check whether addition of all three array will be exactly equal to zero or not. 
 							count++;								//if triplet are exactly equal to 0 than increment count by one; 
 							
 							System.out.println("Triplets are :" + array[i] + " " + array[j] + " " + array[k]); // print the triplets
-							System.out.println("total number of triplets form are: " +count); 
+							
 							found = true;
+							if(array[i]==number)
+							{
+								array[j]=0;
+								array[k]=0;
+								if(array[i]+array[j]+array[k]==0)
+								{
+									count++;
+									System.out.println("Triplets are :" + array[i] + " " + array[j] + " " + array[k]);
+									found=true;
+								}
+								if(array[i]==number-1)
+								{
+									array[j]=number;
+									array[k]=0;
+									if(array[i]+array[j]+array[k]==0)
+									{
+										count++;
+										System.out.println("Triplets are :" + array[i] + " " + array[j] + " " + array[k]); 
+										found=true;
+									}
+								}
+							}
 						}
 					}
 				}
 			}
+			System.out.println("Total triplets formed are:" +count);
 			if (found == false)
 				System.out.println("Triplets not Exist...");
 		}	
@@ -387,15 +441,12 @@ public String regex(String msg,String regex)
 				else 
 				{
 					flag=false;
+					System.out.print( i+" ");
 				}
-			}
-			if(flag==false)
-			{
-				System.out.print( i+" ");
 				
-			}
+				}
+				}
 			
-			}
 			return 0;
 		}
 		
@@ -428,6 +479,7 @@ public static  boolean isPrime(int number)
 				}
 			}
 			return true;
+			
 			
 		}
 //
@@ -1012,38 +1064,6 @@ public static String[] readFile(String filepath)
 	return word;
 }
 
-
-
-/*//take input word
-	public String inputString(){
-		BufferedReader br;
-		try{
-			br=new BufferedReader(System.in);
-			return br.readLine();
-		}
-		catch(IOException ioe){
-			System.out.println(ioe.getMessage());
-		}
-		return "";
-	}*/
-	
-/*
-		//Take Double Input
-		public double inputDouble(){
-			try{
-				try{	
-					return Double.parseDouble(br.readLine());
-				}
-				catch(NumberFormatException nfe){
-					System.out.println(nfe.getMessage());	
-				}
-			}catch(IOException ioe){
-				System.out.println(ioe.getMessage());
-			}
-			return 0.0;
-		}*/
-
-
 public static int binarySearch(int []arr,int l, int r, int value)
 {
 
@@ -1193,14 +1213,6 @@ public static void insertionSortforInt(int arr[]){
 		arr[j+1] = key;
 	}
 }
-public int updateDeposit(int deposit_amount,int initialbal)
-{
-	CashCounterQueue cash=new CashCounterQueue();
-	int update_deposit=initialbal+deposit_amount;
-	return update_deposit;
-	
-	
-}
 
 public int integerInput() 
 {
@@ -1279,34 +1291,7 @@ public float floatInput()
 	 }
 	 return null;
  }
-/*public void continueToProcess()
-{
-	MethodUtil util=new MethodUtil();
-	int choice;
-	do {
-		int deposit_amount;
-		int withdraw_amount;
-		int update_Balance=0;
-		System.out.println("Enter your choice");
-		System.out.println("1.  Deposit");
-		System.out.println("2. Withdraw ");
-		System.out.println("3. Check Balance");
-		System.out.println("4.Number of people in queue");
-		choice=util.integerInput();
-		switch(choice)
-		{
-		case 1:
-				System.out.println("enter deposit");
-				deposit_amount=util.integerInput();
-				
-		case 2:
-			System.out.println("enter the amount to withdraw");
-			withdraw_amount=util.integerInput();
-				
-		}
-	}while(choice<5);
-	
-}*/
+
 public void DeckOfCards(String [] Rank,String [] suits)
 {
 	String [] array=new String [52];
@@ -1482,244 +1467,7 @@ class Queue <T>{
    
    
    
-   /*public void findDoctorByName(ArrayList<Doctor> doctorList, String dname)
-   {
-     int flag =0;
-     Iterator iter = doctorList.iterator();
-
-     while(iter.hasNext())
-     {
-       Doctor d = (Doctor)iter.next();
-       if(dname.equals(d.name))
-       {
-         flag =1;
-         System.out.println("flag!!!");
-         System.out.println("\nDoctor Found!");
-         System.out.println("Doctor ID: "+d.docId);
-         System.out.println("Doctor Name: "+d.name);
-         System.out.println("Specialization: "+d.specialization);
-         System.out.println("Availability: "+d.availability);
-
-       }
-
-     }
-     if(flag == 0)
-     {
-       System.out.println("Doctor Not Found");
-     }
-   }	*/	   
    
-   //searches Doctor by Name and prints the details if found.
-   public void findDoctorByName(ArrayList<Doctor> doctorList, String dname)
-   {
-     int flag =0;
-     Iterator iter = doctorList.iterator();
-
-     while(iter.hasNext())
-     {
-       Doctor d = (Doctor)iter.next();
-       if(dname.equalsIgnoreCase(d.name))
-       {
-         flag =1;
-         System.out.println("flag!!!");
-         System.out.println("\nDoctor Found!");
-         System.out.println("Doctor ID: "+d.docId);
-         System.out.println("Doctor Name: "+d.name);
-         System.out.println("Specialization: "+d.specialization);
-         System.out.println("Availability: "+d.availability);
-
-       }
-
-     }
-     if(flag == 0)
-     {
-       System.out.println("Doctor Not Found");
-     }
-   }
-   
- //Searches Doctor ArrayList using Specialization and prints the details if found
-   public void findDoctorBySpec(ArrayList<Doctor> doctorList, String spec)
-   {
-     int flag =0;
-     Iterator iter = doctorList.iterator();
-
-     while(iter.hasNext())
-     {
-       Doctor d = (Doctor)iter.next();
-       if(spec.equalsIgnoreCase(d.specialization))
-       {
-         flag =1;
-         System.out.println("\nDoctor Found!");
-         System.out.println("Doctor ID: "+d.docId);
-         System.out.println("Doctor Name: "+d.name);
-         System.out.println("Specialization: "+d.specialization);
-         System.out.println("Availability: "+d.availability);
-       }
-     }
-     if(flag == 0)
-     {
-       System.out.println("Doctor Not Found");
-     }
-   }
-	
- //Searches Doctor ArrayList using Availability and prints the details if found
-     
-   public void findDoctorByAvaila(ArrayList<Doctor> doctorList, String availa)
-   {
-     int flag =0;
-     Iterator iter = doctorList.iterator();
-
-     while(iter.hasNext())
-     {
-       Doctor d = (Doctor)iter.next();
-       if(availa.equalsIgnoreCase(d.availability))
-       {
-         flag =1;
-         System.out.println("\nDoctor Found!");
-         System.out.println("Doctor ID: "+d.docId);
-         System.out.println("Doctor Name: "+d.name);
-         System.out.println("Specialization: "+d.specialization);
-         System.out.println("Availability: "+d.availability);
-       }
-     }
-     if(flag == 0)
-     {
-       System.out.println("Doctor Not Found");
-     }
-   }
-
-   //Searches Patient ArrayList using Patient ID and prints the details if found
-   public void findPatientByID(ArrayList<Patient> patientList, String pid)
-   {
-     int flag =0;
-     Iterator iter = patientList.iterator();
-     while(iter.hasNext())
-     {
-       Patient p = (Patient)iter.next();
-       if(pid.equalsIgnoreCase(p.patId))
-       {
-         flag =1;
-         System.out.println("\nPatient Found!");
-         System.out.println("Patient ID: "+p.patId);
-         System.out.println("Patient Name: "+p.patName);
-         System.out.println("Age: "+p.age);
-         System.out.println("Mobile Number: "+p.mobileNo);
-       }
-     }
-     if (flag ==0)
-     {
-       System.out.println("Patient Not Found");
-     }
-   }
-   
- //Searches the Patient ArrayList using Name and prints the details if found
-   public void findPatientByName(ArrayList<Patient> patientList, String pname)
-   {
-     int flag =0;
-     Iterator iter = patientList.iterator();
-     while(iter.hasNext())
-     {
-       Patient p = (Patient)iter.next();
-       if(pname.equalsIgnoreCase(p.patName))
-       {
-         flag =1;
-         System.out.println("\nPatient Found!");
-         System.out.println("Patient ID: "+p.patId);
-         System.out.println("Patient Name: "+p.patName);
-         System.out.println("Age: "+p.age);
-         System.out.println("Mobile Number: "+p.mobileNo);
-       }
-     }
-     if (flag ==0)
-     {
-       System.out.println("Patient Not Found");
-     }
-   }
-   
-
-   //Searches Patient ArrayList using Mobile number and prints the details if found
-   public void findPatientByMobNo(ArrayList<Patient> patientList, String mobno)
-   {
-     int flag =0;
-     Iterator iter = patientList.iterator();
-     while(iter.hasNext())
-     {
-       Patient p = (Patient)iter.next();
-       if(mobno.equalsIgnoreCase(p.mobileNo))
-       {
-         flag =1;
-         System.out.println("\nPatient Found!");
-         System.out.println("Patient ID: "+p.patId);
-         System.out.println("Patient Name: "+p.patName);
-         System.out.println("Age: "+p.age);
-         System.out.println("Mobile Number: "+p.mobileNo);
-       }
-     }
-     if (flag ==0)
-     {
-       System.out.println("Patient Not Found");
-     }
-   }
- //Prints all the available details in the Doctor ArrayList
-  public  void printDoctorRecords(J)
-   {
-	 /* DoctorObject.put("Doctor", jsonarray);*/
-     Iterator iter = doctorList.iterator();
-
-     while(iter.hasNext())
-     {
-       Doctor d = (Doctor)iter.next();
-
-       System.out.println("\nDoctor ID: "+this.get);
-       System.out.println("Doctor Name: "+);
-       System.out.println("Specialization: "+);
-       System.out.println("Availability: "+);
-       System.out.println("");
-
-     } 
-   }
-  
-//Prints all the available details in the Patient ArrayList
-   public void printPatientRecords() 
-   {
- 	 
-     Iterator iter = p.iterator();
-     while(iter.hasNext())
-     {
-       Patient pat = (Patient)iter.next();
-       System.out.println("\nPatient ID: "+pat.patId);
-       System.out.println("Patient Name: "+pat.patName);
-       System.out.println("Age: "+pat.age);
-       System.out.println("Mobile Number: "+pat.mobileNo);
-       System.out.println("");
-     }
-
-   }
-   
-   //Searches Doctor ArrayList using Doctor ID and prints the details if found
-   public void findDoctorByID(ArrayList<Doctor> doctorList, String docID)
-   {
-     int flag =0;
-     Iterator iter = doctorList.iterator();
-     while(iter.hasNext())
-     {
-       Doctor d = (Doctor)iter.next();
-       if(docID.equals(d.docId))
-       {
-         flag =1;
-         System.out.println("\nDoctor Found!");
-         System.out.println("Doctor ID: "+d.docId);
-         System.out.println("Doctor Name: "+d.name);
-         System.out.println("Specialization: "+d.specialization);
-         System.out.println("Availability: "+d.availability);
-       }
-     }
-     if (flag ==0)
-     {
-       System.out.println("Doctor Not Found");
-     }
-   }
-
  	
 public void inventorymanage(int varieties)
 {
@@ -1945,11 +1693,932 @@ public static void testClassAdapter() {
 	System.out.println("v12 volts using Class Adapter="+v12.getVolts());
 	System.out.println("v120 volts using Class Adapter="+v120.getVolts());
 }
-public void insert()
-{
-	
-}
 
+
+    public void addDoctor() throws ParseException, org.json.simple.parser.ParseException 
+	{
+    	Utility Utility=new Utility();
+		
+		FileReader reader;
+		try {
+			reader = new FileReader("C:\\Users\\PUSHPA\\Documents\\NetBeansProjects\\Office Work\\src\\com\\bridgeit\\DesignPattern\\Doctor.json");
+			JSONParser jsonParser = new JSONParser();
+			Object obj1 = jsonParser.parse(reader);
+			JSONArray jsonArray = (JSONArray) obj1;
+		
+		
+		System.out.println("Enter number of doctors :");
+		int num0fDoctor = Utility.inputInteger();
+		for (int i = 0; i < num0fDoctor; i++)
+		{
+			JSONObject jsonObject = new JSONObject();
+			System.out.println("Enter name of doctor");
+			String doctorName = Utility.inputString();
+			jsonObject.put("Doctor_Name", doctorName);
+
+			System.out.println("Enter I.D doctor");
+			int doctorId = Utility.inputInteger();
+			jsonObject.put("Doctor_ID", doctorId);
+
+			System.out.println("Enter Specialization of doctor");
+			String doctorSpecialization = Utility.inputString();
+			jsonObject.put("Doctor_Specialization", doctorSpecialization);
+
+			System.out.println("Enter Availablity of doctor");
+			String available = Utility.inputString();
+			jsonObject.put("Doctor_Availiablity", available);
+
+			jsonArray.add(jsonObject);
+		}
+		
+			System.out.println("*************** Doctor Details ************");
+			System.out.println();
+		//	FileWriter jsonFileWriter = new FileWriter("/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/objectorientedprog/addDoctor.json");
+			PrintWriter printWriter = new PrintWriter("C:\\Users\\PUSHPA\\Documents\\NetBeansProjects\\Office Work\\src\\com\\bridgeit\\DesignPattern\\Doctor.json");
+			printWriter.print(jsonArray.toJSONString());
+			printWriter.flush();
+			printWriter.close();
+			//jsonFileWriter.print(((JSONAware) jsonArray).toJSONString());
+//			jsonFileWriter.flush();
+//			jsonFileWriter.close();
+			System.out.println("Doctor Added:" + jsonArray);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+
+	}
+
+	/**
+	 *  This method is used to add patient in JSON file.
+	 * @throws ParseException 
+	 */
+	@SuppressWarnings("unchecked")
+	public void addPatient() throws ParseException, org.json.simple.parser.ParseException {
+		
+		Utility Utility=new Utility();
+		FileReader reader;
+		try {
+			
+			reader = new FileReader("C:\\Users\\PUSHPA\\Documents\\NetBeansProjects\\Office Work\\src\\com\\bridgeit\\DesignPattern\\addPatient.json");
+			JSONParser jsonParser = new JSONParser();
+			Object obj1 = jsonParser.parse(reader);
+			JSONArray jsonArray = (JSONArray) obj1;
+		
+			System.out.println("Enter number of Patient");
+			int numberOfPatient = Utility.inputInteger();
+			
+			for (int i = 0; i < numberOfPatient; i++)
+			{
+				JSONObject jsonObject = new JSONObject();
+				System.out.println("Enter patient name :");
+				String patientName = Utility.inputString();
+				jsonObject.put("Patient_Name",patientName);
+				System.out.println("Enter patient ID. :");
+				int patientId = Utility.inputInteger();
+				jsonObject.put("Patient_ID", patientId);
+				System.out.println("Enter patient mobile number :");
+				String patientMobNumber = Utility.inputString();
+				jsonObject.put("Patient_MobileNumber", patientMobNumber);
+				System.out.println("Enter patient age");
+				int patientAge = Utility.inputInteger();
+				jsonObject.put("Patient_Age", patientAge);
+				jsonArray.add(jsonObject);
+			}
+		
+				System.out.println("*************** Patient Details ************");
+				System.out.println();
+				FileWriter jsonFileWriter = new FileWriter(
+						"C:\\Users\\PUSHPA\\Documents\\NetBeansProjects\\Office Work\\src\\com\\bridgeit\\DesignPattern\\addPatient.json");
+				jsonFileWriter.write(jsonArray.toString());
+				jsonFileWriter.flush();
+				jsonFileWriter.close();
+				System.out.println("Pateint Added: " + jsonArray);
+			} catch (IOException e) 
+			{
+				e.printStackTrace();
+			}
+		}
+	
+
+
+	/**
+	 *  This method is used to search doctors from JSON file.
+	 */
+	public void searchDoctor() {
+		Utility Utility=new Utility();
+		try {
+			JSONParser parser = new JSONParser();
+			JSONArray jsonArray = (JSONArray) parser.parse(new FileReader(
+					"C:\\Users\\PUSHPA\\Documents\\NetBeansProjects\\Office Work\\src\\com\\bridgeit\\DesignPattern\\Doctor.json"));
+			System.out.println("Search Doctor_Name :");
+			String searchDoctor = Utility.inputString();
+			Iterator<?> itr = jsonArray.iterator();
+
+			while (itr.hasNext())
+			{
+				JSONObject object = (JSONObject) itr.next();
+				String string = (String) object.get("Doctor_Name");
+                                
+				if (searchDoctor.equals(string))
+				{
+					System.out.println("Doctor_found" + object);
+                                        break;
+				} else
+				{
+					System.out.println("Not Found !");
+                                        break;
+				}
+			}
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+
+	/**
+	 * This method is used to search patient from JSON file.
+	 */
+	public void searchPatient() {
+
+		Utility Utility=new Utility();
+		System.out.println("Enter Name Of Patient");
+		String searchPatient = Utility.inputString();
+		try {
+			JSONParser parser = new JSONParser();
+			JSONArray jsonArray = (JSONArray) parser.parse(new FileReader("C:\\Users\\PUSHPA\\Documents\\NetBeansProjects\\Office Work\\src\\com\\bridgeit\\DesignPattern\\addPatient.json"));
+			Iterator<?> itr = jsonArray.iterator();
+
+			while(itr.hasNext())
+			{
+				JSONObject jsonobject = (JSONObject) itr.next();
+				String string = (String) jsonobject.get("Patient_Name");
+
+				if (searchPatient.equals(string))
+				{
+					System.out.println("Patient_found " + jsonobject);
+				} else 
+				{
+					System.out.println("Not found !");
+				}
+			}
+		} catch (Exception e) 
+		{
+			System.out.println(e);
+		}
+	}
+
+
+	/**
+	 * This method is used to take appointment.
+	 */
+	@SuppressWarnings("unchecked")
+
+	public static void fixAppointment() 
+	{
+		try 
+		{
+			File file1 = new File(
+					"C:\\Users\\PUSHPA\\Documents\\NetBeansProjects\\Office Work\\src\\com\\bridgeit\\DesignPattern\\Doctor.json");
+			File file2 = new File(
+					"C:\\Users\\PUSHPA\\Documents\\NetBeansProjects\\Office Work\\src\\com\\bridgeit\\DesignPattern\\addPatient.json");
+
+			File file3 = new File("C:\\Users\\PUSHPA\\Documents\\NetBeansProjects\\Office Work\\src\\com\\bridgeit\\DesignPattern\\appointment.json");
+
+			// check for existence of all files
+			if (file1.exists() && file2.exists() && file3.exists() && file1.canRead() && file2.canRead() && file3.canRead()  && file3.canWrite()) 
+			{
+
+				Utility Utility=new Utility();
+				JSONParser parser = new JSONParser();
+				fileReader = new FileReader(file1);
+				JSONArray doctorsarray = (JSONArray) parser.parse(fileReader);
+				// System.out.println(""+doctorsarray.size());
+				
+				JSONParser parser1=new JSONParser();
+				fileReader=new FileReader(file2);
+				JSONArray patientArray=(JSONArray) parser1.parse(fileReader);
+
+				Iterator<?> iterator = doctorsarray.iterator();
+
+				System.out.println("****Doctor's Details****");
+				while (iterator.hasNext()) {
+					JSONObject object = (JSONObject) iterator.next();
+					// System.out.println(""+object.size());
+					System.out.println("Doctor's Name : " + object.get("Doctor_Name"));
+					System.out.println("Doctor's Id   : " + object.get("Doctor_ID"));
+					System.out.println("Speciality    : " + object.get("Doctor_Specialization"));
+					System.out.println("Availability  : " + object.get("Doctor_Availability"));
+					System.out.println("\n");
+				}
+				System.out.println("Enter Doctor ID to assign to a patient:");
+				String doctorId=Utility.inputString();
+				//System.out.println("Entered ID: "+doctorId);
+				
+				Iterator<?> iterator1=doctorsarray.iterator();
+				
+				while(iterator1.hasNext())
+				{
+					JSONObject object1=(JSONObject) iterator1.next();
+					//System.out.println("Drs. Id"+object1.get("Doctor'sId"));
+					JSONArray jsonArray = (JSONArray) object1.get("patient");
+					if(doctorId.equals(object1.get("doctorId")))
+					{
+						if(jsonArray.size()<=2){
+							
+							System.out.println("Enter Patient ID to take an appointment:");
+							String patientId=Utility.inputString();
+							
+							Iterator<?> iterator2=patientArray.iterator();
+							while(iterator2.hasNext())
+							{
+								JSONObject object2=(JSONObject) iterator2.next();
+								if(patientId.equals(object2.get("PatientId"))){
+									
+									jsonArray.add(object2);
+									break;
+								}
+							}
+							
+						}
+                                                else
+                                                {
+                                                    System.out.println("Appointment is full");
+                                                }
+					}
+									
+				}
+				System.out.println(doctorsarray);
+				/*fileWriter = new FileWriter(file1);
+				fileWriter.write(JSONArray.toJSONString(doctorsarray));
+				fileWriter.flush();
+				fileWriter.close();*/
+			} else {
+				System.out.println("File not found");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+        
+        public static void displayCliniqueDetails() {
+		
+			try
+			{
+ 			File file = new File("C:\\Users\\PUSHPA\\Documents\\NetBeansProjects\\Office Work\\src\\com\\bridgeit\\DesignPattern\\Doctor.json");
+			if(file.exists())
+			{
+			if(file.canRead() && file.canWrite())
+			{
+			FileReader fr = new FileReader(file);
+			JSONParser parser = new JSONParser();
+			JSONArray array = (JSONArray) parser.parse(fr);
+			Iterator <?>itr = array.iterator();
+			
+			
+			System.out.println("****Doctor's Details****"+ "\n");
+
+			while (itr.hasNext())
+			{
+			JSONObject obj = (JSONObject) itr.next();
+			System.out.println("Name : "+obj.get("Doctor_Name")+ "\n"+ "Doctor'sId : "+obj.get("Doctor_ID")+"\n"+"Specialization : "+obj.get("Doctor_Specialization")+"\n"+"Availability : "+obj.get("Doctor_Availability"));
+			System.out.println("\n");
+			}
+			}
+			else
+			{
+			System.out.println("File can't have read permissions.");
+			}
+			}
+			else
+			{
+			System.out.println("File does not exits on disk.");
+			}
+			}
+			catch(Exception e)
+			{
+			e.printStackTrace();
+			}
+			
+			}
+
+        public static void addNewPerson() {
+        	Utility Utility=new Utility();
+    		try {
+    			file = new File("/home/bridgeit/Desktop/Files Folder/addressBook.json");
+    			if (file.exists()) {
+
+    				if (file.canRead() && file.canWrite()) {
+    					fileReader = new FileReader(file);
+    					JSONParser parser = new JSONParser();
+    					JSONArray array = (JSONArray) parser.parse(fileReader);
+
+    					JSONObject json = new JSONObject();
+
+    					System.out.println("Enter First Name:");
+    					String firstname = Utility.inputString();
+    					// System.out.println("firstname"+firstname);
+
+    					System.out.println("Enter Last Name:");
+    					String lastname = Utility.inputString();
+    					// System.out.println("lastname"+lastname);
+
+    					System.out.println("Enter Address:");
+    					String address = Utility.inputString();
+    					// System.out.println("address"+address);
+
+    					System.out.println("Enter City:");
+    					String city = Utility.inputString();
+    					// System.out.println("city"+city);
+
+    					System.out.println("Enter State:");
+    					String state = Utility.inputString();
+    					// System.out.println("state"+state);
+
+    					System.out.println("Enter ZIP Code:");
+    					String zip = Utility.inputString();
+    					// System.out.println("zip"+zip);
+
+    					System.out.println("Enter Mobile Number:");
+    					String mobile = Utility.inputString();
+    					// System.out.println("mobile"+mobile);
+
+    					Map<String, String> map = new HashMap<>();
+
+    					json.put("Firstname", firstname);
+    					json.put("Lastname", lastname);
+    					json.put("Address", address);
+    					json.put("City", city);
+    					json.put("State", state);
+    					json.put("Zip", zip);
+    					json.put("Mobile", mobile);
+
+    					array.add(json);
+
+    					System.out.println("Your details added Successfully." + "\n");
+    					fileWriter = new FileWriter(file);
+    					fileWriter.write(JSONArray.toJSONString(array));
+    					fileWriter.flush();
+    					fileWriter.close();
+    				}
+
+    				else {
+    					System.out.println("Cannot read and write to file");
+    				}
+    			} else {
+    				System.out.println("File not exits..");
+    			}
+    		} catch (Exception e) {
+    			e.printStackTrace();
+    		}
+    	}
+
+    	/**
+    	 * This method is to edit details of person in Address Book
+    	 */
+    	public static void editInformation() {
+    		
+    			Utility Utility=new Utility();
+    			try {
+    				file = new File("/home/bridgeit/Desktop/Files Folder/addressBook.json");
+    				if (file.exists()) {
+    					if (file.canRead() && file.canWrite()) {
+    						fileReader = new FileReader(file);
+    						JSONParser parser = new JSONParser();
+    						JSONArray array = (JSONArray) parser.parse(fileReader);
+
+    						Iterator<?> iterator = array.iterator();
+    						System.out.println("Enter the Name of person you want to edit details:");
+    						String name = Utility.inputString();
+    						boolean check = false;
+    						while (iterator.hasNext()) {
+    							JSONObject object = (JSONObject) iterator.next();
+    							if (object.get("Firstname").equals(name)) {
+    								System.out.println("What you want to edit in Address Book?" + "\n" + "Lastname" + "\n"
+    										+ "Address" + "\n"+ "Firstname"+ "\n"+ "City" + "\n" + "State" + "\n" + "Zip" + "\n"+"Mobile Number"+"\n");
+    								String edit = Utility.inputString();
+    								System.out.println("Enter the new " + edit + " to update.");
+
+    								String update = Utility.inputString();
+    								object.remove(edit);
+    								object.put(edit, update);
+    								System.out.println("Edited Information Successfully.");
+    								check = true;
+    								break;
+    							}
+    						}
+    						if (check == false) {
+    							System.out.println("Person not found in Address Book" + "\n");
+    						}
+    						fileWriter = new FileWriter(file);
+    						fileWriter.write(JSONArray.toJSONString(array));
+    						fileWriter.flush();
+    						fileWriter.close();
+    					} else {
+    						System.out.println("Cannot edit a File");
+    					}
+    				} else {
+    					System.out.println("File not exist..");
+    				}
+
+    			} catch (Exception e) {
+    				e.printStackTrace();
+    			}
+    		}
+    	
+
+    	/**
+    	 * This method is to Delete person from addressBook
+    	 */
+    	public static void deletePerson() 
+    		{
+    			Utility Utility=new Utility();
+    			try {
+    				file = new File("/home/bridgeit/Desktop/Files Folder/addressBook.json");
+    				if (file.exists()) {
+    					if (file.canRead()) {
+    						fileReader = new FileReader(file);
+    						JSONParser parser = new JSONParser();
+    						JSONArray array = (JSONArray) parser.parse(fileReader);
+
+    						System.out.println("Enter the user");
+    						String name = Utility.inputString();
+
+    						Iterator<?> iterator = array.iterator();
+    						boolean check = false;
+    						while (iterator.hasNext()) {
+    							JSONObject jsonObject = (JSONObject) iterator.next();
+
+    							if (jsonObject.get("Firstname").equals(name)) {
+    								array.remove(jsonObject);
+    								System.out.println("Deleted Successfully." + "\n");
+    								check = true;
+    								break;
+    							}
+    						}
+    						if (check == false) {
+    							System.out.println("Person do not exist in Address Book." + "\n");
+    						}
+    						if (file.canWrite()) {
+    							fileWriter = new FileWriter(file);
+    							fileWriter.write(JSONArray.toJSONString(array));
+    							fileWriter.flush();
+    							fileWriter.close();
+    						} else {
+    							System.out.println("Do not read/write permission");
+    						}
+    					}
+    				} else {
+    					System.out.println("File not exits..");
+    				}
+    			} catch (Exception e) {
+    				e.printStackTrace();
+    			}
+    		}
+    
+
+    	/**
+    	 * This method is to print the Address Book
+    	 */
+    	public static void printAddressBook() {
+    		
+    			try {
+    				file = new File("/home/bridgeit/Desktop/Files Folder/addressBook.json");
+    				if (file.exists()) {
+    					if (file.canRead() && file.canWrite()) {
+    						fileReader = new FileReader(file);
+    						JSONParser parser = new JSONParser();
+    						JSONArray array = (JSONArray) parser.parse(fileReader);
+    						Iterator iterator = array.iterator();
+    						System.out.println("\n" + "****Address Book****");
+
+    						while (iterator.hasNext()) {
+    							JSONObject obj = (JSONObject) iterator.next();
+    							System.out.println("\n" + "***Person Details***");
+    							System.out.println("First Name : " + obj.get("Firstname"));
+    							System.out.println("Last Name  : " + obj.get("Lastname"));
+    							System.out.println("Address    : " + obj.get("Address"));
+    							System.out.println("City       : " + obj.get("City"));
+    							System.out.println("State      : " + obj.get("State"));
+    							System.out.println("Zip        : " + obj.get("Zip"));
+    							System.out.println("Mobile     : " + obj.get("Mobile"));
+    						}
+    					} else {
+    						System.out.println("Cannot have read permission" + "\n");
+    					}
+    				} else {
+    					System.out.println("Filenot exist.." + "\n");
+    				}
+    			} catch (Exception e) {
+    				e.printStackTrace();
+    			}
+    		}
+
+    	
+    	public void deposit(int cash) throws IOException {
+    		Utility Utility=new Utility();
+
+    		// Utility.getDetails();
+    		System.out.println("Available balance:" + cash);
+    		System.out.println("Enter amount to deposit");
+    		int amount = Utility.inputInteger();
+    		cash = cash + amount;
+    		System.out.println("Transaction sucessfull!!!");
+    		System.out.println("Available balance: " + cash);
+    	}
+
+    	/**
+    	 * This method is to withdraw amount from account
+    	 * 
+    	 * @param cash
+    	 * @throws IOException 
+    	 */
+    public  void withdraw(int cash) throws IOException {
+    	Utility Utility=new Utility();
+    		// Utility.getDetails();
+    		System.out.println("Available balance:" + cash);
+    		System.out.println("Enter amount to withdraw");
+    		int amount = Utility.inputInteger();
+    		if (amount <= cash) {
+    			cash = cash - amount;
+    			System.out.println("Transaction sucessfull!!!");
+    		} else
+    			System.out.println("Balance is less !!! \n Cannot do transaction");
+    		System.out.println("Available balance: " + cash);
+    	}
+    
+    public static void companyShares() throws IOException, org.json.simple.parser.ParseException {
+    	Utility Utility=new Utility();
+		// TODO Auto-generated method stub
+		file = new File("/home/bridgeit/Desktop/Files Folder/companyShares.json");
+		fileReader = new FileReader(file);
+
+		// initialize JSon parser
+		JSONParser parser = new JSONParser();
+
+		// create a JSon array parse the file
+		JSONArray jsonArray = (JSONArray) parser.parse(fileReader);
+		// System.out.println(jsonArray.size());
+
+		// create a JSon object
+		JSONObject jsonObject = new JSONObject();
+
+		System.out.println("Enter Your Share symbol ex:'@','#','$':");
+		String ShareSymbol = Utility.inputString();
+		jsonObject.put("ShareSymbol", ShareSymbol);
+
+		System.out.println("Enter price of share:");
+		int price = Utility.inputInteger();
+		jsonObject.put("SharePrice", price);
+
+		System.out.println("Enter number of Shares you want to purchase:");
+		int shareCount = Utility.inputInteger();
+		jsonObject.put("ShareCount", shareCount);
+
+		jsonArray.add(jsonObject);
+
+		fileWriter = new FileWriter(file);
+		// writing back JSon file to JSonArray
+		fileWriter.write(JSONValue.toJSONString(jsonArray));
+		fileWriter.flush();
+		fileWriter.close();
+	}
+
+	/**
+	 * This method is to create a user.
+	 * 
+	 * @throws IOException
+	 * @throws ParseException
+	 * @throws org.json.simple.parser.ParseException
+	 * @throws org.json.simple.parser.ParseException
+	 * @throws Throwable
+	 */
+
+	public static void create() throws IOException, ParseException,org.json.simple.parser.ParseException {
+		
+		Utility Utility=new Utility();
+		boolean checkUser = true;
+
+		file = new File("/home/bridgeit/Desktop/Files Folder/userDetails.json");
+		
+		fileReader = new FileReader(file);
+
+		// initialize JSon parser
+		JSONParser parser = new JSONParser();
+
+		// create a JSon array parse the file
+		JSONArray jsonArray = (JSONArray) parser.parse(fileReader);
+		// System.out.println(jsonArray.size());
+
+		// create a JSon object
+		JSONObject jsonObject = new JSONObject();
+
+		// input values from user add to JSOn object
+		System.out.println("Enter First Name");
+		String name = Utility.inputString();
+		jsonObject.put("userName", name);
+
+		System.out.println("Enter Number of Shares");
+		String numberOfShare = Utility.inputString();
+		jsonObject.put("numberOfShare", numberOfShare);
+
+		System.out.println("Enter your balance");
+		String balance = Utility.inputString();
+		jsonObject.put("balance", balance);
+
+		// all values of object adding to JSOn array
+		jsonArray.add(jsonObject);
+
+		if (checkUser) {
+			fileWriter = new FileWriter(file);
+			// writing back JSon file to JSonArray
+			fileWriter.write(jsonArray.toJSONString());
+			fileWriter.flush();
+			fileWriter.close();
+		}
+	}
+
+	/**
+	 * This method is to buy share
+	 * 
+	 * @throws IOException
+	 * @throws org.json.simple.parser.ParseException
+	 */
+	public static void buyShare() throws IOException,org.json.simple.parser.ParseException {
+		Utility Utility=new Utility();
+		// TODO Auto-generated method stub
+		File file1 = new File(
+				"/home/bridgeit/Desktop/Files Folder/userDetails.json");
+
+		File file2 = new File("/home/bridgeit/Desktop/Files Folder/companyShares.json");
+
+		// check for the existence of the file
+		if (file1.exists() && file2.exists()) {
+
+			// Reading userDetails file
+			fileReader = new FileReader(file1);
+			JSONParser parser = new JSONParser();
+                       
+			JSONArray userDetails = (JSONArray) parser.parse(fileReader);
+			// System.out.println(""+userDetails);
+
+			// Reading shares file
+			fileReader = new FileReader(file2);
+			JSONParser parser1 = new JSONParser();
+			JSONArray shares = (JSONArray) parser1.parse(fileReader);
+			// System.out.println("" +shares);
+
+			// for userDeatils.json
+			Iterator<?> iterator = userDetails.iterator();
+
+			// for companyShares.json
+			Iterator<?> iterator1 = shares.iterator();
+
+			System.out.println("Enter your name Existing User:");
+			String name = Utility.inputString();
+
+			// check in user details for next
+			while (iterator.hasNext()) {
+
+				// JSON object for userDeatils
+				JSONObject object = (JSONObject) iterator.next();
+
+				if (object.get("userName").equals(name)) {
+					// System.out.println(""+object.get("userName"));
+
+					System.out.println("Enter your share symbol you want to buy:[@,#,$,!]");
+					String symbol = Utility.inputString();
+					object.put("ShareSymbol", symbol);
+
+					Stack stack = new Stack();
+					stack.push(symbol);
+					// System.out.println("Stack symbol" +stack);
+
+					// Check in company Shares share symbol
+					while (iterator1.hasNext()) {
+
+						// created object1 for Company Shares
+						JSONObject object1 = (JSONObject) iterator1.next();
+
+						if (object1.get("ShareSymbol").equals(symbol)) {
+							// System.out.println(""+object.get("ShareSymbol"));
+
+							System.out.println("Enter number of shares you want to buy:");
+							int buy = Utility.inputInteger();
+
+							// get balance from user
+							int balance = Integer.parseInt(object.get("balance").toString());
+							// System.out.println("userbalance"+" "+balance);
+
+							// get price from company share
+							int price = Integer.parseInt(object1.get("price").toString());
+							// System.out.println("company shareprice"+"
+							// "+price);
+
+							// get number of share user have
+							int numberOfShare = Integer.parseInt(object.get("numberOfShare").toString());
+							// System.out.println("number of share user have"+"
+							// "+numberOfShare);
+
+							// get share count company have
+							int shareCount = Integer.parseInt(object1.get("shareCount").toString());
+							// System.out.println("shareCountcompany"+"
+							// "+shareCount+"\n");
+
+							int newBalance = balance - (price * buy);
+							// System.out.println("newBalance"+" "+newBalance);
+
+							int updateNumberOfShare = numberOfShare + buy;
+							// System.out.println("updateNumberOfShare"+"
+							// "+updateNumberOfShare);
+
+							int shareCountCompany = shareCount - buy;
+							// System.out.println("shareCountCompany"+"
+							// "+shareCountCompany);
+
+							object.remove("balance");
+							object.remove("numberOfShare");
+							object.remove("shareCount");
+
+							object.put("balance", newBalance);
+							object.put("numberOfShare", updateNumberOfShare);
+							object1.put("shareCount", shareCountCompany);
+
+							LinkedList<String> queue = new LinkedList<String>();
+							Date date = new Date();
+							String currentDateTime = new SimpleDateFormat("E dd/MM/yyyy. 'at' hh:mm:ss a").format(date);
+							queue.add(currentDateTime);
+							System.out.println("Date and Time of Share Purchase:" + " " + currentDateTime + "\n");
+
+						}
+
+						fileWriter = new FileWriter(file1);
+						// writing back JSon file to JSonArray
+						fileWriter.write(JSONValue.toJSONString(userDetails));
+						fileWriter.flush();
+						fileWriter.close();
+					}
+					fileWriter = new FileWriter(file2);
+					// writing back JSon file to JSonArray
+					fileWriter.write(JSONValue.toJSONString(shares));
+					fileWriter.flush();
+					fileWriter.close();
+				}
+			}
+		}
+	}
+
+	/**
+	 * This method is to sell a share
+	 * 
+	 * @throws Throwable
+	 */
+	public static void sellShare() throws Throwable {
+		Utility Utility=new Utility();
+		File file1 = new File("/home/bridgeit/Desktop/Files Folder/userDetails.json");
+
+		File file2 = new File("/home/bridgeit/Desktop/Files Folder/companyShares.json"
+);
+
+		// check for the existence of the file
+		if (file1.exists() && file2.exists()) {
+
+			// Reading userDetails file
+			fileReader = new FileReader(file1);
+			JSONParser parser = new JSONParser();
+			JSONArray userDetails = (JSONArray) parser.parse(fileReader);
+			// System.out.println(""+userDetails);
+
+			// Reading shares file
+			fileReader = new FileReader(file2);
+			JSONParser parser1 = new JSONParser();
+			JSONArray shares = (JSONArray) parser1.parse(fileReader);
+			// System.out.println("" +shares);
+
+			// for userDeatils.json
+			Iterator<?> iterator = userDetails.iterator();
+
+			// for companyShares.json
+			Iterator<?> iterator1 = shares.iterator();
+
+			System.out.println("Enter your name Existing User:");
+			String name = Utility.inputString();
+
+			// check in user details for next
+			while (iterator.hasNext()) {
+
+				// JSON object for userDeatils
+				JSONObject object = (JSONObject) iterator.next();
+
+				if (object.get("userName").equals(name)) {
+					// System.out.println(""+object.get("userName"));
+
+					System.out.println("Enter your share symbol you want to sell:[@,#,$,!]");
+					String symbol = Utility.inputString();
+					object.put("ShareSymbol", symbol);
+
+					Stack stack = new Stack();
+					stack.push(symbol);
+
+					// Check in company Shares share symbol
+					while (iterator1.hasNext()) {
+
+						// created object1 for Company Shares
+						JSONObject object1 = (JSONObject) iterator1.next();
+
+						if (object.get("ShareSymbol").equals(symbol)) {
+							// System.out.println(""+object.get("ShareSymbol"));
+							
+							System.out.println("Enter number of shares you want to sell:");
+							int sell = Utility.inputInteger();
+
+							// get balance from user
+							int balance = Integer.parseInt(object.get("balance").toString());
+							// System.out.println("Balance of User"+"
+							// "+balance);
+
+							// get number of share user have
+							int numberOfShare = Integer.parseInt(object.get("numberOfShare").toString());
+							// System.out.println("Number of share user have"+"
+							// "+numberOfShare);
+
+							// get price of share
+							int price = Integer.parseInt(object1.get("price").toString());
+							// System.out.println("Price per Share"+" "+price);
+
+							// get share count company have
+							int shareCount = Integer.parseInt(object1.get("shareCount").toString());
+							// System.out.println("ShareCount of the company"+"
+							// "+shareCount+"\n");
+
+							int newBalance = balance + (price * sell);
+							// System.out.println("NewBalance of user"+"
+							// "+newBalance);
+
+							int updateNumberOfShare = numberOfShare - sell;
+							// System.out.println("updateNumberOfShare"+"
+							// "+updateNumberOfShare);
+
+							int shareCountCompany = shareCount + sell;
+							// System.out.println("shareCountCompany"+"
+							// "+shareCountCompany);
+
+							object.remove("balance");
+							object.remove("numberOfShare");
+							object1.remove("shareCount");
+
+							object.put("balance", newBalance);
+							object.put("numberOfShare", updateNumberOfShare);
+							object1.put("shareCount", shareCountCompany);
+
+							LinkedList<String> queue = new LinkedList<String>();
+							Date date = new Date();
+							String currentDateTime = new SimpleDateFormat("E dd/MM/yyyy. 'at' hh:mm:ss a").format(date);
+							queue.add(currentDateTime);
+							System.out.println("Date and Time of Share sold:" + " " + currentDateTime + "\n");
+							System.exit(sell);
+							System.out.println("New Balance of"+name+ "is" +newBalance );
+						}
+
+						fileWriter = new FileWriter(file1);
+						// writing back JSon file to JSonArray
+						fileWriter.write(JSONValue.toJSONString(userDetails));
+						fileWriter.flush();
+						fileWriter.close();
+					}
+					fileWriter = new FileWriter(file2);
+					// writing back JSon file to JSonArray
+					fileWriter.write(JSONValue.toJSONString(shares));
+					fileWriter.flush();
+					fileWriter.close();
+				}
+			}
+		}
+	}
+
+	/**
+	 * This method is to display stock report
+	 * 
+	 * @throws IOException
+	 * @throws org.json.simple.parser.ParseException
+	 */
+	public static <T> void displayReport() throws IOException, org.json.simple.parser.ParseException {
+		File file1 = new File("/home/bridgeit/Desktop/Files Folder/userDetails.json");
+
+		fileReader = new FileReader(file1);
+		JSONParser parser = new JSONParser();
+		JSONArray userDetails = (JSONArray) parser.parse(fileReader);
+
+		Iterator<T> iterator = userDetails.iterator();
+		System.out.println("\n" + "All user Detail Report:");
+		while (iterator.hasNext()) {
+			JSONObject object = (JSONObject) iterator.next();
+			System.out.println(object);
+		}
+	}
 }
 
 

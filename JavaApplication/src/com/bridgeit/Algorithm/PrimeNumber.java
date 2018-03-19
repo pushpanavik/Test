@@ -13,7 +13,16 @@ public class PrimeNumber {
 	int array[]=new int[number];
 		Utility utility=new Utility();
 		utility.primenumber(number);
-		
+		/*boolean found=utility.isPrime(number);
+		if(found==true)
+		{
+			for(int i=2;i<number;i++)
+			{
+				System.out.println(i + " ");
+			}
+			
+		}
+		*/
 		
 		
 	}

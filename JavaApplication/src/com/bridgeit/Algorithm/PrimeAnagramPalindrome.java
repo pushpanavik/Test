@@ -128,11 +128,11 @@ void checkPalindrome(int num){
 
  static int reverseNumber(int number)
  {
-   int sum=0,rem=0,rev=0;
+   int sum=0,rem,rev=0;
    while(number>0)
    {
      rem=number%10;
-     rev = rev*10+number;
+     rev = rev*10+rem;;
      number=number/10;
    }
    

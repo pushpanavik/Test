@@ -27,7 +27,7 @@ public class GamblerProgram {
 		trials=scanner.nextInt();
 		Utility utility=new Utility();
 		utility.gambler(stake, goal, trials);
-		
+	
 			
 	}
 

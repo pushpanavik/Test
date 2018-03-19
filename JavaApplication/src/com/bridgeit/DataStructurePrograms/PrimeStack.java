@@ -1,43 +1,8 @@
-/*package com.bridgeit.DataStructurePrograms;
+package com.bridgeit.DataStructurePrograms;
 
 import java.util.*;
 
-public void push(int val)
-{
-  StackNode newNode = new StackNode(val);
-  newNode.link = head;
-  head = newNode;
-  stackSize++;
-}
- public StackNode pop()
-{
-	StackNode newNode=new StackNode(val);
-  if(head == null)
-    return null;
-  StackNode temp = head;
-  head = head.link;
-
-  return temp;
-}
-
-
-void displayStack()
-{
-  if(stackSize == 0)
-    {
-      System.out.println("Empty Stack");
-      return ;
-    }
-  StackNode temp = head;
-
-  while(temp != null)
-  {
-    System.out.println(temp.data);
-    temp = temp.link;
-  }
-}
-
-int searchQueue(int val)
+public <T> searchQueue(T val)
 {
   StackNode temp = head;
 
@@ -57,7 +22,7 @@ int searchQueue(int val)
     }
   return 0;
 }
-}
+
 
 class PrimeStack
 {
@@ -148,4 +113,4 @@ class PrimeStack
     //QO.displayStack();
 
   }
-}*/
+}

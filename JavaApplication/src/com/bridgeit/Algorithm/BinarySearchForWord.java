@@ -22,11 +22,19 @@ public class BinarySearchForWord {
 			Utility utility=new Utility();
 			String words[]={},search;
 			Scanner scanner=new Scanner(System.in);
-			String filepath="/home/bridgeit/test/JavaApplication/src/com/bridegit/Utility/Files/StringFile";
-			 words =utility.readFile(filepath);
-			/*System.out.println("Enter word to search");
-			search=scanner.next();*/
+			String filepath="/home/bridgeit/Desktop/Files Folder/StringFile";
 			
+			 
+			FileReader fr=new FileReader("/home/bridgeit/Desktop/Files Folder/StringFile");
+			BufferedReader br=new BufferedReader(fr);
+			String line=" ";
+			while((line=br.readLine())!=null)
+			{
+				System.out.println(line/*.split(",").toString()*/);
+			}
+			System.out.println("Enter word to search");
+			search=scanner.next();
+			words =utility.readFile(filepath);
 		}
 
 }

@@ -8,7 +8,7 @@ public class PowerOf {
 public static void main(String args[]) {
 	int n;
 	Scanner scanner=new Scanner(System.in);
-	System.out.println("Enter the Power value of N");
+	System.out.println("Enter any Number");
 	n=scanner.nextInt();
 	Utility utility =new Utility();
 	utility.power(n);
