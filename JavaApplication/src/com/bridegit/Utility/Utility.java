@@ -939,9 +939,9 @@ public static void monthlyPayment(double rateofinterest, double years,double pri
 }
 
 //14.  sqrt  
-public double sqrtNewton(double t,double c,double epsilon)
+public double sqrtNewton(double c,double epsilon)
 {
-t=Math.sqrt(c);
+double t=Math.sqrt(c);
 while(Math.abs(t-c/t)>epsilon*t) {
 	t=(c/t+t);
 }
@@ -2611,7 +2611,7 @@ public static void testClassAdapter() {
 		fileReader = new FileReader(file1);
 		JSONParser parser = new JSONParser();
 		JSONArray userDetails = (JSONArray) parser.parse(fileReader);
-
+		
 		Iterator<T> iterator = userDetails.iterator();
 		System.out.println("\n" + "All user Detail Report:");
 		while (iterator.hasNext()) {
