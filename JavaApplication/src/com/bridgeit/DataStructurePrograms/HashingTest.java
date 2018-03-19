@@ -178,15 +178,12 @@ class HashingTest
     HashChaining HC = new HashChaining(11);
 
      try{
-     while( scan.hasNext() )
+     while( scan.hasNext())
      {	
     	
        temp = scan.nextInt();
        HC.insert(temp);
-      
      }
-
-
      }
      catch(InputMismatchException d)
      {
@@ -196,6 +193,7 @@ class HashingTest
 
      System.out.println("\nEnter the value to search");
      temp = read.nextInt();
+     
      flag = HC.search(temp);
 
     if(flag == 1)

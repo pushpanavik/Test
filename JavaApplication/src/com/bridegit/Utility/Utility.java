@@ -2,7 +2,6 @@ package com.bridegit.Utility;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -20,13 +19,12 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import com.bridgeit.ObjectOrientedPrograms.Doctor;
-import com.bridgeit.ObjectOrientedPrograms.Patient;
-import com.bridgeit.ObjectOrientedPrograms.SocketAdapter;
-import com.bridgeit.ObjectOrientedPrograms.SocketClassAdapterImpl;
-import com.bridgeit.ObjectOrientedPrograms.SocketObjectAdapterImpl;
-import com.bridgeit.ObjectOrientedPrograms.Socket;
-import com.bridgeit.ObjectOrientedPrograms.Volt;
+
+import com.bridgeit.DesignPattern.SocketAdapter;
+import com.bridgeit.DesignPattern.SocketClassAdapterImpl;
+import com.bridgeit.DesignPattern.SocketObjectAdapterImpl;
+import com.bridgeit.DesignPattern.Socket;
+import com.bridgeit.DesignPattern.Volt;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
