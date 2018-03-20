@@ -1,166 +1,69 @@
 package com.bridgeit.DataStructurePrograms;
+import java.io.IOException;
+import java.util.LinkedList;
+import java.util.Queue;
 
-import java.util.Scanner;
+import com.bridegit.Utility.Utility;
 
-/**
- * Purpose: Program to display 2D Calendar using Queue.
- * @author: Pushpakumari_Navik
- * @version:  1.0
- * @since: 9-03-2018
- *
+/**Purpose: This program implements calender using Queue
+ * @author Pushpa Navik
+ * @since 09/03/2018
  */
-class Queue
-{
+public class CalendarQueue {
 
-	Node front,rear;
-	int size=0;
-	static int StartDay;
-	int NumberOfDays;
-  boolean leap;
+	public static void main(String[] args) throws IOException {
+            Utility Utility=new Utility();
+		System.out.println("Enter month to display Calender:");
+		int month = Utility.inputInteger();
 
-	public class Node
-	{
-		int data;
-		Node link;
+		System.out.println("Enter year to display Calender:");
+		int year = Utility.inputInteger();
 
-	}
 
-	public Queue()
-	{
-		front=null;
-		rear=null;
-	}
+		// Initializing a queue
+		Queue<String> queue = new LinkedList<String>();
+		
+		System.out.println("Months:" + queue);
+		
+		String[] months = { "", "January", "February", "March", "April", "May", "June",
+				"July", "August", "September", "October", "November", "December" };
 
-	public boolean isEmpty()
-	{
-		return (size == 0);
- 	}
-
-	public void enqueue(int data)
-	{
-		Node newNode= rear;
-		rear=new Node();
-		rear.data=data;
-		rear.link=null;
-
-		if(isEmpty())
-		{
-			front=rear;
+		for (int i = 0; i < months.length; i++) {
+			queue.add(months[i]);// add months to queue
 		}
-		else
-		{
-			newNode.link=rear;
+		
+		int[] days = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+		for (int i = 0; i < days.length; i++) {
+			queue.add(Integer.toString(days[i]));
 		}
+		//System.out.println("Elements of queue" + queue);
+		
 
-		size++;
-	}
-
-	public void dequeue()
-	{
-		int data=front.data;
-		front=front.link;
-
-		if(isEmpty())
-		{
-			rear=null;
+		if (month == 2 && isLeapYear(year)) {
+			days[month] = 29;
 		}
-
-		size--;
-
-		NumberOfDays=data;
-	}
-
-	public void isLeapYear(int year)
-	{
-		if((year % 400 == 0) || (year % 4 == 0) && (year % 100 != 0))
-		{
-			 leap=true;
+		//System.out.println(" " + months[month] + " " + year);
+		System.out.println("Sun Mon Tue Wed Thr Fri Sat");
+		
+		//starting date
+		int date = Utility.dayOfWeek(month, 1, year);
+		//System.out.println(""+date);
+		
+		for (int i = 0; i <= date*4-1; i++) {
+			System.out.print(" ");
 		}
-    else
-			leap=false;
-
-	}
-
-
-	public static void dayOfMonth(int month, int day, int year)
-	{
-		int y = year - (14 - month) / 12;
-  		int x = y + y/4 - y/100 + y/400;
-       		int m = month + 12 * ((14 - month) / 12) - 2;
-       		int d = (day + x + (31*m)/12) % 7;
-      	 	StartDay=d;
-   	}
-
-
-	void print()
-	{
-		int totaldays = NumberOfDays;
-		if(leap)
-		{
-			totaldays=totaldays+1;
-		}
-
-		for(int i=0;i<StartDay;i++)
-		{
-			System.out.print("   ");
-		}
-
-		for(int i=1;i<=totaldays;i++)
-		{
-			System.out.printf("%3d",i);
-
-			if(((i+StartDay)%7==0) || (i==totaldays))
-			{
+		for (int i = 1; i <= days[month]; i++) {
+			System.out.printf("%-3d ", i);
+			if (((i + date) % 7 == 0) || (i == days[month]))
 				System.out.println();
-			}
 		}
 	}
 
+	public static boolean isLeapYear(int year) {
+		if ((year % 4 == 0) && (year % 100 != 0) || year % 400 == 0)
+			return true;
+		else
+			return false;
+	
 
-}
-
-/**
- * @author bridgeit
- *
- */
-class CalendarQueue{
-	public static void main(String args[])
-	{
-
-	Queue date=new Queue();
-
-	date.enqueue(31);
-	date.enqueue(28);
-	date.enqueue(31);
-	date.enqueue(30);
-	date.enqueue(31);
-	date.enqueue(30);
-	date.enqueue(31);
-	date.enqueue(31);
-	date.enqueue(30);
-	date.enqueue(31);
-	date.enqueue(30);
-	date.enqueue(31);
-
-	Scanner sc=new Scanner(System.in);
-	System.out.println("Enter month ");
-	int month=sc.nextInt();
-
-	System.out.println("Enter year ");
-	int year=sc.nextInt();
-
-	date.dayOfMonth(month,1,year);
-	date.isLeapYear(year);
-
-	System.out.println();
-	System.out.println("  S  M  Tu W Th  F  S ");
-
-	for(int j=0;j<month;j++)
-	{
-		date.dequeue();
-	}
-
-	date.print();
-
-	}
-}
+}}

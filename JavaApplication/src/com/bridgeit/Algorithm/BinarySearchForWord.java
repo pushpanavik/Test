@@ -35,6 +35,7 @@ public class BinarySearchForWord {
 			System.out.println("Enter word to search");
 			search=scanner.next();
 			words =utility.readFile(filepath);
+			
 		}
 
 }
