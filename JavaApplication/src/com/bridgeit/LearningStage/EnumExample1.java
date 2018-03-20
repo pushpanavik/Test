@@ -51,7 +51,7 @@ class EnumExample1{
 		
 		File f=new File(filepath);
 		FileWriter fw=null;
-		BufferedWriter bw;
+		BufferedWriter bw=null;
 		PrintWriter pw=null;
 		try {
 			f=new File(filepath);
@@ -71,15 +71,9 @@ class EnumExample1{
 				io.printStackTrace();
 				
 			}
-		}
+	
+	}	
 	}
-		
-		catch(FileNotFoundException filenot)
-		{
-			filenot.printStackTrace();
-		}
-	}
-		
 public static void main(String args[]) throws IOException
 {
 	/*File source=new File("/home/bridgeit/Desktop/Files Folder/StringFile");
@@ -92,15 +86,11 @@ public static void main(String args[]) throws IOException
 	copyFileUsingChannel(source,dest);
 	System.out.println("Time taken by Channel Copy = "+(System.nanoTime()-start));*/
     
-	File f=new File("/home/bridgeit/Desktop/Files Folder/abc.txt");
+	String filepath= "/home/bridgeit/Desktop/Files Folder/abc.txt";
 	   
-    FileWriter fw=new FileWriter(f);
-    BufferedWriter bw=new BufferedWriter(fw);
-    PrintWriter pw=new PrintWriter(bw);
-    pw.flush();
-    pw.close();
-    bw.close();
-    fw.close();
+   String appendText="pushpa";
+    appendUsingFileWriter(filepath, appendText);
+   
     
 	
     
