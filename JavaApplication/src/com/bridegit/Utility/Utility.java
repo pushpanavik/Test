@@ -546,6 +546,17 @@ private static void appendUsingFileWriter(String filepath,String appendText) thr
 
 }	
 }
+public static void printStringToArray(Object[] string ,ArrayList al)
+{
+	string=al.toArray(new String[al.size()]);
+	System.out.println(Arrays.toString(string));
+}
+private static String convertStringArrayToString(String[] strArr, String delimiter) {
+	StringBuilder sb = new StringBuilder();
+	for (String str : strArr)
+		sb.append(str).append(delimiter);
+	return sb.substring(0, sb.length() - 1);
+}
 //
 /*
  *@param  Take Integer Input
@@ -1932,6 +1943,58 @@ public static void testClassAdapter() {
 			System.out.println(e);
 		}
 	}
+	public void Expression()
+	{
+		boolean flag=false;
+	System.out.println("Enter expression: ");
+	String exp = scanner.next();        
+	int len = exp.length();
+	/* Creating Stack */
+	Stack stack = new Stack();
+	
+	System.out.println("Matches and Mismatches: ");
+
+	for (int i = 0; i < len; i++)
+	{    
+	char ch = exp.charAt(i);
+
+		if (ch == '(')
+		{
+		stack.push(i);
+		}
+			else if (ch == ')')
+			{
+				try
+				{
+				int p = (int) (stack.pop());
+				System.out.println("')' at index "+(i+1)+" matched with '(' at index "+p);
+				flag=true;
+				  
+				}
+				catch(Exception e)
+				{
+				System.out.println("')' at index "+(i+1)+" is unmatched");
+				 
+				}
+			}  
+		
+		}
+	if(!stack.isEmpty())
+	{
+			flag=false;
+			if(flag==false)
+			{
+				System.out.println("')'  is unmatched");
+			System.out.println("false");
+			}
+	} 
+	else
+	{
+		System.out.println("true");
+	
+	}
+          
+}
 
 
 	/**

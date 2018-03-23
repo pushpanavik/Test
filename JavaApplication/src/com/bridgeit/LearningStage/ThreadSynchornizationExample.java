@@ -1,25 +1,33 @@
 package com.bridgeit.LearningStage;
 
-public class ThreadSynchornizationExample  extends Thread{
+public class ThreadSynchornizationExample extends Thread{
+Display d;
+String name;
 
-	public  void wish(String name)
-	{
-		for(int i=0;i<5;i++)
-		{
-			System.out.println("Good morning");
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			System.out.println(name);
-		}
+           ThreadSynchornizationExample(Display d, String name) {
+	super();
+	this.name = name;
+	this.d = d;
+}
+public void run()
+{
+	try {
+	 d.wish(name);
+	 d.wish2(name);
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
 	}
-	public static void main(String args[]) throws InterruptedException
-	{
-		ThreadSynchornizationExample t=new ThreadSynchornizationExample();
-		t.wish("pushpa");
-		
-	}
+}
+
+
+public static void main(String args[])
+{
+	Display d1=new Display();
+	Display d2=new Display();
+	ThreadSynchornizationExample t1=new ThreadSynchornizationExample(d1,"pushpa");
+	ThreadSynchornizationExample t2=new ThreadSynchornizationExample(d2,"nisha");
+	t1.start();
+	t2.start();
+}
 }
