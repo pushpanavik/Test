@@ -68,6 +68,7 @@ public String regex(String msg,String regex)
 {
 	String replace=	msg.replaceAll(msg,regex);
 		System.out.println("Hello\t" +replace +" "+",How are you?");
+	//System.out.println(replace);
 		return replace;
 }
 /*

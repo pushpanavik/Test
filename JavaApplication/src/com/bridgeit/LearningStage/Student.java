@@ -1,11 +1,12 @@
 package com.bridgeit.LearningStage;
 import java.lang.String;
+
 	public class Student{
 		
 		private String name;
 		private int id;
+		
 		public Student() {
-			super();
 		}
 		public Student(String name, int id) {
 			super();
@@ -44,6 +45,7 @@ import java.lang.String;
 		{
 			return "Name:="+this.name+ "Id="+this.id+ "";
 		}
+		
 		
 	}
 		 
