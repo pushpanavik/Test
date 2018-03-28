@@ -1,0 +1,16 @@
+<html>
+<body>
+<p id="demo"></p>
+<script>
+<!------This is an example of constructor----->
+function Example(name,id,salary)
+	{
+		this.name=name;
+		this.id=id;
+		this.salary=salary;
+	}
+	var detail=new Example("pushpa",101,20000);
+	<!----This is an example of Prototype---->
+	Example.prototype.religion="hindu";
+	document.getElementById("demo").innerHTML="Your name is  " + detail.name + "and relgion is   "+ detail.religion;
+</script></body></html>

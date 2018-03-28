@@ -21,6 +21,5 @@ function calculate()
 		{
 		document.getElementById('result').value=firstNumber/secondNumber;
 		}
-	
-	
+
 }
