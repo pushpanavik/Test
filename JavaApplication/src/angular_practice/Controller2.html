@@ -1,0 +1,14 @@
+<html>
+<script src="bower_components/angular/angular.min.js"> </script>
+<body>
+  <div ng-app="myAppl" ng-controller="namesCtrl">
+    <ul>
+      <li ng-repeat= "x in names">
+        {{ x.name + ',' + x.country }}
+      </li>
+    </ul>
+
+  </div>
+    <script src="namesController.js"> </script>
+</body>
+</html>
