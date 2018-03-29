@@ -1,0 +1,15 @@
+<html>
+<body>
+  <script src="bower_components/angular/angular.min.js"></script>
+  <div ng-app="" ng-init="detail=[
+  {name:'pushpa',country:'India'},
+  {name:'sarita',country:'India'}]">
+
+  <ul>
+  <li ng-repeat="o in detail">
+    {{ o.name + ', ' + o.country}}
+  </li>
+  </ul>
+  </div>
+</body>
+</html>
