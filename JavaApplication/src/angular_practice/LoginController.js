@@ -1,8 +1,9 @@
 var app=angular.module("loginApp",["ngRoute"]);
-app.config(function($routeProvider)
+app.config(function($stateProvider)
 {
-  $routeProvider.when("/"
+  $stateProvider.state("/"
     {
-      templateUrl :"LoginForm"
+      template :"LoginForm.html"
     });
+
 });
