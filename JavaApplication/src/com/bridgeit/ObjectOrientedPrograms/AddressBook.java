@@ -15,6 +15,7 @@ public class AddressBook {
 			System.out.println("1.Add New Person:");
 			System.out.println("2.Edit Information of Person:");
 			System.out.println("3.Delete the Person:");
+			
 			System.out.println("4.Display Address Book");
 			System.out.println("5.Quit");
 			choice=Utility.inputInteger();
