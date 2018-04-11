@@ -1,0 +1,26 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" ">
+<style>
+.navbar { border-radius:0; }
+</style>
+  <script src="bower_components/angular/angular.min.js"> </script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"> </script>
+
+  <script src="appp.js"> </script>
+</head>
+  <body ng-app="routerApp">
+    <nav class="navbar navbar-inverse" role="navigation">
+      <div class="navbar-header">
+        <a class="navbar-brand" ui-sref="#">AngularUI Route </a>
+      </div>
+      <ul class="navbar navbar-nav">
+        <li> <a ui-sref="home">Home </a></li>
+        <li> <a ui-sref="about">About </a></li>
+      </ul>
+    </nav>
+    <div class= "container">
+      <div ui-view ></div>
+    </div>
+  </body>
+  </html>

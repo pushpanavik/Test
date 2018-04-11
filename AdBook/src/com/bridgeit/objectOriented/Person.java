@@ -32,5 +32,16 @@ public class Person {
 	public String getLastName() {
 		return lastName;
 	}
+	public Person(String firstName, String lastName, long phoneNumber, Address address) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.phoneNumber = phoneNumber;
+		this.address = address;
+	}
+	public String toString()
+	{
+		return "Person[firstName="+firstName+",LastName="+lastName+",Phone Number="+phoneNumber+",Address="+address+"]";
+	}
 
 }

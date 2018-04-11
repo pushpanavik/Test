@@ -17,7 +17,7 @@ public class Utility {
 		return 0;
 	}
 	
-	public long longInput() 
+	public static long longInput() 
 	{
 		try 
 		{
@@ -30,7 +30,7 @@ public class Utility {
 		return 0;
 	}
 
-	public double doubleInput() 
+	public  double doubleInput() 
 	{
 		try 
 		{
@@ -69,7 +69,7 @@ public class Utility {
 		 return null;
 	 }
 	 
-	 public String inputString() 
+	 public static String inputString() 
 	 {
 		 try 
 		 {

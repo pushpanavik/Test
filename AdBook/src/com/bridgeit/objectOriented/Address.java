@@ -30,6 +30,13 @@ public class Address {
 		this.zip = zip;
 		this.city = city;
 	}
-	
+	public String toString()
+	{
+		return "Address[city="+city+",state="+state+",zip="+zip+"]";
+	}
+	public Address()
+	{
+		
+	}
 
 }

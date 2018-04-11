@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="bower_components/angular/angular.min.js" charset="utf-8"></script>
+  </head>
+  <body ng-app="myApp" ng=controller="myCtrl">
+    <div>
+    First Name:<input type="text" ng-model="firstName" > <br>
+    Last Name:<input type="text" ng-model="lastName" > <br>
+    Full Name: {{firstName+ " " +lastName}}
+  <!---  <p ng-bind="name"> </p> -->
+</div>
+<div>
+  <p>My first expression: {{ 5 + 5 }}</p>
+</div>
+<div ng-app="" ng-init="myCol='lightblue'">
+<input style="background-color:{{myCol}}" ng-model="myCol" value="{{myCol}}">
+</div>
+
+<div ng-app="" ng-init="quantity=1;cost=5">
+<p>Total in dollar: {{ quantity * cost }}</p>
+</div>
+
+<div ng-app="" ng-init="firstName='John';lastName='Doe'">
+<p>The name is {{ firstName + " " + lastName }}</p>
+</div>
+
+<div ng-app="" ng-init="firstName='John';lastName='Doe'">
+<p>The name is <span ng-bind="firstName + ' ' + lastName"></span></p>
+</div>
+
+<div ng-app="" ng-init="person={firstName:'Pushpa', lastName:'Navik'}">
+  <p> The name is {{person.lastName}}</p>
+</div>
+
+<div ng-app="" ng-init="person={firstName:'Ramesh',lastName:'Nishad'}">
+  <p> The name is <span ng-bind="person.lastName"> </span> </p>
+</div>
+<div ng-init="array=[10,5,3,2,7]">
+  <p> The third result <span ng-bind="array[2]"></span> </p>
+  </div>
+
+
+
+
+<script>
+var app=angular.module('myApp',[])
+app.controller('myctrl',function($scope)
+{
+  $scope.firstName="Ramesh";
+  $scope.lastName="Nishad";
+});
+</script>
+  </body>
+</html>

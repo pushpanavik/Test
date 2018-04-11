@@ -1,6 +1,6 @@
 package com.bridgeit.objectOriented;
 
-import java.io.File;
+
 import java.io.IOException;
 
 import com.bridgeit.Utility.Utility;
@@ -9,11 +9,11 @@ public class AddressBookManager {
 	public static void main(String args[]) throws IOException
 	{
 		
-		AddressBookManag manag=new AddressBookManag();
+		AddressBookManagerInterface manag=new AddressBookManagImpl();
 		int choice;
 		do {
 					
-		Utility u=new Utility();
+		
 		System.out.println("1. create address book");
 		System.out.println("2. open address book");
 		System.out.println("3. close address book");
@@ -21,7 +21,7 @@ public class AddressBookManager {
 		System.out.println("5 Save As");
 		System.out.println("6.quit");
 		System.out.println("Enter your choice");
-		 choice=u.inputInteger();
+		 choice=Utility.inputInteger();
 		switch(choice)
 		{
 		case 1: manag.createAddressBook();
@@ -31,7 +31,6 @@ public class AddressBookManager {
 				manag.openAddressBook();
 				break;
 				
-		
 		case 3:manag.closeAddressBook();
 				break;
 				
@@ -41,8 +40,7 @@ public class AddressBookManager {
 				break;
 		case 6:manag.quit();
 		break;
-			
-		
+				
 	}
 	}while(choice<=6);
 	}
