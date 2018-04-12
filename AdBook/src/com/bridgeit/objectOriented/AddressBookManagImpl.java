@@ -76,19 +76,16 @@ public class AddressBookManagImpl implements AddressBookManagerInterface {
 			book.adressBookOperation(list);
 			br.close();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
-		// TODO Auto-generated method stub
-		// create.editPersonDetail();
-
+		
 	}
 
 	@Override
 	public void closeAddressBook() {
-		// TODO Auto-generated method stub
-		if (flag == false) {
+	if (flag == false) {
 			System.out.println("Please ensure that your file is saved");
 			System.exit(0);
 		}
@@ -101,17 +98,15 @@ public class AddressBookManagImpl implements AddressBookManagerInterface {
 	public void saveAddressBook() {
 		List<Person> lis= book.list();
 		System.out.println(lis);
-		// TODO Auto-generated method stub
+	
 		System.out.println("do you want to save your details yes or no");
 		String feedback = Utility.inputString();
 		if (feedback.equals("yes")) {
-		//List<Person> list1 = create.
-			//System.out.println(list);
 			try {
 				mapper.writeValue(file,lis);
 				System.out.print("Data added sucsessfully......\n");
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+			
 				e.printStackTrace();
 			}
 			
@@ -123,13 +118,9 @@ public class AddressBookManagImpl implements AddressBookManagerInterface {
 
 	@Override
 	public void quit() {
-		// TODO Auto-generated method stub
-		
-			System.out.println("Okay");
-			System.exit(0);
-		
-
-	}
+		System.out.println("Okay");
+		System.exit(0);
+		}
 
 	@Override
 	public void saveAs() {
@@ -137,7 +128,7 @@ public class AddressBookManagImpl implements AddressBookManagerInterface {
 		ArrayList<Person> lis=(ArrayList<Person>) book.list();
 		
 		String src = "/home/bridgeit/test/addrebook/";
-
+		
 		System.out.println("Enter the file name");
 		String filename = Utility.inputString();
 		String storefileName = src+filename+".json";
@@ -149,7 +140,6 @@ public class AddressBookManagImpl implements AddressBookManagerInterface {
 				System.out.print("Data added sucsessfully......\n");
 				
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
