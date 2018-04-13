@@ -1,0 +1,10 @@
+package com.bridegit.controller;
+
+public interface  AddDetailInt {
+	public void addDoctor();
+	public void addPatient();
+	public void takeAppointment();
+	
+	
+
+}

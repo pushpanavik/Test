@@ -1,0 +1,36 @@
+package com.bridgeit.objectOreinted;
+
+import java.io.IOException;
+
+import com.bridgeit.utility.Utility;
+
+public class AddressBookMain {
+
+	public static void main (String args[]) throws IOException
+	{
+		Utility util=new Utility();		
+		Address add=new Address();
+		System.out.println("Enter the first name");
+		String firstName=util.inputString();
+		System.out.println("Enter the last name");
+		String lastName=util.inputString();
+		
+		Person person=new Person(firstName,lastName);
+		
+		System.out.println("Enter the state");
+		String state= util.inputString();
+		System.out.println("Enter the city");
+		String city=util.inputString();
+		System.out.println("Enter the zip");
+		String zip=util.inputString();
+		add.setCity(city);
+		add.setState(state);
+		add.setZip(zip);
+		person.setAddress(add);
+		
+		
+		
+		
+	}
+}
+

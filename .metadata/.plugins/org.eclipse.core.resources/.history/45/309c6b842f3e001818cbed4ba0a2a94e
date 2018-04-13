@@ -1,0 +1,32 @@
+package com.bridgeit.clinique;
+
+import com.bridegit.controller.IDisplay;
+
+public class DisplayImpl implements IDisplay {
+	
+
+	@Override
+	public void printTotalDoctor() {
+		
+		
+	}
+
+	@Override
+	public void printTotalPatient() {
+		for(int i=0;i<patientlist.siz)
+		
+	}
+
+	@Override
+	public void doctorBySpecialization() {
+		
+		
+	}
+
+	@Override
+	public void popularDoctor() {
+		
+	}
+
+	
+}

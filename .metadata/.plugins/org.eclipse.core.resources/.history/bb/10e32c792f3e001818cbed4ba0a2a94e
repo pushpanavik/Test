@@ -1,0 +1,6 @@
+package com.bridegit.controller;
+
+public interface ISearch {
+ 
+ 
+}

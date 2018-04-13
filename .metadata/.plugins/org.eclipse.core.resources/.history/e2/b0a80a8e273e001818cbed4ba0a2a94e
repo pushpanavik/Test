@@ -1,0 +1,12 @@
+package com.bridegit.controller;
+
+import java.io.IOException;
+
+public interface  AddDetailInt {
+	public void addDoctor() throws IOException;
+	public void addPatient() throws IOException;
+	public void takeAppointment();
+	
+	
+
+}

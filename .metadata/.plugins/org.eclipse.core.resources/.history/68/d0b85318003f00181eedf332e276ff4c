@@ -1,0 +1,57 @@
+package com.bridgeit.doctor.patient;
+
+public class Doctor {
+private int doctorId;
+private String  doctorName;
+private String docSpecialization;
+private String docAvailability;
+private int doctorAppointment;
+
+public int getDoctorAppointment() {
+	return doctorAppointment;
+}
+public void setDoctorAppointment(int doctorAppointment) {
+	this.doctorAppointment = doctorAppointment;
+}
+public int getDocId() {
+	return doctorId;
+}
+public void setDocId(int doctorId) {
+	this.doctorId = doctorId;
+}
+public String getDoctorName() {
+	return doctorName;
+}
+public void setDoctorName(String doctorName) {
+	this.doctorName = doctorName;
+}
+public String getDocSpecialization() {
+	return docSpecialization;
+}
+public void setDocSpecialization(String docSpecialization) {
+	this.docSpecialization = docSpecialization;
+}
+public String getDocAvailability() {
+	return docAvailability;
+}
+public void setDocAvailability(String docAvailability) {
+	this.docAvailability = docAvailability;
+}
+public Doctor(int docId, String doctorName, String docSpecialization, String docAvailability) {
+	super();
+	this.doctorId = docId;
+	this.doctorName = doctorName;
+	this.docSpecialization = docSpecialization;
+	this.docAvailability = docAvailability;
+}
+public Doctor() {
+	super();
+}
+@Override
+public String toString() {
+	return "Doctor [doctorId=" + doctorId + ", doctorName=" + doctorName + ", docSpecialization=" + docSpecialization
+			+ ", docAvailability=" + docAvailability + ", doctorAppointment=" + doctorAppointment + "]";
+}
+
+
+}

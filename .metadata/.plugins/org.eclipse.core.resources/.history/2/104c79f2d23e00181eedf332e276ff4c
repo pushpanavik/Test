@@ -1,0 +1,391 @@
+package com.bridgeit.clinique;
+
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+
+import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
+
+import com.bridegit.controller.IAddDetail;
+import com.bridgeit.Utility.Utility;
+import com.bridgeit.doctor.patient.Doctor;
+import com.bridgeit.doctor.patient.Patient;
+
+public class AddDetailsImpl implements IAddDetail {
+	
+	private static IAddDetail a=new AddDetailsImpl();
+	private   ObjectMapper mapper=new ObjectMapper();
+	private  List<Doctor> doctorlist=new ArrayList<Doctor>();
+	private List<Patient> patientlist=new ArrayList<Patient>();
+	
+	
+	@Override
+	public void addDoctor() throws IOException {
+	
+		Doctor doctor=new Doctor();
+		try {
+			String filepath="/Clinique/Doctor.json";
+			doctorlist=fetchJsonFromFile(filepath, Doctor[].class);
+							
+				System.out.println("Enter name of doctor");
+				doctor.setDoctorName(Utility.inputString());
+				
+				System.out.println("Enter doctor id");
+				doctor.setDocId(Utility.inputInteger());
+				
+				System.out.println("Enter Specialization of doctor");
+				doctor.setDocSpecialization(Utility.inputString());
+				
+				System.out.println("Enter Availablity of doctor");
+				doctor.setDocAvailability(Utility.inputString());
+				
+				doctorlist.add(doctor);
+				mapper.writeValue(new File("/Clinique/Doctor.json"), doctorlist);		
+			
+		} catch (Exception e) {
+			
+			System.out.println("file not found");
+		}	
+		}
+	
+	@Override
+	public  void addPatient() throws IOException {
+		
+		Patient patient=new Patient();
+		
+			patientlist=fetchJsonFromFile("patient.json", Patient[].class);
+			
+				System.out.println("Enter patient name :");
+				patient.setPatientName(Utility.inputString());
+				
+				System.out.println("Enter patient ID. :");
+				patient.setPatientId(Utility.inputInteger());
+				
+				System.out.println("Enter patient mobile number :");
+				patient.setMobileNumber(Utility.inputInteger());
+				
+				System.out.println("Enter patient age");
+				patient.setPatientAge(Utility.inputInteger());	
+			
+			patientlist.add(patient);
+			mapper.writeValue(new File("patient.json"), patientlist);		
+	}
+	
+	@Override
+	public void takeAppointment() throws FileNotFoundException {
+		FileReader fileReader;
+		File file1 = new File("Doctor.json");
+		File file2 = new File("patient.json");
+		File file3 = new File("Appointment.json");
+
+		// check for existence of all files
+		if (file1.exists() && file2.exists() && file3.exists() && file1.canRead() && file2.canRead() && file3.canRead()  && file3.canWrite()) 
+		{
+			fileReader = new FileReader(file1);
+			fileReader=new FileReader(file2);
+			
+		}
+	}
+	public <T> List<T> fetchJsonFromFile(String filepath, Class<T[]> clazz)
+			throws JsonParseException, JsonMappingException, IOException {
+
+		ObjectMapper objectmapper = new ObjectMapper();
+
+		File file = new File(filepath);
+		List<T> list = new ArrayList<T>(Arrays.asList(objectmapper.readValue(file, clazz)));
+
+		return list;
+
+	}
+	@Override
+	public void printDoctorDetails() throws JsonParseException, JsonMappingException, IOException {
+		String filepath="Doctor.json";
+		doctorlist=fetchJsonFromFile(filepath, Doctor[].class);
+		for(int i=0;i<doctorlist.size();i++)
+		{
+			System.out.println(""+doctorlist.get(i));
+		}
+		
+	}
+public List<Doctor> takedoctordetail()
+{
+	return doctorlist;
+}
+	@Override
+	public void printPatientDetails() throws JsonParseException, JsonMappingException, IOException {
+		String filepath="patient.json";
+		patientlist=fetchJsonFromFile(filepath, Patient[].class);
+		for(int i=0;i<patientlist.size();i++)
+		{
+			System.out.println(""+patientlist.get(i));
+		}
+		
+	}
+
+	
+
+	@Override
+	public void popularDoctor() {
+		
+		
+	}
+
+	@Override
+	public void searchDoctorById() throws IOException {
+		
+		try {
+			System.out.println("Enter the doctor id");
+			int docid=Utility.inputInteger();
+			
+			String filepath="Doctor.json";
+			doctorlist=fetchJsonFromFile(filepath, Doctor[].class);
+			
+			Iterator<Doctor> doctorIterator=doctorlist.iterator();
+		
+			while(doctorIterator.hasNext())
+			{
+				Doctor doctor1=doctorIterator.next();
+				if(doctor1.getDocId()==(docid))
+				{
+					
+					System.out.println("\t\tDoctor Details \t\t ");
+					System.out.println("\tDoctor Name=" +doctor1.getDoctorName());
+					System.out.println("\tDoctor Id="+doctor1.getDocId());
+					System.out.println("\tDoctor Specialization="+doctor1.getDocSpecialization());
+					System.out.println("\tDoctor Availabiliity=" +doctor1.getDocAvailability());
+					break;
+				}
+				
+			}
+			}
+		 catch (ClassCastException e) {
+			
+			System.out.println();
+		}	
+	}
+
+	@Override
+	public void searchDoctorByName() throws JsonParseException, JsonMappingException, IOException {
+		try {
+			System.out.println("Enter the doctor Name");
+			String docName=Utility.inputString();
+			
+			String filepath="Doctor.json";
+			doctorlist=fetchJsonFromFile(filepath, Doctor[].class);
+			
+			Iterator<Doctor> doctorIterator=doctorlist.iterator();
+		
+			while(doctorIterator.hasNext())
+			{
+				Doctor doctor1=doctorIterator.next();
+				if(doctor1.getDoctorName().equals(docName))
+				{
+					
+					System.out.println("\t\tDoctor Details \t\t ");
+					System.out.println("\tDoctor Name=" +doctor1.getDoctorName());
+					System.out.println("\tDoctor Id="+doctor1.getDocId());
+					System.out.println("\tDoctor Specialization="+doctor1.getDocSpecialization());
+					System.out.println("\tDoctor Availabiliity=" +doctor1.getDocAvailability());
+					break;
+				}
+				
+			}
+			}
+		 catch (ClassCastException e) {
+			
+			System.out.println();
+		}	
+		
+	}
+
+	@Override
+	public void searchDcotorBySpecialization() throws JsonParseException, JsonMappingException, IOException {
+		try {
+			System.out.println("Enter the doctor Specialization");
+			String Speciallization=Utility.inputString();
+			
+			String filepath="Doctor.json";
+			doctorlist=fetchJsonFromFile(filepath, Doctor[].class);
+			
+			Iterator<Doctor> doctorIterator=doctorlist.iterator();
+		
+			while(doctorIterator.hasNext())
+			{
+				Doctor doctor1=doctorIterator.next();
+				if(doctor1.getDocSpecialization().equals(Speciallization))
+				{
+					
+					System.out.println("\t\tDoctor Details \t\t ");
+					System.out.println("\tDoctor Name=" +doctor1.getDoctorName());
+					System.out.println("\tDoctor Id="+doctor1.getDocId());
+					System.out.println("\tDoctor Specialization="+doctor1.getDocSpecialization());
+					System.out.println("\tDoctor Availabiliity=" +doctor1.getDocAvailability());
+					break;
+				}
+				
+			}
+			}
+		 catch (ClassCastException e) {
+			
+			System.out.println();
+		}	
+	}
+
+	@Override
+	public void searchDoctorByAvailability() throws JsonParseException, JsonMappingException, IOException {
+		try {
+			System.out.println("Enter the doctor Availability");
+			String doctorAvailability=Utility.inputString();
+			
+			String filepath="Doctor.json";
+			doctorlist=fetchJsonFromFile(filepath, Doctor[].class);
+			
+			Iterator<Doctor> doctorIterator=doctorlist.iterator();
+		
+			while(doctorIterator.hasNext())
+			{
+				Doctor doctor1=doctorIterator.next();
+				if(doctor1.getDocAvailability().equals(doctorAvailability))
+				{
+					
+					System.out.println("\t\tDoctor Details \t\t ");
+					System.out.println("\tDoctor Name=" +doctor1.getDoctorName());
+					System.out.println("\tDoctor Id="+doctor1.getDocId());
+					System.out.println("\tDoctor Specialization="+doctor1.getDocSpecialization());
+					System.out.println("\tDoctor Availabiliity=" +doctor1.getDocAvailability());
+					break;
+				}
+				
+			}
+			}
+		 catch (ClassCastException e) {
+			
+			System.out.println();
+		}	
+		
+	}
+
+	@Override
+	public void searchPatientById() throws IOException {
+		Patient patien=new Patient();
+		String filepath="patient.json";
+		patientlist=fetchJsonFromFile(filepath, Patient[].class);
+		System.out.println("Enter Patient id");
+		int patientId=Utility.inputInteger();
+		
+		Iterator<Patient> patientIterator=patientlist.iterator();
+		while(patientIterator.hasNext())
+		{
+			Patient patient=(Patient)patientIterator.next();
+			if(patient.getPatientId()==(patientId))
+			{
+				for(int i=0;i<patientlist.size();i++)
+				{
+				System.out.println(""+patientlist.get(i));
+				break;
+				}
+			}
+			
+		}
+	}
+
+	@Override
+	public void searchPatientByName() throws JsonParseException, JsonMappingException, IOException {
+		Patient patien=new Patient();
+		String filepath="patient.json";
+		patientlist=fetchJsonFromFile(filepath, Patient[].class);
+		System.out.println("Enter Patient Name");
+		String patientName=Utility.inputString();
+		
+		Iterator<Patient> patientIterator=patientlist.iterator();
+		while(patientIterator.hasNext())
+		{
+			Patient patient=(Patient)patientIterator.next();
+			if(patient.getPatientName().equals(patientName))
+			{
+				for(int i=0;i<patientlist.size();i++)
+				{
+				System.out.println(""+patientlist.get(i));
+				break;
+				}
+			}
+			
+		}
+		
+	}
+	public static void main(String args[]) throws IOException,ClassCastException
+	{
+		
+				
+		int choice;
+		do {
+					
+		System.out.println("1. Add Doctor");
+		System.out.println("2. Add Patient");
+		System.out.println("3. Take Appointment");
+		System.out.println("4.Display Patient Details");
+		System.out.println("5. Display Doctor Details");
+		System.out.println("6. Find Doctor by Id");
+		System.out.println("7. Find Doctor by Name");
+		System.out.println("8. Find Doctor by Speciality");
+		System.out.println("9. Find Doctor by Availability");
+		System.out.println("10. find Patient by Id");
+		System.out.println("11. Find Patient by Name");
+		System.out.println();
+		System.out.println("Enter your choice");
+		 choice=Utility.inputInteger();
+		switch(choice)
+		{
+		case 1: a.addDoctor();
+				break;
+			
+		case 2: a.addPatient();
+				break;
+				
+		case 3: a.takeAppointment();
+				break;
+				
+		case 4: a.printPatientDetails();
+				break;
+				
+		case 5: a.printDoctorDetails();
+				break;
+				
+		case 6: a.searchDoctorById();
+				break;
+				
+		case 7: a.searchDoctorByName();
+				break;
+				
+		case 8: a.searchDcotorBySpecialization();
+				break;
+				
+		case 9: a.searchDoctorByAvailability();
+				break;
+				
+		case 10: a.searchPatientById();
+				 break;
+				
+		case 11: a.searchPatientByName();
+				 break;
+		
+		default: System.exit(0);
+		
+				
+	}
+	}while(choice<=11);
+	}
+	
+
+
+		
+	}
+

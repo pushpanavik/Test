@@ -1,0 +1,14 @@
+package com.bridgeit.objectOriented;
+
+import java.util.ArrayList;
+
+interface  AddressBookInterface {
+
+	public void addPerson(Person person ,ArrayList<Person> addentries);
+	public void editPersonDetail(String firstName,String lastName,ArrayList<Person> addentries);
+	public void deletePerson(String firstName,String lastName,ArrayList<Person> addentries);
+	public void sortBylastName(ArrayList<Person> personlist);
+	public void sortByZip(ArrayList<Person> addentries);
+	public void printEntry(Person person);
+	
+}

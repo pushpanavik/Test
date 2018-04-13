@@ -1,0 +1,70 @@
+package com.bridgeit.objectOreinted;
+
+import java.util.ArrayList;
+
+import com.bridgeit.utility.Utility;
+
+import src.com.bridgeit.objectOreinted.AddressBookMain;
+
+
+
+public class AddressBookManag implements AddressBookManagerInterface {
+	AddressBookMain create=new AddressBookMain();
+	Utility u=new Utility();
+	
+	@Override
+	public void createAddressBook() {
+		// TODO Auto-generated method stub
+		try {
+			String src="/home/bridgeit/test/AddressBook/addressBook/";
+		
+		System.out.println("Enter the file name");
+		String filename=u.inputString();
+		String storefileName=src.concat(filename);
+		System.out.println("file path" +storefileName);
+		create.addPerson();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void openAddressBook() {
+		// TODO Auto-generated method stub
+		create.editPersonDetail();
+	}
+
+	@Override
+	public void closeAddressBook() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void saveAddressBook  () {
+		// TODO Auto-generated method stub
+		System.out.println("do you want to save your details yes or no");
+		String feedback=u.inputString();
+		if (feedback.equals("yes"))
+		{		
+//			ArrayList<Person> list=new ArrayList<Person>();
+//			list.add();
+			System.out.println("onr");
+		}
+		else
+		{
+			System.out.println("");
+		}
+		
+	}
+
+	@Override
+	public void quit() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -1,0 +1,21 @@
+package com.bridegit.controller;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+public interface  IAddDetail {
+	public void addDoctor() throws IOException;
+	public void addPatient() throws IOException;
+	public void takeAppointment() throws FileNotFoundException;
+	public void printTotalDoctor();
+	public void printTotalPatient();
+	public void doctorBySpecialization();
+	public void popularDoctor();
+	public void searchDoctorById();
+	public void searchDoctorByName();
+	public void searchDcotorBySpecialization();
+	public void searchDoctorByAvailability();
+	public void searchPatientById();
+	public void searchPatientByName();
+
+}

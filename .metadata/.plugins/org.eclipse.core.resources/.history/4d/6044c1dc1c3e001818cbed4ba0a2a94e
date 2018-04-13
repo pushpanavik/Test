@@ -1,0 +1,12 @@
+package com.bridegit.controller;
+
+import java.util.List;
+
+public interface  AddDetailInt {
+	public void addDoctor();
+	public void addPatient();
+	public void takeAppointment();
+	public List<Object> list();
+	
+
+}

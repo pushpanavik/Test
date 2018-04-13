@@ -1,0 +1,64 @@
+package com.bridgeit.objectOriented;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import com.bridgeit.Utility.Utility;
+
+public class AddressBook {
+	
+	public String adressBookOperation() throws IOException 
+	{
+		AddressBookImpl addressbookdetail=new AddressBookImpl();
+		Utility u=new Utility();
+		
+		
+		System.out.println("1.Add New Person:");
+		System.out.println("2.Edit Information of Person:");
+		System.out.println("3.Delete the Person:");
+		System.out.println("4.Sort by Last Name");
+		System.out.println("5.Sort by zip");
+		System.out.println("6.Display Address Book");
+		System.out.println("Select option");
+		int choice=u.inputInteger();
+		
+		
+		while (choice <=6)
+			{
+			switch(choice)
+		{
+		case 1:
+			
+			addressbookdetail.addPerson();
+			break;
+			
+		case 2:
+			addressbookdetail.editPersonDetail();
+			break;
+			
+		case 3:
+			addressbookdetail.deletePerson();
+			break;
+			
+		case 4:
+			addressbookdetail.sortBylastName();
+			break;
+			
+		case 5:
+			addressbookdetail.sortByZip();
+			break;
+			
+		case 6:
+			addressbookdetail.printEntry();
+			break;
+			
+			default:
+			System.exit(0);
+			break;
+		}
+	
+	
+}
+		return addressBookOperation;
+	}
+}

@@ -1,0 +1,92 @@
+package com.bridgeit.objectOreinted;
+
+import com.bridgeit.utility.Utility;
+
+public class AddressBookMain implements AddressBookInterface{
+
+		Utility util=new Utility();
+
+	
+	
+	@Override
+	public void addPerson() {
+		// TODO Auto-generated method stub
+		
+		System.out.println("Enter the first name");
+		String firstName=util.inputString();
+		System.out.println("Enter the last name");
+		String lastName=util.inputString();
+		System.out.println("Enter your Phone number");
+		long phoneNumber=util.longInput();
+		Person person=new Person(firstName,lastName);
+		System.out.println("Enter the state");
+		String state= util.inputString();
+		System.out.println("Enter the city");
+		String city=util.inputString();
+		System.out.println("Enter the zip");
+		String zip=util.inputString();
+		Address add=new Address();
+		add.setCity(city);
+		add.setState(state);
+		add.setZip(zip);
+		person.setAddress(add);
+		
+	}
+	
+	@Override
+	public void editPersonDetail()
+	{
+		System.out.println("Enter your firstName ");
+		String firstName=util.inputString();
+		System.out.println("Enter your lastName");
+		String lastName=util.inputString();
+		if(firstName.equals(firstName) && (lastName.equals(lastName)))
+		{
+		System.out.println("select what you want to update \n 1.state \n 2.city \n 3.zip \n4.phone number");
+		String  choice=util.inputString();
+		
+		String state= util.inputString();
+		System.out.println("Enter the city");
+		String city=util.inputString();
+		System.out.println("Enter the zip");
+		String zip=util.inputString();
+	}
+	}
+
+	@Override
+	public void deletePerson() {
+		// TODO Auto-generated method stub
+		System.out.println("Enter your first name");
+		String firstName=util.inputString();
+		System.out.println("Enter your last name");
+		String lastName=util.inputString();
+		
+		
+		
+	}
+
+	@Override
+	public void sortBylastName() {
+		// TODO Auto-generated method stub
+		
+		
+	}
+
+	@Override
+	public void sortByZip() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void printEntry() {
+		// TODO Auto-generated method stub
+		
+	}
+				
+	
+
+	
+	}
+	
+

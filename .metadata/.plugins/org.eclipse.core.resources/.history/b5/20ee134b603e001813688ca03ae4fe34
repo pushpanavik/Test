@@ -1,0 +1,28 @@
+package com.bridegit.controller;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.List;
+
+import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.map.JsonMappingException;
+
+import com.bridgeit.doctor.patient.Doctor;
+
+
+public interface  IAddDetail {
+	public void addDoctor() throws IOException;
+	public <T> void addPatient() throws IOException;
+	public void takeAppointment() throws FileNotFoundException;
+	public void printDoctorDetails() throws JsonParseException, JsonMappingException, IOException;
+	public void printPatientDetails()throws JsonParseException, JsonMappingException, IOException;
+	public void findDoctorBySpecialization();
+	public void popularDoctor();
+	public void searchDoctorById() throws IOException;
+	public void searchDoctorByName();
+	public void searchDcotorBySpecialization();
+	public void searchDoctorByAvailability();
+	public void searchPatientById() throws IOException;
+	public void searchPatientByName();
+	
+}

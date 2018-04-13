@@ -1,0 +1,14 @@
+package com.bridgeit.objectOriented;
+
+import java.io.IOException;
+
+interface AddressBookManagerInterface {
+		public void createAddressBook();
+		public void openAddressBook();
+		public void closeAddressBook();
+		public void saveAddressBook();
+		public void saveAs() throws IOException;
+		public void quit();
+		public void showFile();
+	}
+

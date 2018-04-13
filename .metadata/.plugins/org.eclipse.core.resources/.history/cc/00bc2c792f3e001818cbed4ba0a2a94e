@@ -1,0 +1,11 @@
+package com.bridegit.controller;
+
+public interface ISearch {
+ public void searchDoctorById();
+ public void searchDoctorByName();
+ public void searchDcotorBySpecialization();
+ public void searchDoctorByAvailability();
+ public void searchPatientById();
+ public void searchPatientByName();
+ 
+}

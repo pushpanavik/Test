@@ -1,0 +1,13 @@
+package com.bridegit.controller;
+
+import java.util.List;
+
+import com.bridgeit.doctor.patient.Doctor;
+
+public interface  AddDetailInt {
+	public void addDoctor();
+	public void addPatient();
+	public void takeAppointment();
+	
+
+}

@@ -1,0 +1,165 @@
+package com.bridgeit.clinique;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.type.TypeReference;
+import com.bridegit.controller.IAddDetail;
+import com.bridgeit.Utility.Utility;
+import com.bridgeit.doctor.patient.Doctor;
+import com.bridgeit.doctor.patient.Patient;
+
+
+public class AddDetailsImpl implements IAddDetail {
+	
+	private ObjectMapper mapper=new ObjectMapper();
+	private List<Doctor> doctorlist=new ArrayList<Doctor>();
+	private List<Patient> patientlist=new ArrayList<Patient>();
+	
+	@Override
+	public void addDoctor() throws IOException {
+		
+		Doctor doctor=new Doctor();
+		File filepath=new File("/home/bridgeit/test/Clinique/JsonClinique/Doctor.json");
+		
+		try {
+			doctorlist=readFromFile(filepath, Doctor.class);
+			System.out.println("Enter number of doctors :");
+			int num0fDoctor = Utility.inputInteger();
+			for (int i = 0;i< num0fDoctor; i++)
+			{
+				System.out.println("Enter name of doctor");
+				doctor.setDoctorName(Utility.inputString());
+				
+				System.out.println("Enter doctor id");
+				doctor.setDocId(Utility.inputInteger());
+				
+				System.out.println("Enter Specialization of doctor");
+				doctor.setDocSpecialization(Utility.inputString());
+				
+				System.out.println("Enter Availablity of doctor");
+				doctor.setDocAvailability(Utility.inputString());
+			}
+			doctorlist.add(doctor);
+		} catch (Exception e) {
+			
+			System.out.println("file not found");
+		}
+			writeFromFile(filepath, doctorlist);
+		}
+
+	@Override
+	public void addPatient() throws IOException {
+		
+		Patient patient=new Patient();
+		File filepath=new File("/home/bridgeit/test/Clinique/JsonClinique/Patient.json");
+		
+		try {
+			patientlist=readFromFile(filepath, Patient.class);
+		
+			System.out.println("Enter number of Patient");
+			int numberOfPatient = Utility.inputInteger();
+			for (int i=0; i<numberOfPatient;i++)
+			{
+				System.out.println("Enter patient name :");
+				patient.setPatientName(Utility.inputString());
+				
+				System.out.println("Enter patient ID. :");
+				patient.setPatientId(Utility.inputString());
+				
+				System.out.println("Enter patient mobile number :");
+				patient.setMobileNumber(Utility.inputInteger());
+				
+				System.out.println("Enter patient age");
+				patient.setPatientAge(Utility.inputInteger());	
+			}
+			patientlist.add(patient);	
+		}catch(Exception e)
+		{
+			System.out.println("File not found");
+		}
+		writeFromFile(filepath,patientlist);
+	}
+		
+	@Override
+	public void takeAppointment() throws FileNotFoundException {
+		FileReader fileReader;
+		File file1 = new File("/home/bridgeit/test/Clinique/JsonClinique/Doctor.json");
+		File file2 = new File("/home/bridgeit/test/Clinique/JsonClinique/Patient.json");
+		File file3 = new File("/home/bridgeit/test/Clinique/JsonClinique/Appointment.json");
+
+		// check for existence of all files
+		if (file1.exists() && file2.exists() && file3.exists() && file1.canRead() && file2.canRead() && file3.canRead()  && file3.canWrite()) 
+		{
+			fileReader = new FileReader(file1);
+			fileReader=new FileReader(file2);
+			
+		}
+		
+
+		
+	}
+	
+	private <T> List<T> readFromFile(File filepath, Class<T> clazz) throws IOException{
+		BufferedReader br=new BufferedReader(new FileReader(filepath));
+		String readFile = br.readLine();
+		List<T> list = null;
+		if (readFile != null) {
+			TypeReference<ArrayList<T>> typeReference = new TypeReference<ArrayList<T>>() {
+			};
+			list = mapper.readValue(filepath, typeReference);
+			System.out.println(list);
+		}
+		br.close();
+		return list;
+	}
+	private  <T> List<T> writeFromFile(File filepath, List<T> clapp)throws IOException{
+		mapper.writeValue(filepath,clapp);
+		System.out.print("Data added sucsessfully......\n");
+		return clapp;
+	}
+
+	public static void main(String args[]) throws IOException
+	{
+		IAddDetail a=new AddDetailsImpl();
+		int choice;
+		do {
+					
+		System.out.println("1. Add Doctor");
+		System.out.println("2. Add Patient");
+		System.out.println("3. Take Appointment");
+		System.out.println("4.quit");
+		System.out.println("Enter your choice");
+		 choice=Utility.inputInteger();
+		switch(choice)
+		{
+		case 1: a.addDoctor();
+				break;
+			
+		case 2: a.addPatient();
+				break;
+				
+		case 3:
+				break;
+				
+		case 4: 
+				return;
+		
+				
+	}
+	}while(choice<=4);
+	}
+
+	
+
+
+		
+	}
+

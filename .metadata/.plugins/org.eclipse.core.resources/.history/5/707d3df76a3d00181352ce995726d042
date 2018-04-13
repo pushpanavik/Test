@@ -1,0 +1,211 @@
+package com.bridgeit.objectOriented;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+
+import com.bridgeit.Utility.Utility;
+
+public class AddressBookImpl implements AddressBookInterface{
+	static String firstName;
+	static String lastName;
+	Person person;
+	 List<Person> addentries=new ArrayList<Person>();
+	Utility util=new Utility();
+	String filename;
+//	public AddressBookImpl(String filename) {
+//		this.filename = filename;
+//	}
+	static boolean flag=false;
+	
+	Address add;
+@Override
+public void addPerson() {
+	try {
+		
+		
+		System.out.println("Enter the first name");
+		String firstName=util.inputString();
+		
+		System.out.println("Enter the last name");
+		String lastName=util.inputString();
+		System.out.println("Enter your Phone number");
+		long phoneNumber=util.longInput();
+		
+		person=new Person(firstName,lastName);
+		person.setPhoneNumber(phoneNumber);
+		System.out.println("Enter the state");
+		String state= util.inputString();
+		System.out.println("Enter the city");
+		String city=util.inputString();
+		System.out.println("Enter the zip");
+		String zip=util.inputString();
+		
+		add=new Address(state,zip,city);
+
+		
+
+		
+		person.setAddress(add);
+		addentries.add(person);	
+		
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	System.out.println(addentries);
+}
+@Override
+public void editPersonDetail()
+{
+	boolean flag=false;
+	
+	
+		System.out.println("Enter your firstName ");
+		String first=util.inputString();
+		System.out.println("Enter your lastName");
+		String last=util.inputString();
+		System.out.print(addentries);
+		for(int i=0;i<addentries.size();i++)
+		{
+			Person oneperson=addentries.get(i);
+			
+		
+			if(oneperson.getFirstName().equals(first) && (oneperson.getLastName().equals(last)))
+			{
+				Address editaddress=oneperson.getAddress();
+				System.out.println("1.State");
+				System.out.println("2.City");
+				System.out.println("3.Phone Number");
+				System.out.println("4.zip");
+				System.out.println("5.exit");
+				System.out.println("select what you want to update");
+				try {
+					int choice=util.inputInteger();
+					switch(choice)
+					{
+					case 1: System.out.println("Enter the state");
+					String state= util.inputString();
+					break;
+					case 3:System.out.println("Enter your Phone number");
+					long phoneNumber=util.longInput();
+					break;
+					case 2:System.out.println("Enter the city");
+					String city=util.inputString();
+					break;
+					case 4:System.out.println("Enter the zip");
+					String zip=util.inputString();
+					break;
+					default:
+						oneperson.setAddress(editaddress);
+						addentries.set(i, oneperson);
+						flag=false;
+					}
+				}catch (IOException e) {
+			// TODO Auto-generated catch block
+					e.printStackTrace();
+										}
+			}
+			else
+			{
+				System.out.println("firstname and lastname doesn't matched with existing record ");
+			}
+		}
+			
+				}
+
+@Override
+public void deletePerson () {
+	// TODO Auto-generated method stub
+	System.out.println("Enter your first name");
+	String first=util.inputString();
+	System.out.println("Enter your last name");
+	String last=util.inputString();
+	boolean check=false;
+	for(int i=0;i<addentries.size();i++)
+	{
+		Person oneperson=addentries.get(i);
+		//System.out.println(addentries);
+	System.out.println(oneperson);
+	if(oneperson.getFirstName().equals(first)&& oneperson.getLastName().equals(last))
+	{
+		addentries.remove(i);
+		System.out.println("Address Book deleted Successfully");
+		check=true;
+		break;
+	}
+	}
+	
+		
+}
+
+@Override
+public void sortBylastName() {
+	//System.out.println(addentries);
+	// TODO Auto-generated method stub
+	if(addentries.isEmpty())
+	{
+		
+		System.out.println("Address Book is empty");
+	}
+	else
+	{
+		//System.out.println(addentries);
+	Collections.sort(addentries,new SortByLastName());
+	System.out.println(addentries);
+	flag=true;
+}
+	
+}
+
+@Override
+public void sortByZip() {
+	// TODO Auto-generated method stub
+	if(addentries.isEmpty())
+	{
+		System.out.println("Address Book is empty");
+	}
+	else
+	{
+	Collections.sort(addentries,new sortByZip());
+	System.out.println(addentries);
+	flag=true;
+	}
+
+	
+}
+
+@Override
+public void printEntry() {
+	// TODO Auto-generated method stub
+	int count=1;
+	for(Person print : addentries)
+	{
+		System.out.print("Person First Name" +print.getFirstName());
+		System.out.print("Person Last Name" +print.getLastName());
+		System.out.print("Person Phone Number"+print.getPhoneNumber());
+		System.out.print("********Person Address**************" );
+		System.out.print(" city" +print.getAddress().getCity());
+		System.out.println("state"+print.getAddress().getState());
+		System.out.println("zip"+print.getAddress().getZip());
+		count++;
+	}
+}
+@Override
+public void printAllEntry() {
+	// TODO Auto-generated method stub
+	Iterator<Person> listIterator=addentries.listIterator();
+	while(listIterator.hasNext())
+	{
+		Person oneperson=listIterator.next();
+		printEntry();
+	}
+}
+}
+
+
+

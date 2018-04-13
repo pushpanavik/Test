@@ -1,0 +1,67 @@
+package com.bridgeit.doctor.patient;
+
+
+public class Appointment {
+private int doctorId;
+private String doctorName;
+private int patientId;
+private String patientName;
+private String appointmentDate;
+private long doctorAppointment;
+
+
+public long getdoctorAppointment() {
+	return getdoctorAppointment();
+}
+public void setdoctorAppointment(long appointment) {
+	doctorAppointment = appointment;
+}
+public int getDoctorId() {
+	return doctorId;
+}
+public void setDoctorId(int doctorId2) {
+	this.doctorId = doctorId2;
+}
+public int getPatientId() {
+	return patientId;
+}
+public void setPatientId(int patientId) {
+	this.patientId = patientId;
+}
+public String getAppointmentDate() {
+	return appointmentDate;
+}
+public void setAppointmentDate(String string) {
+	this.appointmentDate = string;
+}
+
+public String getDoctorName() {
+	return doctorName;
+}
+public void setDoctorName(String doctorName) {
+	this.doctorName = doctorName;
+}
+public String getPatientName() {
+	return patientName;
+}
+public void setPatientName(String patientName) {
+	this.patientName = patientName;
+}
+public Appointment(int doctorId, int patientId, String appointmentDate,String patientName, String doctorName ,long doctorAppointment) {
+	super();
+	this.doctorId = doctorId;
+	this.patientId = patientId;
+	this.appointmentDate = appointmentDate;
+	this.doctorName=doctorName;
+	this.patientName=patientName;
+	this.doctorAppointment=doctorAppointment;
+}
+public Appointment() {
+	super();
+}
+public String toString()
+{
+	return "Appointment Details[Doctor Id="+doctorId+",Doctor Name="+doctorName+",Patient Id="+patientId+",Patient Name="+patientName+",Appointment Date="+appointmentDate+"]";
+}
+	
+}

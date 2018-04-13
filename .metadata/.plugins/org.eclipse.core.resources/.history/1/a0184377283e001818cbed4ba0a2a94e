@@ -1,0 +1,41 @@
+package com.bridgeit.doctor.patient;
+
+import java.util.Date;
+
+public class Appointment {
+private String doctorId;
+private String patientId;
+private Date appointmentDate;
+public String getDoctorId() {
+	return doctorId;
+}
+public void setDoctorId(String doctorId) {
+	this.doctorId = doctorId;
+}
+public String getPatientId() {
+	return patientId;
+}
+public void setPatientId(String patientId) {
+	this.patientId = patientId;
+}
+public Date getAppointmentDate() {
+	return appointmentDate;
+}
+public void setAppointmentDate(Date appointmentDate) {
+	this.appointmentDate = appointmentDate;
+}
+public Appointment(String doctorId, String patientId, Date appointmentDate) {
+	super();
+	this.doctorId = doctorId;
+	this.patientId = patientId;
+	this.appointmentDate = appointmentDate;
+}
+public Appointment() {
+	super();
+}
+public String toString()
+{
+	return "Appointment Details[Doctor Id="+doctorId+",Patient Id="+patientId+",Appointment Date="+appointmentDate+"]";
+}
+	
+}

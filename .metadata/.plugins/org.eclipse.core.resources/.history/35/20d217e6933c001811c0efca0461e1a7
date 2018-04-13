@@ -1,0 +1,11 @@
+package src.com.bridgeit.objectOreinted;
+
+public interface AddressBookInterface {
+public void addPerson();
+public void editPersonDetail();
+public void deletePerson();
+public int sortBylastName();
+public int sortByZip();
+public void printEntry();
+
+}

@@ -1,0 +1,15 @@
+package com.bridgeit.objectOriented;
+
+
+import java.util.ArrayList;
+
+interface AddressBookManagerInterface {
+		public void createAddressBook(String bookName);
+		public void openAddressBook(String bookName); 
+		public void closeAddressBook(String bookName);
+		public void saveAddressBook(ArrayList<Person> person,String bookName);
+		public void saveAs(ArrayList<Person> persons,String fileName);
+		public void quit();
+		
+	}
+

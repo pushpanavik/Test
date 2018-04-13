@@ -1,0 +1,38 @@
+package com.bridgeit.Algorithm;
+
+import java.util.Scanner;
+
+public class PrimeNumber {
+
+	public static void main(String[] args) {
+		Scanner scanner=new Scanner(System.in);
+		int lowestlimit;
+		int highestlimit;
+		boolean flag=false;
+		System.out.println("Enter the lowest limit");
+		lowestlimit=scanner.nextInt();
+		System.out.println("Enter the highest limit");
+		highestlimit=scanner.nextInt();
+		for(int i=lowestlimit;i<highestlimit;i++)
+		{
+			for(int j=2;j<=i/2;j++)
+			{
+				if(i%j==0)
+				{
+					flag=true;
+					break;
+				}
+				else 
+				{
+					flag=false;
+				}
+			}
+			if(flag==false)
+			{
+				System.out.print( i+" ");
+			}
+		}
+		
+	}
+
+}

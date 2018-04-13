@@ -1,0 +1,8 @@
+package com.bridegit.controller;
+
+public interface DisplayInt {
+ public void printTotalDoctor();
+ public void printTotalPatient();
+ public void doctorBySpecialization();
+ public void popularDoctor();
+}

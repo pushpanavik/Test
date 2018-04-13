@@ -1,0 +1,63 @@
+package com.bridgeit.clinique;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.bridegit.controller.ISearch;
+import com.bridgeit.Utility.Utility;
+import com.bridgeit.doctor.patient.Doctor;
+import com.bridgeit.doctor.patient.Patient;
+
+
+public class SearchImpl implements ISearch {
+	private List<Doctor> doctorlist=new ArrayList<Doctor>();
+	private List<Patient> patientlist=new ArrayList<Patient>();
+	@Override
+	public void searchDoctorById() {
+		
+		
+	}
+
+	@Override
+	public void searchDoctorByName() {
+		System.out.println("Enter Doctor Name");
+		String name=Utility.inputString();
+		for(int i=0;i<doctorlist.size();i++)
+		{
+			Doctor onedoctor=doctorlist.get(i);
+			
+		
+			if(onedoctor.getDoctorName().equals(name))
+			{
+				
+			}
+	}
+
+	@Override
+	public void searchDcotorBySpecialization() {
+		
+		
+	}
+
+	@Override
+	public void searchDoctorByAvailability() {
+		
+	}
+
+	@Override
+	public void searchPatientById() {
+		
+		
+	}
+
+	@Override
+	public void searchPatientByName() {
+		
+		
+	}
+
+	public static void main(String args[])
+	{
+		ISearch search=new SearchImpl();
+	}
+}

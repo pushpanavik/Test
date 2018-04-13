@@ -1,0 +1,12 @@
+package com.bridgeit.objectOriented;
+
+public class AddressManagerMain {
+
+	public static void main(String args[])
+	{
+		int choice;
+		do {
+			System.out.println("1.);
+		}
+	}
+}

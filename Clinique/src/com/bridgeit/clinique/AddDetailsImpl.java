@@ -79,6 +79,7 @@ public class AddDetailsImpl implements IAddDetail {
 	}
 
 	public void fixAppointment() throws JsonParseException, JsonMappingException, IOException {
+		
 		String doctorName;
 		String appointmentFile = "/home/bridgeit/test/Clinique/Cinique/Appointment.json";
 		String doctorFile = "/home/bridgeit/test/Clinique/Cinique/Doctor.json";
@@ -92,7 +93,9 @@ public class AddDetailsImpl implements IAddDetail {
 
 		for (int i = 0; i < doctorlist.size(); i++) {
 			Doctor doctor = doctorlist.get(i);
+			
 			if (doctorName.equals(doctor.getDoctorName())) {
+				
 				if (doctor.getCount() == 0) {
 					Date date = new Date();
 					SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -105,7 +108,9 @@ public class AddDetailsImpl implements IAddDetail {
 					appointmentList.add(appointment);
 					mapper.writeValue(new File("/home/bridgeit/test/Clinique/Cinique/Appointment.json"),
 							appointmentList);
+					
 				} else if (doctor.getCount() > 0 && doctor.getCount() < 5) {
+					
 					Date date = new Date();
 					SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 					patient = addPatient();
@@ -177,6 +182,7 @@ public class AddDetailsImpl implements IAddDetail {
 
 			while (doctorIterator.hasNext()) {
 				Doctor doctor1 = doctorIterator.next();
+				
 				if (doctor1.getDoctorId() == (docid)) {
 
 					System.out.println("\t\tDoctor Details \t\t ");
@@ -208,6 +214,7 @@ public class AddDetailsImpl implements IAddDetail {
 
 			while (doctorIterator.hasNext()) {
 				Doctor doctor1 = doctorIterator.next();
+				
 				if (doctor1.getDoctorName().equals(docName)) {
 
 					System.out.println("\t\tDoctor Details \t\t ");
@@ -271,6 +278,7 @@ public class AddDetailsImpl implements IAddDetail {
 
 			while (doctorIterator.hasNext()) {
 				Doctor doctor1 = doctorIterator.next();
+				
 				if (doctor1.getDocAvailability().equals(doctorAvailability)) {
 
 					System.out.println("\t\tDoctor Details \t\t ");
@@ -295,12 +303,14 @@ public class AddDetailsImpl implements IAddDetail {
 
 		String filepath = "/home/bridgeit/test/Clinique/Cinique/Patient.json";
 		patientlist = fetchJsonFromFile(filepath, Patient[].class);
+		
 		System.out.println("Enter Patient id");
 		int patientId = Utility.inputInteger();
 
 		Iterator<Patient> patientIterator = patientlist.iterator();
 		while (patientIterator.hasNext()) {
 			Patient patient = patientIterator.next();
+			
 			if (patient.getPatientId() == patientId) {
 
 				System.out.println("\t\tPatient  Details \t\t ");
@@ -325,6 +335,7 @@ public class AddDetailsImpl implements IAddDetail {
 		Iterator<Patient> patientIterator = patientlist.iterator();
 		while (patientIterator.hasNext()) {
 			Patient patient = (Patient) patientIterator.next();
+			
 			if (patient.getPatientName().equals(patientName)) {
 				System.out.println("\t\tPatient  Details \t\t ");
 				System.out.println("\tPatient Name=" + patient.getPatientName());
@@ -336,80 +347,5 @@ public class AddDetailsImpl implements IAddDetail {
 		}
 
 	}
-	public static void main(String args[]) throws IOException, ClassCastException {
-
-		IAddDetail addressDetail = new AddDetailsImpl();
-
-		int choice;
-		do {
-
-			System.out.println("1. Add Doctor");
-			System.out.println("2. Add Patient");
-			System.out.println("3. Take Appointment");
-			System.out.println("4.Display Patient Details");
-			System.out.println("5. Display Doctor Details");
-			System.out.println("6. Find Doctor by Id");
-			System.out.println("7. Find Doctor by Name");
-			System.out.println("8. Find Doctor by Speciality");
-			System.out.println("9. Find Doctor by Availability");
-			System.out.println("10. find Patient by Id");
-			System.out.println("11. Find Patient by Name");
-			System.out.println();
-			System.out.println("Enter your choice");
-			choice = Utility.inputInteger();
-			switch (choice) {
-			case 1:
-				addressDetail.addDoctor();
-				break;
-
-			case 2:
-				addressDetail.addPatient();
-				break;
-
-			case 3:
-				addressDetail.fixAppointment();
-				break;
-
-			case 4:
-				addressDetail.printPatientDetails();
-				break;
-
-			case 5:
-				addressDetail.printDoctorDetails();
-				break;
-
-			case 6:
-				addressDetail.searchDoctorById();
-				break;
-
-			case 7:
-				addressDetail.searchDoctorByName();
-				break;
-
-			case 8:
-				addressDetail.searchDcotorBySpecialization();
-				break;
-
-			case 9:
-				addressDetail.searchDoctorByAvailability();
-				break;
-
-			case 10:
-				addressDetail.searchPatientById();
-				break;
-
-			case 11:
-				addressDetail.searchPatientByName();
-				break;
-			case 12:
-				addressDetail.famousDoctor();
-				break;
-
-			default:
-				System.exit(0);
-
-			}
-		} while (choice <= 12);
-	}
-
+	
 }

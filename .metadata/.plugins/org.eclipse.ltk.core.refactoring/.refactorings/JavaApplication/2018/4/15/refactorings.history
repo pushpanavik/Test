@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;AddressBookMain.java&apos; to &apos;AddressBook/src/com.bridgeit.objectOreinted&apos;&#x0A;- Original project: &apos;JavaApplication&apos;&#x0A;- Destination element: &apos;AddressBook/src/com.bridgeit.objectOreinted&apos;&#x0A;- Original element: &apos;com.bridgeit.ObjectOrientedPrograms.AddressBookMain.java&apos;" description="Copy compilation unit" destination="=AddressBook/src&lt;com.bridgeit.objectOreinted" element1="/src&lt;com.bridgeit.ObjectOrientedPrograms{AddressBookMain.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1523258725700" units="1" version="1.0"/>
+</session>

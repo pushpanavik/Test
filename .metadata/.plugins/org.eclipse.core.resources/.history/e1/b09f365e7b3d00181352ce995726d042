@@ -1,0 +1,279 @@
+package com.bridgeit.objectOriented;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+
+import org.codehaus.jackson.map.ObjectMapper;
+
+import com.bridgeit.Utility.Utility;
+
+public class AddressBookImpl implements AddressBookInterface{
+	static String firstName;
+	static String lastName;
+	Person person;
+	static List<Person> addentries=new ArrayList<Person>();
+	Utility util=new Utility();
+	String filename;
+
+	static boolean flag=false;
+	
+	Address add;
+@Override
+public void addPerson() {
+	try {
+		
+		
+		System.out.println("Enter the first name");
+		String firstName=util.inputString();
+		
+		System.out.println("Enter the last name");
+		String lastName=util.inputString();
+		System.out.println("Enter your Phone number");
+		long phoneNumber=util.longInput();
+		
+		person=new Person(firstName,lastName);
+		person.setPhoneNumber(phoneNumber);
+		System.out.println("Enter the state");
+		String state= util.inputString();
+		System.out.println("Enter the city");
+		String city=util.inputString();
+		System.out.println("Enter the zip");
+		String zip=util.inputString();
+		
+		add=new Address(state,zip,city);
+
+		
+
+		
+		person.setAddress(add);
+		addentries.add(person);	
+		
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	//System.out.println(addentries);
+}
+@Override
+public void editPersonDetail()
+{
+	boolean flag=false;
+	
+	
+		System.out.println("Enter your firstName ");
+		String first=util.inputString();
+		System.out.println("Enter your lastName");
+		String last=util.inputString();
+		System.out.print(addentries);
+		for(int i=0;i<addentries.size();i++)
+		{
+			Person oneperson=addentries.get(i);
+			
+		
+			if(oneperson.getFirstName().equals(first) && (oneperson.getLastName().equals(last)))
+			{
+				Address editaddress=oneperson.getAddress();
+				System.out.println("1.State");
+				System.out.println("2.City");
+				System.out.println("3.Phone Number");
+				System.out.println("4.zip");
+				System.out.println("5.exit");
+				System.out.println("select what you want to update");
+				try {
+					int choice=util.inputInteger();
+					switch(choice)
+					{
+					case 1: System.out.println("Enter the state");
+					String state= util.inputString();
+					break;
+					case 3:System.out.println("Enter your Phone number");
+					long phoneNumber=util.longInput();
+					break;
+					case 2:System.out.println("Enter the city");
+					String city=util.inputString();
+					break;
+					case 4:System.out.println("Enter the zip");
+					String zip=util.inputString();
+					break;
+					default:
+						oneperson.setAddress(editaddress);
+						addentries.set(i, oneperson);
+						flag=false;
+						
+					}
+				}catch (IOException e) {
+			// TODO Auto-generated catch block
+					e.printStackTrace();
+										}
+			}
+			else
+			{
+				System.out.println("firstname and lastname doesn't matched with existing record ");
+			}
+		}
+			
+				}
+
+@Override
+public void deletePerson () {
+	// TODO Auto-generated method stub
+	System.out.println("Enter your first name");
+	String first=util.inputString();
+	System.out.println("Enter your last name");
+	String last=util.inputString();
+	boolean check=false;
+	for(int i=0;i<addentries.size();i++)
+	{
+		Person oneperson=addentries.get(i);
+		//System.out.println(addentries);
+	System.out.println(oneperson);
+	if(oneperson.getFirstName().equals(first)&& oneperson.getLastName().equals(last))
+	{
+		addentries.remove(i);
+		System.out.println("Address Book deleted Successfully");
+		check=true;
+		break;
+	}
+	}
+	
+		
+}
+
+@Override
+public void sortBylastName() {
+	//System.out.println(addentries);
+	// TODO Auto-generated method stub
+	if(addentries.isEmpty())
+	{
+		
+		System.out.println("Address Book is empty");
+	}
+	else
+	{
+		//System.out.println(addentries);
+	Collections.sort(addentries,new SortByLastName());
+	System.out.println(addentries);
+	flag=true;
+}
+	
+}
+
+@Override
+public void sortByZip() {
+	// TODO Auto-generated method stub
+	if(addentries.isEmpty())
+	{
+		System.out.println("Address Book is empty");
+	}
+	else
+	{
+	Collections.sort(addentries,new sortByZip());
+	System.out.println(addentries);
+	flag=true;
+	}
+
+	
+}
+
+@Override
+public void printEntry() {
+	// TODO Auto-generated method stub
+	
+	for(Person print : addentries)
+	{
+		System.out.println(print);
+		
+	}
+}
+@Override
+public void printAllEntry() {
+	// TODO Auto-generated method stub
+	Iterator<Person> listIterator=addentries.listIterator();
+	while(listIterator.hasNext())
+	{
+		Person oneperson=listIterator.next();
+		printEntry();
+	}
+}
+public  List<Person> list()
+{
+	System.out.println(addentries);
+	return addentries;
+	
+}
+/*public void saveFile()
+{
+	ObjectMapper mapper=new ObjectMapper();
+	try {
+		mapper.writeValue(new File("/home/bridgeit/test/addrebook/Book1.json"), addentries);
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+}*/
+
+public void adressBookOperation(ArrayList<Person> list) throws IOException 
+{
+	addentries=list;
+	AddressBookInterface addressbookdetail=new AddressBookImpl();
+	AddressBookManager managerclass=new AddressBookManager();
+	Utility u=new Utility();
+	int choice;
+	while (true)
+	{		
+	System.out.println("1.Add New Person:");
+	System.out.println("2.Edit Information of Person:");
+	System.out.println("3.Delete the Person:");
+	System.out.println("4.Sort by Last Name");
+	System.out.println("5.Sort by zip");
+	System.out.println("6.Display Address Book");
+	System.out.println("7.exit");
+	System.out.println("Select option");
+	choice=u.inputInteger();
+		
+		switch(choice)
+	{
+	case 1:
+		
+		addressbookdetail.addPerson();
+		break;
+		
+	case 2:
+		addressbookdetail.editPersonDetail();
+		break;
+		
+	case 3:
+		addressbookdetail.deletePerson();
+		break;
+		
+	case 4:
+		addressbookdetail.sortBylastName();
+		break;
+		
+	case 5:
+		addressbookdetail.sortByZip();
+		break;
+		
+	case 6:
+		addressbookdetail.printEntry();
+		break;
+		
+	case 7:
+				
+		return;
+		
+	}
+
+
+}
+	
+}
+}
+
+
+

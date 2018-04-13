@@ -1,0 +1,23 @@
+package com.bridgeit.objectOriented;
+
+public class Person {
+private String firstName;
+private String lastName;
+private int phoneNumber;
+public Person()
+{
+	
+}
+public String getFirstName() {
+	return firstName;
+}
+public String getLastName() {
+	return lastName;
+}
+public Person(String firstName,String lastName)
+{
+	this.firstName=firstName;
+	this.lastName=lastName;
+}
+
+}

@@ -1,0 +1,19 @@
+package com.bridgeit.utility;
+
+import java.io.IOException;
+import java.util.Scanner;
+
+
+public class Utility {
+	
+	Scanner scanner=new Scanner(System.in);
+	public int inputInteger() throws IOException{
+		try{	
+			return scanner.nextInt();
+		}
+		catch(NumberFormatException nfe){
+			System.out.println(nfe.getMessage());	
+		}
+		return 0;
+	}
+}
