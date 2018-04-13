@@ -1,30 +1,17 @@
 package com.bridgeit.doctor.patient;
 
-import java.util.Date;
 
 public class Appointment {
-private String doctorId;
+
 private String doctorName;
-private String patientId;
-private String patientName;
-private Date appointmentDate;
-public String getDoctorId() {
-	return doctorId;
-}
-public void setDoctorId(String doctorId) {
-	this.doctorId = doctorId;
-}
-public String getPatientId() {
-	return patientId;
-}
-public void setPatientId(String patientId) {
-	this.patientId = patientId;
-}
-public Date getAppointmentDate() {
+private Patient patient;
+private String appointmentDate;
+
+public String getAppointmentDate() {
 	return appointmentDate;
 }
-public void setAppointmentDate(Date appointmentDate) {
-	this.appointmentDate = appointmentDate;
+public void setAppointmentDate(String string) {
+	this.appointmentDate = string;
 }
 
 public String getDoctorName() {
@@ -33,26 +20,16 @@ public String getDoctorName() {
 public void setDoctorName(String doctorName) {
 	this.doctorName = doctorName;
 }
-public String getPatientName() {
-	return patientName;
+public Patient getPatient() {
+	return patient;
 }
-public void setPatientName(String patientName) {
-	this.patientName = patientName;
+public void setPatient(Patient patient) {
+	this.patient = patient;
 }
-public Appointment(String doctorId, String patientId, Date appointmentDate,String patientName, String doctorName) {
-	super();
-	this.doctorId = doctorId;
-	this.patientId = patientId;
-	this.appointmentDate = appointmentDate;
-	this.doctorName=doctorName;
-	this.patientName=patientName;
+@Override
+public String toString() {
+	return "Appointment [doctorName=" + doctorName + ", patient=" + patient + ", appointmentDate=" + appointmentDate
+			+ "]";
 }
-public Appointment() {
-	super();
-}
-public String toString()
-{
-	return "Appointment Details[Doctor Id="+doctorId+",Doctor Name="+doctorName+",Patient Id="+patientId+",Patient Name="+patientName+",Appointment Date="+appointmentDate+"]";
-}
-	
+
 }

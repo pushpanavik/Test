@@ -5,12 +5,22 @@ private int doctorId;
 private String  doctorName;
 private String docSpecialization;
 private String docAvailability;
-public int getDocId() {
+private int count;
+
+
+public int getDoctorId() {
 	return doctorId;
 }
-public void setDocId(int doctorId2) {
-	this.doctorId = doctorId2;
+public void setDoctorId(int doctorId) {
+	this.doctorId = doctorId;
 }
+public int getCount() {
+	return count;
+}
+public void setCount(int count) {
+	this.count = count;
+}
+
 public String getDoctorName() {
 	return doctorName;
 }
@@ -29,19 +39,21 @@ public String getDocAvailability() {
 public void setDocAvailability(String docAvailability) {
 	this.docAvailability = docAvailability;
 }
-public Doctor(int docId, String doctorName, String docSpecialization, String docAvailability) {
+public Doctor(int doctorId, String doctorName, String docSpecialization, String docAvailability) {
 	super();
-	this.doctorId = docId;
+	this.doctorId = doctorId;
 	this.doctorName = doctorName;
 	this.docSpecialization = docSpecialization;
 	this.docAvailability = docAvailability;
 }
 public Doctor() {
-	super();
+	
 }
-public String toString()
-{
-	return "Doctor Details[Doctor Id="+doctorId+",Doctor Name="+doctorName+",Doctor Specialization="+docSpecialization+",Doctor Availability="+docAvailability+"]";
+@Override
+public String toString() {
+	return "Doctor [doctorId=" + doctorId + ", doctorName=" + doctorName + ", docSpecialization=" + docSpecialization
+			+ ", docAvailability=" + docAvailability + ", doctorAppointment=" + count + "]";
 }
+
 
 }

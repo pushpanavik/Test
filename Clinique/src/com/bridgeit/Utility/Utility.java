@@ -1,6 +1,5 @@
 package com.bridgeit.Utility;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
