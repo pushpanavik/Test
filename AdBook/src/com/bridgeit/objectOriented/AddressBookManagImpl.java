@@ -10,7 +10,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
 import com.bridgeit.Utility.Utility;
 
-public class AddressBookManagImpl implements AddressBookManagerInterface {
+public class AddressBookManagImpl implements IAddressBookManager {
 	ObjectMapper mapper = new ObjectMapper();
 	
 	private boolean isDirectoryOpen = false;

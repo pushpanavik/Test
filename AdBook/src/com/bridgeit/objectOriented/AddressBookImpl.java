@@ -75,10 +75,10 @@ public void addPerson() {
 	try {
 				
 		System.out.println("Enter the first name");
-		String firstName=Utility.inputString();
+		firstName=Utility.inputString();
 		
 		System.out.println("Enter the last name");
-		String lastName=Utility.inputString();
+		lastName=Utility.inputString();
 		System.out.println("Enter your Phone number");
 		long phoneNumber=Utility.longInput();
 		
@@ -108,16 +108,16 @@ public void editPersonDetail()
 {
 		
 		System.out.println("Enter your firstName ");
-		String first=Utility.inputString();
+		firstName=Utility.inputString();
 		System.out.println("Enter your lastName");
-		String last=Utility.inputString();
+		lastName=Utility.inputString();
 		System.out.print(listOfPerson);
 		for(int i=0;i<listOfPerson.size();i++)
 		{
 			Person oneperson=listOfPerson.get(i);
 			
 		
-			if(oneperson.getFirstName().equals(first) && (oneperson.getLastName().equals(last)))
+			if(oneperson.getFirstName().equals(firstName) && (oneperson.getLastName().equals(lastName)))
 			{
 				Address editaddress=oneperson.getAddress();
 				System.out.println("1.State");
@@ -165,16 +165,16 @@ public void editPersonDetail()
 public void deletePerson () {
 	// TODO Auto-generated method stub
 	System.out.println("Enter your first name");
-	String first=Utility.inputString();
+	firstName=Utility.inputString();
 	System.out.println("Enter your last name");
-	String last=Utility.inputString();
+	lastName=Utility.inputString();
 	boolean check=false;
 	for(int i=0;i<listOfPerson.size();i++)
 	{
 		Person oneperson=listOfPerson.get(i);
 		//System.out.println(addentries);
 	System.out.println(oneperson);
-	if(oneperson.getFirstName().equals(first)&& oneperson.getLastName().equals(last))
+	if(oneperson.getFirstName().equals(firstName)&& oneperson.getLastName().equals(lastName))
 	{
 		listOfPerson.remove(i);
 		System.out.println("Address Book deleted Successfully");

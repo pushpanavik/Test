@@ -9,7 +9,7 @@ public class AddressBookManager {
 	public static void main(String args[]) throws IOException
 	{
 		
-		AddressBookManagerInterface manag=new AddressBookManagImpl();
+		IAddressBookManager manag=new AddressBookManagImpl();
 		int choice;
 		do {
 					
