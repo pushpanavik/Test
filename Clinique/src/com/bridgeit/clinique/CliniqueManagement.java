@@ -1,14 +1,12 @@
 package com.bridgeit.clinique;
 
 import java.io.IOException;
-
-import com.bridegit.controller.IAddDetail;
 import com.bridgeit.Utility.Utility;
 
 public class CliniqueManagement {
 	public static void main(String args[]) throws IOException, ClassCastException {
 
-		IAddDetail addressDetail = new AddDetailsImpl();
+		 CliniqueManager addressDetail = new CliniqueManager();
 
 		int choice;
 		do {

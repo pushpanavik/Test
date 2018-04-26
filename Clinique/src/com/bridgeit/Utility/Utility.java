@@ -1,7 +1,15 @@
 package com.bridgeit.Utility;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
+
+import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 
 public class Utility {
 	
@@ -81,7 +89,15 @@ public class Utility {
 		 return null;
 	 }
 
-		
+	 public static <T> List<T> fetchJsonFromFile(String filepath, Class<T[]> clazz)
+				throws JsonParseException, JsonMappingException, IOException {
+		 ObjectMapper mapper=new ObjectMapper();
+
+			File file = new File(filepath);
+			List<T> list = new ArrayList<T>(Arrays.asList(mapper.readValue(file, clazz)));
+			return list;
+
+		}
 		
 		
 }

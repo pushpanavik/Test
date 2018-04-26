@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -12,30 +11,27 @@ import java.util.List;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
-
-import com.bridegit.controller.IAddDetail;
 import com.bridgeit.Utility.Utility;
 import com.bridgeit.doctor.patient.Appointment;
 import com.bridgeit.doctor.patient.Doctor;
 import com.bridgeit.doctor.patient.Patient;
 
-public class AddDetailsImpl implements IAddDetail {
+public class CliniqueManager {
 
 	private ObjectMapper mapper = new ObjectMapper();
-	private List<Doctor> doctorlist = new ArrayList<Doctor>();
-	private List<Patient> patientlist = new ArrayList<Patient>();
-	private List<Appointment> appointmentList = new ArrayList<Appointment>();
+	private List<Doctor> doctorlist;
+	private List<Patient> patientlist;
+	private List<Appointment> appointmentList;
 	private Doctor doctor;
 	private Patient patient;
 	private String filepath;
 
-	@Override
 	public void addDoctor() throws IOException {
-
 		doctor = new Doctor();
 		filepath = "/home/bridgeit/test/Clinique/Cinique/Doctor.json";
-		doctorlist = fetchJsonFromFile(filepath, Doctor[].class);
-
+		if (doctorlist == null) {
+			doctorlist = Utility.fetchJsonFromFile(filepath, Doctor[].class);
+		}
 		System.out.println("Enter name of doctor");
 		doctor.setDoctorName(Utility.inputString());
 
@@ -51,14 +47,16 @@ public class AddDetailsImpl implements IAddDetail {
 		doctorlist.add(doctor);
 		mapper.writeValue(new File("/home/bridgeit/test/Clinique/Cinique/Doctor.json"), doctorlist);
 		System.out.println("Doctor added ");
+
 	}
 
-	@Override
 	public Patient addPatient() throws IOException {
 
 		patient = new Patient();
-
-		patientlist = fetchJsonFromFile("/home/bridgeit/test/Clinique/Cinique/Patient.json", Patient[].class);
+		if (patientlist == null) {
+			patientlist = Utility.fetchJsonFromFile("/home/bridgeit/test/Clinique/Cinique/Patient.json",
+					Patient[].class);
+		}
 
 		System.out.println("Enter patient name :");
 		patient.setPatientName(Utility.inputString());
@@ -79,23 +77,24 @@ public class AddDetailsImpl implements IAddDetail {
 	}
 
 	public void fixAppointment() throws JsonParseException, JsonMappingException, IOException {
-		
+
 		String doctorName;
 		String appointmentFile = "/home/bridgeit/test/Clinique/Cinique/Appointment.json";
 		String doctorFile = "/home/bridgeit/test/Clinique/Cinique/Doctor.json";
-		Patient patient = new Patient();
+		patient = new Patient();
 		Appointment appointment = new Appointment();
-		appointmentList = fetchJsonFromFile(appointmentFile, Appointment[].class);
-
+		if (appointmentList == null) {
+			appointmentList = Utility.fetchJsonFromFile(appointmentFile, Appointment[].class);
+		}
 		System.out.println("Enter Doctor name to take appointment");
 		doctorName = Utility.inputString();
-		doctorlist = fetchJsonFromFile(doctorFile, Doctor[].class);
+		doctorlist = Utility.fetchJsonFromFile(doctorFile, Doctor[].class);
 
 		for (int i = 0; i < doctorlist.size(); i++) {
 			Doctor doctor = doctorlist.get(i);
-			
+
 			if (doctorName.equals(doctor.getDoctorName())) {
-				
+
 				if (doctor.getCount() == 0) {
 					Date date = new Date();
 					SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -108,9 +107,9 @@ public class AddDetailsImpl implements IAddDetail {
 					appointmentList.add(appointment);
 					mapper.writeValue(new File("/home/bridgeit/test/Clinique/Cinique/Appointment.json"),
 							appointmentList);
-					
+
 				} else if (doctor.getCount() > 0 && doctor.getCount() < 5) {
-					
+
 					Date date = new Date();
 					SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 					patient = addPatient();
@@ -127,7 +126,6 @@ public class AddDetailsImpl implements IAddDetail {
 		}
 	}
 
-	@Override
 	public void famousDoctor() {
 		for (int i = 0; i < doctorlist.size(); i++) {
 			if (doctor.getCount() == 5) {
@@ -139,50 +137,38 @@ public class AddDetailsImpl implements IAddDetail {
 
 	}
 
-	private <T> List<T> fetchJsonFromFile(String filepath, Class<T[]> clazz)
-			throws JsonParseException, JsonMappingException, IOException {
-
-		File file = new File(filepath);
-		List<T> list = new ArrayList<T>(Arrays.asList(mapper.readValue(file, clazz)));
-		return list;
-
-	}
-
-	@Override
 	public void printDoctorDetails() throws JsonParseException, JsonMappingException, IOException {
 		String filepath = "/home/bridgeit/test/Clinique/Cinique/Doctor.json";
-		doctorlist = fetchJsonFromFile(filepath, Doctor[].class);
+		doctorlist = Utility.fetchJsonFromFile(filepath, Doctor[].class);
 		for (int i = 0; i < doctorlist.size(); i++) {
 			System.out.println("" + doctorlist.get(i));
 		}
 
 	}
 
-	@Override
 	public void printPatientDetails() throws JsonParseException, JsonMappingException, IOException {
 		String filepath = "/home/bridgeit/test/Clinique/Cinique/Patient.json";
-		patientlist = fetchJsonFromFile(filepath, Patient[].class);
+		patientlist = Utility.fetchJsonFromFile(filepath, Patient[].class);
 		for (int i = 0; i < patientlist.size(); i++) {
 			System.out.println("" + patientlist.get(i));
 		}
 
 	}
 
-	@Override
 	public void searchDoctorById() throws IOException {
-
 		try {
 			System.out.println("Enter the doctor id");
 			int docid = Utility.inputInteger();
 
-			String filepath = "/home/bridgeit/test/Clinique/Cinique/Doctor.json";
-			doctorlist = fetchJsonFromFile(filepath, Doctor[].class);
-
+			if (doctorlist == null) {
+				String filepath = "/home/bridgeit/test/Clinique/Cinique/Doctor.json";
+				doctorlist = Utility.fetchJsonFromFile(filepath, Doctor[].class);
+			}
 			Iterator<Doctor> doctorIterator = doctorlist.iterator();
 
 			while (doctorIterator.hasNext()) {
 				Doctor doctor1 = doctorIterator.next();
-				
+
 				if (doctor1.getDoctorId() == (docid)) {
 
 					System.out.println("\t\tDoctor Details \t\t ");
@@ -201,20 +187,19 @@ public class AddDetailsImpl implements IAddDetail {
 		}
 	}
 
-	@Override
 	public void searchDoctorByName() throws JsonParseException, JsonMappingException, IOException {
 		try {
 			System.out.println("Enter the doctor Name");
 			String docName = Utility.inputString();
-
-			String filepath = "/home/bridgeit/test/Clinique/Cinique/Doctor.json";
-			doctorlist = fetchJsonFromFile(filepath, Doctor[].class);
-
+			if (doctorlist == null) {
+				String filepath = "/home/bridgeit/test/Clinique/Cinique/Doctor.json";
+				doctorlist = Utility.fetchJsonFromFile(filepath, Doctor[].class);
+			}
 			Iterator<Doctor> doctorIterator = doctorlist.iterator();
 
 			while (doctorIterator.hasNext()) {
 				Doctor doctor1 = doctorIterator.next();
-				
+
 				if (doctor1.getDoctorName().equals(docName)) {
 
 					System.out.println("\t\tDoctor Details \t\t ");
@@ -234,15 +219,14 @@ public class AddDetailsImpl implements IAddDetail {
 
 	}
 
-	@Override
 	public void searchDcotorBySpecialization() throws JsonParseException, JsonMappingException, IOException {
 		try {
 			System.out.println("Enter the doctor Specialization");
 			String Speciallization = Utility.inputString();
-
-			String filepath = "/home/bridgeit/test/Clinique/Cinique/Doctor.json";
-			doctorlist = fetchJsonFromFile(filepath, Doctor[].class);
-
+			if (doctorlist == null) {
+				String filepath = "/home/bridgeit/test/Clinique/Cinique/Doctor.json";
+				doctorlist = Utility.fetchJsonFromFile(filepath, Doctor[].class);
+			}
 			Iterator<Doctor> doctorIterator = doctorlist.iterator();
 
 			while (doctorIterator.hasNext()) {
@@ -265,20 +249,20 @@ public class AddDetailsImpl implements IAddDetail {
 		}
 	}
 
-	@Override
 	public void searchDoctorByAvailability() throws JsonParseException, JsonMappingException, IOException {
 		try {
 			System.out.println("Enter the doctor Availability");
 			String doctorAvailability = Utility.inputString();
 
-			String filepath = "/home/bridgeit/test/Clinique/Cinique/Doctor.json";
-			doctorlist = fetchJsonFromFile(filepath, Doctor[].class);
-
+			if (doctorlist == null) {
+				String filepath = "/home/bridgeit/test/Clinique/Cinique/Doctor.json";
+				doctorlist = Utility.fetchJsonFromFile(filepath, Doctor[].class);
+			}
 			Iterator<Doctor> doctorIterator = doctorlist.iterator();
 
 			while (doctorIterator.hasNext()) {
 				Doctor doctor1 = doctorIterator.next();
-				
+
 				if (doctor1.getDocAvailability().equals(doctorAvailability)) {
 
 					System.out.println("\t\tDoctor Details \t\t ");
@@ -298,19 +282,19 @@ public class AddDetailsImpl implements IAddDetail {
 
 	}
 
-	@Override
 	public void searchPatientById() throws IOException {
 
-		String filepath = "/home/bridgeit/test/Clinique/Cinique/Patient.json";
-		patientlist = fetchJsonFromFile(filepath, Patient[].class);
-		
+		if (patientlist == null) {
+			patientlist = Utility.fetchJsonFromFile("/home/bridgeit/test/Clinique/Cinique/Patient.json",
+					Patient[].class);
+		}
 		System.out.println("Enter Patient id");
 		int patientId = Utility.inputInteger();
 
 		Iterator<Patient> patientIterator = patientlist.iterator();
 		while (patientIterator.hasNext()) {
 			Patient patient = patientIterator.next();
-			
+
 			if (patient.getPatientId() == patientId) {
 
 				System.out.println("\t\tPatient  Details \t\t ");
@@ -324,18 +308,19 @@ public class AddDetailsImpl implements IAddDetail {
 		}
 	}
 
-	@Override
 	public void searchPatientByName() throws JsonParseException, JsonMappingException, IOException {
 
-		String filepath = "/home/bridgeit/test/Clinique/Cinique/Patient.json";
-		patientlist = fetchJsonFromFile(filepath, Patient[].class);
+		if (patientlist == null) {
+			patientlist = Utility.fetchJsonFromFile("/home/bridgeit/test/Clinique/Cinique/Patient.json",
+					Patient[].class);
+		}
 		System.out.println("Enter Patient Name");
 		String patientName = Utility.inputString();
 
 		Iterator<Patient> patientIterator = patientlist.iterator();
 		while (patientIterator.hasNext()) {
 			Patient patient = (Patient) patientIterator.next();
-			
+
 			if (patient.getPatientName().equals(patientName)) {
 				System.out.println("\t\tPatient  Details \t\t ");
 				System.out.println("\tPatient Name=" + patient.getPatientName());
@@ -347,5 +332,5 @@ public class AddDetailsImpl implements IAddDetail {
 		}
 
 	}
-	
+
 }
