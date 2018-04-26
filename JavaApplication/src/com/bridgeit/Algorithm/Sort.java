@@ -1,7 +1,5 @@
 package com.bridgeit.Algorithm;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.NavigableMap;
@@ -11,7 +9,7 @@ import java.util.TreeMap;
 
 import com.bridegit.Utility.Utility;
 
-public class AllSort {
+public class Sort {
 
     public static void main(String[] args) throws InterruptedException {
         // TODO Auto-generated method stub
@@ -172,20 +170,20 @@ public class AllSort {
                     System.out.println("Invalid Choice");
 
             }
-        } while (choice < 8);
-        System.out.println("\nOrder of elapsed timing in Nano Seconds" + ":");
-
-        NavigableMap nmap = timings.descendingMap();
-
-        Set set = nmap.entrySet();
-
-        Iterator it = set.iterator();
-
-        while (it.hasNext()) {
-            Map.Entry me = (Map.Entry) it.next();
-            System.out.print(me.getValue() + "\t");
-            System.out.print(me.getKey() + "\n");
-        }
+        } while (choice < 7);
+//        System.out.println("\nOrder of elapsed timing in Nano Seconds" + ":");
+//
+//        NavigableMap nmap = timings.descendingMap();
+//
+//        Set set = nmap.entrySet();
+//
+//        Iterator it = set.iterator();
+//
+//        while (it.hasNext()) {
+//            Map.Entry me = (Map.Entry) it.next();
+//            System.out.print(me.getValue() + "\t");
+//            System.out.print(me.getKey() + "\n");
+//        }
     }
 }
 
